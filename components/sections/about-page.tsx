@@ -21,21 +21,21 @@ const AboutPage = () => {
                         nam laudantium expedita mollitia, dignissimos aliquid quasi, aperiam ipsa.
                     </p>
                     <div className="flex flex-row justify-start items-start gap-4 mt-8">
-                        <Link className="h-12 w-12 rounded-full bg-primary text-white p-3 shadow-md hover:translate-y-[-6px] active:translate-y-0 transition-all ease-in-out duration-150" href="https://www.linkedin.com/in/deihl-arron-reyes/" target="blank">
+                        <Link className="h-10 w-10 md:h-12 md:w-12 rounded-full bg-primary text-white p-3 shadow-md hover:translate-y-[-6px] active:translate-y-0 transition-all ease-in-out duration-150" href="https://www.linkedin.com/in/deihl-arron-reyes/" target="blank">
                             <Image
                                 className="w-full h-full"
                                 src={linkedin}
                                 alt="LinkedIn Logo"
                             />
                         </Link>
-                        <Link className="h-12 w-12 rounded-full bg-primary text-white p-3 shadow-md hover:translate-y-[-6px] active:translate-y-0 transition-all ease-in-out duration-150" href="https://github.com/DeihlReyes" target="blank">
+                        <Link className="h-10 w-10 md:h-12 md:w-12 rounded-full bg-primary text-white p-3 shadow-md hover:translate-y-[-6px] active:translate-y-0 transition-all ease-in-out duration-150" href="https://github.com/DeihlReyes" target="blank">
                             <Image
                                 className="w-full h-full"
                                 src={github}
                                 alt="Github Logo"
                             />
                         </Link>
-                        <Link className="h-12 w-12 rounded-full bg-primary text-white p-3 shadow-md hover:translate-y-[-6px] active:translate-y-0 transition-all ease-in-out duration-150" href="https://www.facebook.com/deihl.reyes08/" target="blank">
+                        <Link className="h-10 w-10 md:h-12 md:w-12 rounded-full bg-primary text-white p-3 shadow-md hover:translate-y-[-6px] active:translate-y-0 transition-all ease-in-out duration-150" href="https://www.facebook.com/deihl.reyes08/" target="blank">
                             <Image
                                 className="w-full h-full"
                                 src={facebook}
