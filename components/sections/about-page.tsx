@@ -9,7 +9,7 @@ import github from "@/assets/logos/GitHub.svg";
 const AboutPage = () => {
     return (
         <section id='about' className="flex flex-col gap-32 justify-center items-center md:pb-32 md:pt-36">
-            <div className="flex flex-col gap-16 px-8 py-16 md:p-0 md:flex-row items-center max-w-[1200px]">
+            <div className="flex flex-col gap-16 px-8 py-20 md:p-0 md:flex-row items-center max-w-[1200px]">
                 <div className="w-full md:w-1/2">
                     <h1 className="text-3xl md:text-[50px] font-bold mb-8">About me</h1>
                     <p className="text-base md:text-lg text-left mb-6 md:pr-4">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nulla doloribus aspernatur 

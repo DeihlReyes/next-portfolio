@@ -19,7 +19,7 @@ const Navbar = () => {
                 </div>
             </nav>
 
-            <div className="flex md:hidden items-center w-full h-20 justify-between px-8">
+            <nav className="fixed top-0 bg-white flex md:hidden items-center w-full h-20 justify-between px-8">
                 <Image
                     className="object-cover w-auto h-10"
                     src={logo}
@@ -29,7 +29,7 @@ const Navbar = () => {
                     <Button className="rounded-full text-xs">HIRE ME</Button>
                     <MobileNav/>
                 </div>         
-            </div>
+            </nav>
         </header>
     );
 };

@@ -12,7 +12,7 @@ const NavItems = () => {
                     key={link.route}
                     className="flex-center p-medium-16 whitespace-nowrap"
                 >
-                    <Link href={link.route} scroll={false}>{link.label}</Link>
+                    <Link href={link.route}>{link.label}</Link>
                 </li>
             )
         })}
