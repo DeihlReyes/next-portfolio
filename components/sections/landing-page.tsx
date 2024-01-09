@@ -4,7 +4,7 @@ import { Button } from "../ui/button";
 
 const LandingPage = () => {
     return (
-        <section id="home" className="flex flex-col-reverse gap-16 md:gap-0 p-8 md:p-0 md:flex-row justify-center items-center h-full md:h-screen">
+        <section id="home" className="flex flex-col-reverse gap-16 md:gap-0 px-8 py-16 md:p-0 md:flex-row justify-center items-center h-full md:h-screen">
             <Image
                 className="object-cover w-full h-full md:w-1/2 md:h-screen"
                 src={myImage}

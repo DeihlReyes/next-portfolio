@@ -1,6 +1,7 @@
 'use client';
 
 import { headerLinks } from '@/constants'
+import Link from 'next/link';
 
 const NavItems = () => {
     return (
@@ -11,7 +12,7 @@ const NavItems = () => {
                     key={link.route}
                     className="flex-center p-medium-16 whitespace-nowrap"
                 >
-                    <a href={link.route}>{link.label}</a>
+                    <Link href={link.route} scroll={false}>{link.label}</Link>
                 </li>
             )
         })}
