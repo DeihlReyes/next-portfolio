@@ -10,7 +10,7 @@ const AboutCards = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="grid gap-4 md:pb-24">
                 <div>
-                    <Card className="h-56 shadow-md">
+                    <Card className="h-56 shadow-md shadow-slate-300 hover:border-2 hover:border-slate-400 transition-all ease-linear duration-150">
                         <CardHeader>
                             <CardTitle className='text-xl'>Web Development</CardTitle>
                         </CardHeader>
@@ -20,7 +20,7 @@ const AboutCards = () => {
                     </Card>
                 </div>
                 <div>
-                    <Card className="h-56 shadow-md">
+                    <Card className="h-56 shadow-md shadow-slate-300 hover:border-2 hover:border-slate-400 transition-all ease-linear duration-150">
                         <CardHeader>
                             <CardTitle className='text-xl'>Code Quality</CardTitle>
                         </CardHeader>
@@ -32,7 +32,7 @@ const AboutCards = () => {
             </div>
             <div className="md:pt-24 grid gap-4">
                 <div>
-                    <Card className="h-56 shadow-md">
+                    <Card className="h-56 shadow-md shadow-slate-300 hover:border-2 hover:border-slate-400 transition-all ease-linear duration-150">
                         <CardHeader>
                             <CardTitle className='text-xl'>Responsive Design</CardTitle>
                         </CardHeader>
@@ -42,7 +42,7 @@ const AboutCards = () => {
                     </Card>
                 </div>
                 <div>
-                    <Card className="h-56 shadow-md">
+                    <Card className="h-56 shadow-md shadow-slate-300 hover:border-2 hover:border-slate-400 transition-all ease-linear duration-150">
                         <CardHeader>
                             <CardTitle className='text-xl'>Problem Solving</CardTitle>
                         </CardHeader>
