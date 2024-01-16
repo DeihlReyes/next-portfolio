@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 const AboutCards = () => {
   return (
     <div className="flex flex-col justify-center items-center">
-      <div className="grid grid-cols-2 gap-4 opacity-100 group p-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-4 opacity-100 group p-2 md:p-4">
         <Card id="card" className="h-56 shadow-md shadow-slate-300 overflow-hidden -rotate-3 even:mb-4 hover:rotate-0 hover:scale-110 [&:not(:hover)]:group-hover:opacity-50 transition-all ease-linear duration-150">
           <CardHeader>
             <CardTitle className="text-xl">Web Development</CardTitle>

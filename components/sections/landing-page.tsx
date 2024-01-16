@@ -4,7 +4,7 @@ import { Button } from "../ui/button";
 
 const LandingPage = () => {
   return (
-    <section id="home" className="flex h-full md:h-screen">
+    <section id="home" className="flex h-full md:h-screen px-8 pt-32 pb-16">
       <div className="flex flex-col mx-auto justify-center items-center md:flex-row max-w-6xl gap-20">
         <div className="flex flex-col justify-center items-start w-full ">
           <p className="text-md md:text-lg mb-8 font-semibold">Hello!</p>

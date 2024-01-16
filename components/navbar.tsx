@@ -6,8 +6,8 @@ import NavItems from "./nav-items";
 
 const Navbar = () => {
     return(
-        <header className="z-50">
-            <nav className="bg-background fixed md:flex hidden justify-between shadow-md py-5 px-7 w-full">
+        <header>
+            <nav className="z-50 bg-background fixed md:flex hidden justify-between shadow-md py-5 px-7 w-full">
                 <Image
                     className="object-cover w-auto h-10"
                     src={logo}
