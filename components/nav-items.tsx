@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 const NavItems = () => {
     return (
-        <ul className="flex w-full flex-col items-start gap-8 md:flex-row">
+        <ul className="flex w-full flex-col items-start gap-12 md:flex-row">
         {headerLinks.map((link) => {
             return (
                 <li
