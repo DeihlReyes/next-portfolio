@@ -7,7 +7,7 @@ import NavItems from "./nav-items";
 const Navbar = () => {
     return(
         <header>
-            <nav className="z-50 bg-background fixed md:flex hidden justify-between shadow-md py-5 px-7 w-full">
+            <nav className="z-50 bg-background fixed md:flex hidden justify-between shadow-md py-5 px-32 w-full">
                 <Image
                     className="object-cover w-auto h-10"
                     src={logo}
@@ -19,7 +19,7 @@ const Navbar = () => {
                 </div>
             </nav>
 
-            <nav className="fixed top-0 bg-white flex md:hidden items-center w-full h-20 justify-between px-8">
+            <nav className="z-50 fixed top-0 bg-white flex md:hidden items-center w-full h-20 justify-between px-8">
                 <Image
                     className="object-cover w-auto h-10"
                     src={logo}
