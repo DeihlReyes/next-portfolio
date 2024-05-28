@@ -10,7 +10,7 @@ const NavItems = () => {
             return (
                 <li
                     key={link.route}
-                    className="flex-center p-medium-16 whitespace-nowrap"
+                    className="flex-center p-medium-16 whitespace-nowrap hover:font-bold transition-all ease-in-out duration-150"
                 >
                     <Link href={link.route}>{link.label}</Link>
                 </li>
