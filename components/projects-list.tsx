@@ -21,10 +21,10 @@ const ProjectList = () => {
           <li className={`flex flex-col ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} justify-center items-center gap-10`} key={index}>
             <Carousel opts={{
                 loop: true,
-              }} className="relative w-[650px] h-full md:h-[380px]">
+              }} className="relative w-[320px] md:w-[650px] h-full md:h-[380px]">
               <CarouselContent>
                 {project.image.map((img, index) => (
-                  <CarouselItem className="w-[650px] h-full md:h-[380px]" key={index}>
+                  <CarouselItem className="w-full md:w-[650px] h-full md:h-[380px]" key={index}>
                     <Image
                       className="w-[650px] h-full md:h-[380px] object-cover rounded-xl shadow-xl"
                       src={img}
