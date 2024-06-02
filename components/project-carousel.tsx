@@ -38,11 +38,11 @@ const ProjectCarousel = ({ projectImages }: { projectImages: any[] }) => {
           ))}
         </CarouselContent>
       </Carousel>
-      <div className="flex flex-row gap-2">
+      <div className="flex flex-row gap-2 justify-center items-center">
         {Array.from({ length: count }, (_, i) => (
           <span
             key={i}
-            className={`w-4 h-5 rounded-full mx-1 ${i === current - 1 ? 'bg-black' : 'bg-gray-300'}`}
+            className={`w-4 h-4 rounded-full mx-1 ${i === current - 1 ? 'bg-black' : 'border border-black'}`}
           ></span>
         ))}
       </div>
