@@ -24,7 +24,7 @@ const ProjectCarousel = ({ projectImages }: { projectImages: any[] }) => {
   }, [api]);
 
   return (
-    <div className="flex flex-col space-y-5 items-center justify-center">
+    <div className="flex flex-col space-y-5 items-center justify-center w-full">
       <Carousel setApi={setApi} opts={{ loop: true }} className="w-[320px] md:w-[650px] h-full md:h-[380px]">
         <CarouselContent>
           {projectImages.map((img: any, index: any) => (
