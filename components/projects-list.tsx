@@ -2,6 +2,15 @@ import { projects } from "@/constants/projects";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "./ui/button";
 import Image from "next/image";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel"
+import Autoplay from "embla-carousel-autoplay"
+
 import Link from "next/link";
 
 const ProjectList = () => {
@@ -10,11 +19,23 @@ const ProjectList = () => {
       <ul className="flex flex-col justify-center items-center gap-32 md:gap-40 h-full">
         {projects.map((project, index) => (
           <li className={`flex flex-col ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} justify-center items-center gap-10`} key={index}>
-            <Image
-              className="w-[650px] h-full md:h-[380px] object-cover rounded-xl shadow-xl"
-              src={project.image}
-              alt={project.title}
-            />
+            <Carousel opts={{
+                loop: true,
+              }} className="relative w-[650px] h-full md:h-[380px]">
+              <CarouselContent>
+                {project.image.map((img, index) => (
+                  <CarouselItem className="w-[650px] h-full md:h-[380px]" key={index}>
+                    <Image
+                      className="w-[650px] h-full md:h-[380px] object-cover rounded-xl shadow-xl"
+                      src={img}
+                      alt={project.title}
+                    />
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious className="absolute left-5 bg-[#333232] text-[#D6D6D6] hover:bg-[#333232]/80 hover:text-[#DADADA]" />
+              <CarouselNext className="absolute right-5 bg-[#333232] text-[#D6D6D6] hover:bg-[#333232]/80 hover:text-[#DADADA]" />
+            </Carousel>
             <div>
               <h2 className="text-xl md:text-3xl font-bold">{project.title}</h2>
               <p className="text-sm md:text-lg mt-6">{project.description}</p>
