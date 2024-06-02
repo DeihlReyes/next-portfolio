@@ -42,7 +42,7 @@ const ProjectCarousel = ({ projectImages }: { projectImages: any[] }) => {
         {Array.from({ length: count }, (_, i) => (
           <span
             key={i}
-            className={`w-4 h-4 rounded-full mx-1 ${i === current - 1 ? 'bg-black' : 'border border-black'}`}
+            className={`w-3 h-3 rounded-full mx-1 ${i === current - 1 ? 'bg-[#161616]' : 'border border-[#161616]'}`}
           ></span>
         ))}
       </div>
