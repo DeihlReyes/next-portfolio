@@ -29,7 +29,7 @@ const Navbar = () => {
                     alt="Logo"
                 /> 
                 <div className="flex flex-row gap-8 justify-center items-center">
-                    <Button className="rounded-lg text-xs">HIRE ME</Button>
+                    <Button className="rounded-lg text-xs">Contact me</Button>
                     <MobileNav/>
                 </div>         
             </nav>
