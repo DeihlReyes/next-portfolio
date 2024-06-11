@@ -30,7 +30,6 @@ const ProjectList = () => {
                 <Link href={project.repo} target="_blank">
                   <Button className="mt-10 md:w-20">Repo</Button>
                 </Link>
-                
               </div>
             </div>
           </li>
