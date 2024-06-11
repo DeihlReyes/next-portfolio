@@ -1,9 +1,6 @@
 import { projects } from "@/constants/projects";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "./ui/button";
-
-import Autoplay from "embla-carousel-autoplay"
-
 import Link from "next/link";
 import ProjectCarousel from "./project-carousel";
 
@@ -27,8 +24,13 @@ const ProjectList = () => {
                 </ul>
               </div>
               <div className="space-x-2">
-                <Button className="mt-10 md:w-20">Demo</Button>
-                <Button className="mt-10 md:w-20">Repo</Button>
+                <Link href={project.demo} target="_blank">
+                  <Button className="mt-10 md:w-20">Demo</Button>
+                </Link>
+                <Link href={project.repo} target="_blank">
+                  <Button className="mt-10 md:w-20">Repo</Button>
+                </Link>
+                
               </div>
             </div>
           </li>
