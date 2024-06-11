@@ -14,7 +14,9 @@ const MobileNav = () => {
           <AiOutlineMenu className='text-2xl'/>
         </SheetTrigger>
         <SheetContent className="flex flex-col gap-6 bg-[#D6D6D6] md:hidden pt-20">
-          <NavItems />
+          <ul className="flex w-full items-start gap-12 flex-col md:flex-row">
+            <NavItems />
+          </ul>
         </SheetContent>
       </Sheet>
     </nav>

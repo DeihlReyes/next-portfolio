@@ -15,7 +15,9 @@ const Navbar = () => {
                     alt="Logo"
                 />
                 <div className="flex flex-row gap-12 justify-center items-center text-md">
-                    <NavItems/>
+                    <ul className="flex w-full items-start gap-12 flex-row">
+                        <NavItems/>
+                    </ul>
                     <Link href={'#contact'}>
                         <Button className="rounded-lg">Contact me</Button>
                     </Link>
