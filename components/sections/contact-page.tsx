@@ -48,32 +48,29 @@ const ContactPage = () => {
       content: values.content,
     };
     setIsSending(true);
-    emailjs
-      .send(
+    
+    try {
+      await emailjs.send(
         process.env.NEXT_PUBLIC_SERVICE_ID!,
         process.env.NEXT_PUBLIC_TEMPLATE_ID!,
         templateParams,
         process.env.NEXT_PUBLIC_PUBLIC_KEY!
-      )
-      .then(
-        () => {
-          form.reset();
-          toast({
-            title: "Email Sent!",
-            description: "Your email has been sent successfully! I will get back to you as soon as possible.",
-            duration: 3000,
-          })
-        },
-        (error) => {
-          toast({
-            title: "Email Failed!",
-            description: "There was an error sending your email. Please try again later.",
-            duration: 3000,
-          })
-        }
-      ).finally(() => {
-        setIsSending(false);
+      );
+      form.reset();
+      toast({
+        title: "Email Sent!",
+        description: "Your email has been sent successfully! I will get back to you as soon as possible.",
+        duration: 3000,
       });
+    } catch (error) {
+      toast({
+        title: "Email Failed!",
+        description: "There was an error sending your email. Please try again later.",
+        duration: 3000,
+      });
+    } finally {
+      setIsSending(false);
+    }
   }
 
   return (
