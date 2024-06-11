@@ -20,7 +20,7 @@ import emailjs from "@emailjs/browser";
 import { useToast } from "../ui/use-toast";
 import { useState } from "react";
 import { SendHorizonal } from 'lucide-react';
-import { Loading } from "../loading";
+import Loading from "@/assets/loading.svg";
 
 const formSchema = z.object({
   email: z.string().email({ message: "Please enter a valid email address." }),
@@ -104,7 +104,7 @@ const ContactPage = () => {
               name="subject"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Email</FormLabel>
+                  <FormLabel>Subject</FormLabel>
                   <FormControl>
                     <Input placeholder="Enter a Subject" {...field} />
                   </FormControl>
@@ -131,7 +131,7 @@ const ContactPage = () => {
             <Button className="px-8 md:py-6 md:px-10 font-bold text-sm md:text-lg mt-10 md:mt-14 md:w-40 max-w-40" disabled={isSending}>
               {isSending ? (
                 <>
-                  <Loading />
+                  <Image src={Loading} alt="Loading" width={20} height={20} />
                 </>
               ) : (
                 <>
