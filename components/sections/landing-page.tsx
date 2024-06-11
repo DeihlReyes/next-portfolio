@@ -16,7 +16,7 @@ const LandingPage = () => {
           in crafting user-friendly and innovative solutions. Dedicated to 
           delivering seamless applications that enhance user experiences.
         </p>
-        <Button className="px-8 md:py-6 md:px-10 font-bold tracking-widest text-sm md:text-lg mt-10 md:mt-14">Hire Me</Button>
+        <Button className="px-8 md:py-6 md:px-10 font-bold tracking-widest text-sm md:text-lg mt-10 md:mt-14">Let&apos;s Talk!</Button>
       </div>
       <div className="mt-16 md:mt-0 md:absolute right-16">
         <Image
