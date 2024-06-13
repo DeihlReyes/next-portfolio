@@ -27,11 +27,15 @@ const AboutPage = () => {
             <div className="w-full md:w-1/2 flex flex-col justify-center items-start">
                 <div className="h-[4px] w-32 md:w-36 bg-[#161616] mb-12"></div>
                 <h1 className="text-3xl md:text-[50px] font-bold mb-8">About me</h1>
-                <p className="text-sm md:text-lg text-left md:pr-4">
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nulla doloribus aspernatur 
-                    aliquam provident deleniti voluptas ipsum doloremque saepe ea minima et maxime eveniet
-                    nam laudantium expedita mollitia, dignissimos aliquid quasi, aperiam ipsa. Lorem ipsum, dolor sit amet consectetur 
-                    adipisicing elit.
+                <p className="text-sm md:text-lg text-justify md:pr-4">
+                    I am a Computer Engineering graduate from the University of the East - Caloocan, 
+                    with a strong passion for coding and technology. My journey into full stack 
+                    development began during my academic years and has flourished through dedicated
+                    self-study and hands-on projects. I thrive on solving complex problems and creating
+                    innovative applications. Beyond coding, I enjoy playing basketball and engaging 
+                    in music production, which allows me to balance my technical pursuits with creative endeavors. 
+                    I&apos;m always eager to learn new technologies and take on challenging projects that push the 
+                    boundaries of my skills.
                 </p>
                 <div className="flex flex-row justify-start items-start gap-4 mt-10">
                     <Link className="h-10 w-10 md:h-12 md:w-12 rounded-full bg-[#333232] text-white p-3 shadow-md hover:translate-y-[-6px] active:translate-y-0 transition-all ease-in-out duration-150" href="https://www.linkedin.com/in/deihl-arron-reyes/" target="blank">
