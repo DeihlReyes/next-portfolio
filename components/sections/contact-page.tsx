@@ -109,21 +109,26 @@ const ContactPage = () => {
       initial="hidden"
       animate={inView ? "visible" : "hidden"}
       variants={containerVariants}
-      className="relative flex flex-col lg:flex-row h-full px-8 lg:px-16 pt-32 pb-16 max-w-7xl justify-center items-center mx-auto gap-12 lg:gap-24"
+      className="relative flex flex-col lg:flex-row h-full px-8 lg:px-16 pt-32 pb-16 max-w-7xl justify-center items-center mx-auto gap-12 lg:gap-16"
     >
       <motion.div variants={itemVariants}>
-        <Image src={contactImage} alt="Contact Image" />
+        <Image
+          width={700}
+          height={700}
+          src={contactImage}
+          alt="Contact Image"
+        />
       </motion.div>
       <motion.div variants={itemVariants} className="w-full lg:w-2/3">
         <motion.h2
           variants={itemVariants}
-          className="text-xl lg:text-3xl font-bold mb-6"
+          className="text-xl lg:text-4xl font-bold mb-4"
         >
           Let&apos;s Talk!
         </motion.h2>
         <motion.p
           variants={itemVariants}
-          className="text-sm lg:text-lg text-left mb-6 lg:pr-4"
+          className="text-sm lg:text-lg text-left mb-8 lg:pr-4"
         >
           If you have any questions, project ideas, or just want to chat, please
           don&apos;t hesitate to reach out.
@@ -180,7 +185,7 @@ const ContactPage = () => {
             </motion.div>
             <motion.div variants={itemVariants}>
               <Button
-                className="px-8 lg:py-6 lg:px-10 font-bold text-sm lg:text-lg mt-10 lg:mt-14 lg:w-40 max-w-40"
+                className="px-12 mt-5 w-full md:w-fit"
                 disabled={isSending}
               >
                 {isSending ? (

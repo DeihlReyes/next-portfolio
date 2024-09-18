@@ -29,7 +29,7 @@ const LandingPage = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="font-bold lg:text-[35px]"
+            className="font-bold lg:text-[30px]"
           >
             HELLO! I&apos;M DEIHL
           </motion.h1>
@@ -37,7 +37,7 @@ const LandingPage = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="font-extrabold lg:text-[58px]"
+            className="font-extrabold lg:text-[53px]"
           >
             FULL STACK DEVELOPER
           </motion.h1>
@@ -65,7 +65,7 @@ const LandingPage = () => {
         initial={{ opacity: 0, x: 100 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 1, delay: 0.4 }}
-        className="mt-16 lg:mt-0 lg:absolute right-16 mx-auto"
+        className="mt-16 lg:mt-0 lg:absolute right-[4.5rem] mx-auto"
       >
         <Image
           className="w-[450px] h-[400px] lg:h-[550px] object-cover shadow-xl"

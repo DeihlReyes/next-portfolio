@@ -89,7 +89,7 @@ const AboutPage = () => {
         ></motion.div>
         <motion.h1
           variants={itemVariants}
-          className="text-3xl lg:text-[50px] font-bold mb-4 lg:mb-8"
+          className="text-3xl lg:text-4xl font-bold mb-4 lg:mb-8"
         >
           About me
         </motion.h1>
