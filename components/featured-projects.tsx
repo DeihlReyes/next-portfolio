@@ -51,7 +51,7 @@ const ProjectItem: FC<ProjectItemProps> = ({ project, index }) => {
       animate={inView ? "visible" : "hidden"}
       variants={itemVariants}
       className={`flex flex-col ${
-        index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
+        index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
       } justify-center items-center gap-12 w-full`}
     >
       <motion.div
@@ -59,7 +59,7 @@ const ProjectItem: FC<ProjectItemProps> = ({ project, index }) => {
           hidden: { opacity: 0, scale: 0.8 },
           visible: { opacity: 1, scale: 1, transition: { duration: 0.6 } },
         }}
-        className="w-full md:w-1/2"
+        className="w-full lg:w-1/2"
       >
         <ProjectCarousel projectImages={project.image} />
       </motion.div>
@@ -72,12 +72,12 @@ const ProjectItem: FC<ProjectItemProps> = ({ project, index }) => {
             transition: { duration: 0.6, delay: 0.3 },
           },
         }}
-        className="w-full md:w-1/2"
+        className="w-full lg:w-1/2"
       >
-        <h2 className="text-xl md:text-3xl font-bold">{project.title}</h2>
-        <p className="text-sm md:text-lg mt-6">{project.description}</p>
+        <h2 className="text-xl lg:text-3xl font-bold">{project.title}</h2>
+        <p className="text-sm lg:text-lg mt-6">{project.description}</p>
         <div>
-          <ul className="flex flex-wrap md:flex-row gap-2 mt-5">
+          <ul className="flex flex-wrap lg:flex-row gap-2 mt-5">
             {project.techStack.map((tech, techIndex) => (
               <motion.li
                 key={techIndex}
@@ -104,10 +104,10 @@ const ProjectItem: FC<ProjectItemProps> = ({ project, index }) => {
           className="space-x-2"
         >
           <Link href={project.demo} target="_blank">
-            <Button className="mt-10 md:w-20">Demo</Button>
+            <Button className="mt-10 lg:w-20">Demo</Button>
           </Link>
           <Link href={project.repo} target="_blank">
-            <Button className="mt-10 md:w-20">Repo</Button>
+            <Button className="mt-10 lg:w-20">Repo</Button>
           </Link>
         </motion.div>
       </motion.div>
@@ -119,7 +119,7 @@ const FeaturedProjects = () => {
   const featuredProjects = projects;
   return (
     <div>
-      <ul className="flex flex-col justify-center items-center gap-32 md:gap-40 h-full">
+      <ul className="flex flex-col justify-center items-center gap-32 lg:gap-40 h-full">
         {featuredProjects.map((project, index) => (
           <ProjectItem key={index} project={project} index={index} />
         ))}

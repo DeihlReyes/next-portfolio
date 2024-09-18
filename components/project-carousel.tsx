@@ -34,16 +34,16 @@ const ProjectCarousel = ({ projectImages }: { projectImages: any[] }) => {
       <Carousel
         setApi={setApi}
         opts={{ loop: true }}
-        className="w-full md:w-[650px] h-full md:h-[380px] relative shadow-md shadow-slate-400"
+        className="w-full lg:w-[650px] h-full lg:h-[380px] relative shadow-lg shadow-slate-400"
       >
         <CarouselContent>
           {projectImages.map((img: any, index: any) => (
             <CarouselItem
-              className="w-full md:w-[650px] h-full md:h-[380px]"
+              className="w-full lg:w-[650px] h-full lg:h-[380px]"
               key={index}
             >
               <Image
-                className=" lg:w-[650px] h-full md:h-[380px] object-cover rounded-md "
+                className=" lg:w-[650px] h-full lg:h-[380px] object-cover rounded-lg "
                 src={img}
                 alt={`Project Image ${index + 1}`}
               />

@@ -39,23 +39,23 @@ const ProjectsPage = () => {
       initial="hidden"
       animate={inView ? "visible" : "hidden"}
       variants={containerVariants}
-      className="flex flex-col justify-center items-center px-8 py-16 md:py-32 h-full"
+      className="flex flex-col justify-center items-center px-8 py-16 lg:py-32 h-full"
     >
       <div className="flex flex-col gap-12 justify-center items-start w-full max-w-7xl h-full">
         <div className="">
           <motion.div
             variants={itemVariants}
-            className="h-[4px] w-20 md:w-28 bg-[#161616] mb-12"
+            className="h-[4px] w-20 lg:w-28 bg-[#161616] mb-12"
           ></motion.div>
           <motion.h1
             variants={itemVariants}
-            className="text-3xl md:text-[50px] font-bold mb-8"
+            className="text-3xl lg:text-[50px] font-bold mb-4 lg:mb-8"
           >
             Projects
           </motion.h1>
           <motion.p
             variants={itemVariants}
-            className="text-base md:text-lg text-left mb-6 md:pr-4"
+            className="text-base lg:text-lg text-left mb-6 lg:pr-4"
           >
             Here are some projects that I have built.
           </motion.p>

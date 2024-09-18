@@ -8,13 +8,13 @@ import Link from "next/link";
 const Navbar = () => {
   return (
     <header>
-      <nav className="z-50 bg-[#D6D6D6] fixed md:flex hidden justify-between border-b border-[#161616] py-5 px-32 w-full">
+      <nav className="z-50 bg-[#D6D6D6] fixed lg:flex hidden justify-between border-b border-[#161616] py-5 px-32 w-full">
         <Link className="flex justify-center items-center gap-3" href="/">
           <Image className="object-cover w-auto h-10" src={logo} alt="Logo" />
           <h1 className="text-2xl font-bold">Deihl Reyes</h1>
         </Link>
 
-        <div className="flex flex-row gap-12 justify-center items-center text-md">
+        <div className="flex flex-row gap-12 justify-center items-center text-lg">
           <ul className="flex w-full items-start gap-12 flex-row">
             <NavItems />
           </ul>
@@ -24,7 +24,7 @@ const Navbar = () => {
         </div>
       </nav>
 
-      <nav className="z-50 fixed top-0 bg-[#D6D6D6] flex md:hidden items-center w-full h-20 justify-between px-8">
+      <nav className="z-50 fixed top-0 bg-[#D6D6D6] flex lg:hidden items-center w-full h-20 justify-between px-8">
         <Link href="/">
           <Image className="object-cover w-auto h-10" src={logo} alt="Logo" />
         </Link>
