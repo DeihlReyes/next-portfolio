@@ -1,23 +1,47 @@
-import taskquill1 from "@/assets/projects/taskquill.png"
-import taskquill2 from "@/assets/projects/taskquill2.png"
-import satiscript2 from "@/assets/projects/satiscript_img.png"
-import satiscript1 from "@/assets/projects/satiscript_img2.png"
+import taskquill1 from "@/assets/projects/taskquill.png";
+import taskquill2 from "@/assets/projects/taskquill2.png";
+import satiscript2 from "@/assets/projects/satiscript_img.png";
+import satiscript1 from "@/assets/projects/satiscript_img2.png";
+import filevert1 from "@/assets/projects/filevert.png";
+import filevert2 from "@/assets/projects/filevert2.png";
+import gdsc from "@/assets/projects/gdsc.png";
+import gdsc2 from "@/assets/projects/gdsc2.png";
 
 export const projects = [
   {
-    title: 'Satiscript',
-    description: 'A call center agent tool that allows agents to upscale their their customer satisfaction by providing them with an system that generates script per interaction with a caller that they can use to guide them through the call. It also features a dashboard that shows the agent\s performance. This system was our research project and we received a 1st Runner Up award in our Engineering Research Colloquium.',
+    title: "Satiscript",
+    description:
+      "A call center tool that generates scripts for agents to improve customer satisfaction. Features a performance dashboard. Awarded 1st Runner Up in our Engineering Research Colloquium.",
     image: [satiscript1, satiscript2],
-    techStack: ['Python', 'Machine Learning', 'OpenAI API', 'Next JS',],
+    techStack: ["Python", "Machine Learning", "OpenAI API", "Next JS"],
     repo: "https://github.com/DeihlReyes/satiscript",
-    demo: "https://satiscript.vercel.app"
+    demo: "https://satiscript.vercel.app",
   },
   {
-    title: 'TaskQuill',
-    description: 'A task management app that allows users to manage their tasks and projects seamlessly and efficiently. Users can create projects, add tasks to projects and add their meetings. It features a great dashboard that shows the uses\s tasks, project and meetings.',
+    title: "TaskQuill",
+    description:
+      "A task management app for managing tasks, projects, and meetings with a user-friendly dashboard.",
     image: [taskquill1, taskquill2],
-    techStack: ['Next JS', 'Clerk', 'TailwindCSS', 'Prisma', 'PostgreSQL'],
+    techStack: ["Next JS", "Clerk", "TailwindCSS", "Prisma", "PostgreSQL"],
     repo: "https://github.com/DeihlReyes/TaskQuill",
-    demo: "https://taskquill.vercel.app"
-  }
+    demo: "https://taskquill.vercel.app",
+  },
+  {
+    title: "Filevert",
+    description:
+      "A file conversion tool that allows users to convert their files to different formats. It features a simple and easy to use interface that allows users to convert their files in just a few clicks.",
+    image: [filevert1, filevert2],
+    techStack: ["Next JS", "TailwindCSS", "FFMPEG"],
+    repo: "https://github.com/DeihlReyes/filevert",
+    demo: "https://filevert.vercel.app",
+  },
+  {
+    title: "Google Developer Student Clubs - UE Caloocan Website",
+    description:
+      "The official website of Google Developer Student Clubs - UE Caloocan. I was an associate developer for this project.",
+    image: [gdsc, gdsc2],
+    techStack: ["Next JS", "Clerk", "TailwindCSS", "Prisma", "PostgreSQL"],
+    repo: "https://github.com/GDSC-UECAL/gdsc-uecal-website",
+    demo: "https://gdsc-uec.vercel.app/",
+  },
 ];
