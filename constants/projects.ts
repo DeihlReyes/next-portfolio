@@ -40,8 +40,8 @@ export const projects = [
     description:
       "The official website of Google Developer Student Clubs - UE Caloocan. I was an associate developer for this project.",
     image: [gdsc, gdsc2],
-    techStack: ["Next JS", "Clerk", "TailwindCSS", "Prisma", "PostgreSQL"],
-    repo: "https://github.com/GDSC-UECAL/gdsc-uecal-website",
+    techStack: ["Astro JS", "TailwindCSS", "TypeScript"],
+    repo: "https://github.com/DeihlReyes/gdsc-uecal-website",
     demo: "https://gdsc-uec.vercel.app/",
   },
 ];

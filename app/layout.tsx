@@ -20,8 +20,19 @@ const body = Space_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Deihl Reyes | Portfolio",
-  description: "This is my portfolio website to showcase my work.",
+  title: "Deihl Reyes | Full Stack Developer Portfolio",
+  description:
+    "Explore the portfolio of Deihl Reyes, a full stack developer based in the Philippines. Discover projects, skills, and contact information.",
+  keywords: [
+    "Deihl Reyes",
+    "Full Stack Developer",
+    "Portfolio",
+    "Web Development",
+    "Philippines",
+  ],
+  authors: {
+    name: "Deihl Reyes",
+  },
 };
 
 export default function RootLayout({

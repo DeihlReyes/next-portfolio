@@ -101,13 +101,13 @@ const ProjectItem: FC<ProjectItemProps> = ({ project, index }) => {
             hidden: { opacity: 0 },
             visible: { opacity: 1, transition: { duration: 0.3, delay: 0.6 } },
           }}
-          className="space-x-5"
+          className="space-x-3"
         >
           <Link href={project.demo} target="_blank">
-            <Button className="mt-10 lg:w-20">Demo</Button>
+            <Button className="mt-10 lg:w-24">Demo</Button>
           </Link>
           <Link href={project.repo} target="_blank">
-            <Button variant={"secondary"} className="mt-10 lg:w-20">
+            <Button variant={"secondary"} className="mt-10 lg:w-24">
               Repo
             </Button>
           </Link>
