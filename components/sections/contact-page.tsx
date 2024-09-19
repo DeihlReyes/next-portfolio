@@ -109,7 +109,7 @@ const ContactPage = () => {
       initial="hidden"
       animate={inView ? "visible" : "hidden"}
       variants={containerVariants}
-      className="relative flex flex-col lg:flex-row h-full px-8 lg:px-16 pt-32 pb-16 max-w-7xl justify-center items-center mx-auto gap-12 lg:gap-16"
+      className="relative flex flex-col lg:flex-row h-full px-8 lg:px-16 py-16 lg:mt-32 lg:pb-32 max-w-7xl justify-center items-center mx-auto gap-12 lg:gap-16"
     >
       <motion.div variants={itemVariants}>
         <Image
@@ -128,7 +128,7 @@ const ContactPage = () => {
         </motion.h2>
         <motion.p
           variants={itemVariants}
-          className="text-sm lg:text-lg text-left mb-8 lg:pr-4"
+          className="text-sm lg:text-base text-left mb-8 lg:pr-4"
         >
           If you have any questions, project ideas, or just want to chat, please
           don&apos;t hesitate to reach out.

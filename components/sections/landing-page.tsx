@@ -10,7 +10,7 @@ const LandingPage = () => {
   return (
     <section
       id="home"
-      className="relative flex flex-col h-full lg:h-screen px-8 lg:px-16 pt-32 pb-16 max-w-7xl justify-center items-start mx-auto"
+      className="relative flex flex-col h-full lg:h-screen px-8 lg:px-16 max-w-7xl justify-center items-start mx-auto"
     >
       <motion.div
         initial={{ opacity: 0, y: 20 }}
