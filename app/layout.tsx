@@ -20,7 +20,7 @@ const body = Space_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Deihl Reyes | Full Stack Developer Portfolio",
+  title: "Deihl Reyes | Full Stack Developer",
   description:
     "Explore the portfolio of Deihl Reyes, a full stack developer based in the Philippines. Discover projects, skills, and contact information.",
   keywords: [
@@ -32,6 +32,21 @@ export const metadata: Metadata = {
   ],
   authors: {
     name: "Deihl Reyes",
+  },
+  openGraph: {
+    type: "website",
+    url: "https://www.deihlreyes.me",
+    title: "Deihl Reyes | Full Stack Developer",
+    description:
+      "Discover the innovative web solutions crafted by Deihl Reyes, a passionate full stack developer from the Philippines.",
+    images: [
+      {
+        url: "/public/assets/deihl_logo.png",
+        width: 1200,
+        height: 630,
+        alt: "Deihl Reyes - Full Stack Developer Portfolio",
+      },
+    ],
   },
 };
 
