@@ -105,7 +105,7 @@ export default function FloatingChatbot() {
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         exit={{ opacity: 0, scale: 0.8 }}
-        className="fixed bottom-7 right-7 z-50"
+        className="fixed bottom-8 right-5 md:right-8 z-50"
       >
         <Button
           onClick={isOpen ? () => setIsOpen(false) : handleOpenChat}
@@ -121,7 +121,7 @@ export default function FloatingChatbot() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 20 }}
-            className="fixed bottom-24 right-8 w-[27rem] h-[32rem] bg-white rounded-lg shadow-2xl overflow-hidden z-40"
+            className="fixed bottom-24 right-5 md:right-8 w-[20rem] md:w-[27rem] h-[32rem] bg-white rounded-lg shadow-2xl overflow-hidden z-40"
           >
             <div className="flex flex-col h-full">
               <div className="bg-[#333232] text-white p-4 flex justify-between items-center">
