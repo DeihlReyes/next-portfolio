@@ -44,7 +44,7 @@ const AboutPage = () => {
       initial="hidden"
       animate={inView ? "visible" : "hidden"}
       variants={containerVariants}
-      className="flex flex-col-reverse lg:flex-row justify-center items-center gap-12 px-8 py-32 lg:pt-52 lg:mb-44 w-full h-full max-w-7xl mx-auto"
+      className="flex flex-col-reverse lg:flex-row justify-center items-center gap-12 px-8 pt-32 lg:pt-52 lg:mb-44 w-full h-full max-w-7xl mx-auto"
     >
       <motion.div
         variants={itemVariants}
