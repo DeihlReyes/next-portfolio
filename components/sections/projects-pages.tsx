@@ -39,14 +39,10 @@ const ProjectsPage = () => {
       initial="hidden"
       animate={inView ? "visible" : "hidden"}
       variants={containerVariants}
-      className="flex flex-col justify-center items-center px-8 my-16 lg:mb-32 lg:mt-56 max-w-7xl mx-auto h-full"
+      className="flex flex-col justify-center items-center px-8 lg:mb-32 py-32 lg:pt-36 max-w-7xl mx-auto h-full"
     >
       <div className="flex flex-col gap-12 justify-center items-start w-full max-w-7xl h-full">
         <div className="">
-          <motion.div
-            variants={itemVariants}
-            className="h-[4px] w-20 lg:w-28 bg-[#161616] mb-12"
-          ></motion.div>
           <motion.h1
             variants={itemVariants}
             className="text-3xl lg:text-4xl font-bold mb-4 lg:mb-8"
