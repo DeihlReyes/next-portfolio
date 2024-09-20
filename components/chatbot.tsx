@@ -121,7 +121,7 @@ export default function FloatingChatbot() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 20 }}
-            className="fixed bottom-24 right-5 md:right-8 w-[20rem] md:w-[27rem] h-[32rem] bg-white rounded-lg shadow-2xl overflow-hidden z-40"
+            className="fixed bottom-24 right-5 md:right-8 w-[22rem] md:w-[27rem] h-[32rem] bg-white rounded-lg shadow-2xl overflow-hidden z-40"
           >
             <div className="flex flex-col h-full">
               <div className="bg-[#333232] text-white p-4 flex justify-between items-center">
@@ -139,7 +139,7 @@ export default function FloatingChatbot() {
                     }`}
                   >
                     <span
-                      className={`inline-block p-3 text-sm rounded-lg shadow-sm ${
+                      className={`inline-block p-3 text-sm rounded-lg shadow-sm max-w-sm md:max-w-0 ${
                         message.role === "user" ? "bg-[#333232]/20" : "bg-white"
                       }`}
                     >
