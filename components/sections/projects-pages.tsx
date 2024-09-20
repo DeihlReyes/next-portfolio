@@ -39,7 +39,7 @@ const ProjectsPage = () => {
       initial="hidden"
       animate={inView ? "visible" : "hidden"}
       variants={containerVariants}
-      className="flex flex-col justify-center items-center px-8 lg:mb-32 py-32 lg:pt-36 max-w-7xl mx-auto h-full"
+      className="flex flex-col justify-center items-center px-8 pt-32 lg:pt-36 max-w-7xl mx-auto h-full"
     >
       <div className="flex flex-col gap-12 justify-center items-start w-full max-w-7xl h-full">
         <div className="">

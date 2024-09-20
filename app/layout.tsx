@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import { Toaster } from "@/components/ui/toaster";
+import FloatingChatbot from "@/components/chatbot";
 
 const title = Mulish({
   subsets: ["latin"],
@@ -60,6 +61,7 @@ export default function RootLayout({
       <body className={`${title.variable} ${body.variable} scroll-smooth`}>
         <Navbar />
         {children}
+        <FloatingChatbot />
         <Footer />
         <Toaster />
       </body>
