@@ -1,7 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { useEffect } from "react";
 import { projects } from "@/constants/projects";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "./ui/button";
@@ -27,13 +28,20 @@ interface ProjectItemProps {
 }
 
 const ProjectItem: FC<ProjectItemProps> = ({ project, index }) => {
+  const controls = useAnimation();
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
 
+  useEffect(() => {
+    if (inView) {
+      controls.start("visible");
+    }
+  }, [controls, inView]);
+
   const itemVariants = {
-    hidden: { opacity: 0, y: 50 },
+    hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
       y: 0,
@@ -48,15 +56,15 @@ const ProjectItem: FC<ProjectItemProps> = ({ project, index }) => {
     <motion.li
       ref={ref}
       initial="hidden"
-      animate={inView ? "visible" : "hidden"}
+      animate={controls}
       variants={itemVariants}
       className={`flex flex-col ${
         index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
-      } justify-center items-center gap-12 w-full`}
+      } justify-center items-center gap-6 sm:gap-8 lg:gap-12 w-full mb-16 sm:mb-24 lg:mb-32`}
     >
       <motion.div
         variants={{
-          hidden: { opacity: 0, scale: 0.8 },
+          hidden: { opacity: 0, scale: 0.95 },
           visible: { opacity: 1, scale: 1, transition: { duration: 0.6 } },
         }}
         className="w-full lg:w-1/2"
@@ -65,7 +73,7 @@ const ProjectItem: FC<ProjectItemProps> = ({ project, index }) => {
       </motion.div>
       <motion.div
         variants={{
-          hidden: { opacity: 0, x: index % 2 === 0 ? 50 : -50 },
+          hidden: { opacity: 0, x: 0 },
           visible: {
             opacity: 1,
             x: 0,
@@ -74,24 +82,27 @@ const ProjectItem: FC<ProjectItemProps> = ({ project, index }) => {
         }}
         className="w-full lg:w-1/2"
       >
-        <h2 className="text-lg lg:text-2xl font-bold">{project.title}</h2>
-        <p className="text-sm lg:text-base mt-6">{project.description}</p>
+        <h2 className="text-xl sm:text-2xl font-bold mt-4 lg:mt-0">
+          {project.title}
+        </h2>
+        <p className="text-sm sm:text-base mt-3 sm:mt-4">
+          {project.description}
+        </p>
         <div>
-          <ul className="flex flex-wrap lg:flex-row gap-2 mt-5">
+          <ul className="flex flex-wrap gap-2 mt-3 sm:mt-4">
             {project.techStack.map((tech, techIndex) => (
               <motion.li
                 key={techIndex}
                 variants={{
-                  hidden: { opacity: 0, y: 20 },
+                  hidden: { opacity: 0, y: 10 },
                   visible: {
                     opacity: 1,
                     y: 0,
                     transition: { duration: 0.3, delay: 0.1 * techIndex },
                   },
                 }}
-                className="flex flex-row gap-2"
               >
-                <Badge className="py-1">{tech}</Badge>
+                <Badge className="py-1 text-xs sm:text-sm">{tech}</Badge>
               </motion.li>
             ))}
           </ul>
@@ -101,13 +112,18 @@ const ProjectItem: FC<ProjectItemProps> = ({ project, index }) => {
             hidden: { opacity: 0 },
             visible: { opacity: 1, transition: { duration: 0.3, delay: 0.6 } },
           }}
-          className="space-x-3"
+          className="flex gap-3 mt-4 sm:mt-6"
         >
-          <Link href={project.demo} target="_blank">
-            <Button className="mt-10 lg:w-24">Demo</Button>
+          <Link href={project.demo} target="_blank" rel="noopener noreferrer">
+            <Button className="text-sm sm:text-base px-3 py-1 sm:px-4 sm:py-2">
+              Demo
+            </Button>
           </Link>
-          <Link href={project.repo} target="_blank">
-            <Button variant={"secondary"} className="mt-10 lg:w-24">
+          <Link href={project.repo} target="_blank" rel="noopener noreferrer">
+            <Button
+              variant={"secondary"}
+              className="text-sm sm:text-base px-3 py-1 sm:px-4 sm:py-2"
+            >
               Repo
             </Button>
           </Link>
@@ -120,13 +136,11 @@ const ProjectItem: FC<ProjectItemProps> = ({ project, index }) => {
 const FeaturedProjects = () => {
   const featuredProjects = projects;
   return (
-    <div>
-      <ul className="flex flex-col justify-center items-center gap-32 lg:gap-40 h-full">
-        {featuredProjects.map((project, index) => (
-          <ProjectItem key={index} project={project} index={index} />
-        ))}
-      </ul>
-    </div>
+    <ul className="w-full flex flex-col justify-center items-center">
+      {featuredProjects.map((project, index) => (
+        <ProjectItem key={index} project={project} index={index} />
+      ))}
+    </ul>
   );
 };
 
