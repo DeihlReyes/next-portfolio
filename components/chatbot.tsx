@@ -139,7 +139,7 @@ export default function FloatingChatbot() {
                     }`}
                   >
                     <span
-                      className={`inline-block p-3 text-sm rounded-lg shadow-sm max-w-sm md:max-w-0 ${
+                      className={`inline-block p-3 text-sm rounded-lg shadow-sm max-w-sm md:max-w-xl ${
                         message.role === "user" ? "bg-[#333232]/20" : "bg-white"
                       }`}
                     >
