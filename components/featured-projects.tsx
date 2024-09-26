@@ -80,7 +80,7 @@ const ProjectItem: FC<ProjectItemProps> = ({ project, index }) => {
             transition: { duration: 0.6, delay: 0.3 },
           },
         }}
-        className="w-full lg:w-1/2"
+        className="w-full lg:w-1/2 lg:mb-8"
       >
         <h2 className="text-xl sm:text-2xl font-bold mt-4 lg:mt-0">
           {project.title}
@@ -89,7 +89,7 @@ const ProjectItem: FC<ProjectItemProps> = ({ project, index }) => {
           {project.description}
         </p>
         <div>
-          <ul className="flex flex-wrap gap-2 mt-3 sm:mt-4">
+          <ul className="flex flex-wrap gap-2 mt-3 sm:mt-6">
             {project.techStack.map((tech, techIndex) => (
               <motion.li
                 key={techIndex}
@@ -112,7 +112,7 @@ const ProjectItem: FC<ProjectItemProps> = ({ project, index }) => {
             hidden: { opacity: 0 },
             visible: { opacity: 1, transition: { duration: 0.3, delay: 0.6 } },
           }}
-          className="flex gap-3 mt-4 sm:mt-6"
+          className="flex gap-3 mt-4 sm:mt-10"
         >
           <Link href={project.demo} target="_blank" rel="noopener noreferrer">
             <Button className="text-sm sm:text-base px-3 py-1 sm:px-4 sm:py-2">

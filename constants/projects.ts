@@ -6,12 +6,15 @@ import filevert1 from "@/assets/projects/filevert.png";
 import filevert2 from "@/assets/projects/filevert2.png";
 import gdsc from "@/assets/projects/gdsc.png";
 import gdsc2 from "@/assets/projects/gdsc2.png";
+import quizwiz from "@/assets/projects/quizwiz.png";
+import quizwiz2 from "@/assets/projects/quizwiz2.png";
+import quizwiz3 from "@/assets/projects/quizwiz3.png";
 
 export const projects = [
   {
     title: "Satiscript",
     description:
-      "A call center tool that generates scripts for agents to improve customer satisfaction. Features a performance dashboard. Awarded 1st Runner Up in our Engineering Research Colloquium.",
+      "AI-powered call center tool generating tailored agent scripts to boost customer satisfaction. Features a performance dashboard for real-time monitoring. Awarded 1st Runner Up in our Engineering Research Colloquium.",
     image: [satiscript1, satiscript2],
     techStack: ["Python", "Machine Learning", "OpenAI API", "Next JS"],
     repo: "https://github.com/DeihlReyes/satiscript",
@@ -20,7 +23,7 @@ export const projects = [
   {
     title: "TaskQuill",
     description:
-      "A task management app for managing tasks, projects, and meetings with a user-friendly dashboard.",
+      "Intuitive task management app streamlining productivity for individuals and teams. Offers a user-friendly dashboard for efficient organization of tasks, projects, and meetings.",
     image: [taskquill1, taskquill2],
     techStack: ["Next JS", "Clerk", "TailwindCSS", "Prisma", "PostgreSQL"],
     repo: "https://github.com/DeihlReyes/TaskQuill",
@@ -29,7 +32,7 @@ export const projects = [
   {
     title: "Filevert",
     description:
-      "A file conversion tool that allows users to convert their files to different formats. It features a simple and easy to use interface that allows users to convert their files in just a few clicks.",
+      "Versatile file conversion tool with a simple interface for quick and easy format transformations. Streamlines workflow for users dealing with multiple file types.",
     image: [filevert1, filevert2],
     techStack: ["Next JS", "TailwindCSS", "FFMPEG"],
     repo: "https://github.com/DeihlReyes/filevert",
@@ -38,10 +41,19 @@ export const projects = [
   {
     title: "Google Developer Student Clubs - UE Caloocan Website",
     description:
-      "The official website of Google Developer Student Clubs - UE Caloocan. I was an associate developer for this project.",
+      "Official website for GDSC UE Caloocan, showcasing club activities and resources. As associate developer, contributed to creating an engaging platform fostering student developer community.",
     image: [gdsc, gdsc2],
     techStack: ["Astro JS", "TailwindCSS", "TypeScript"],
     repo: "https://github.com/DeihlReyes/gdsc-uecal-website",
     demo: "https://gdsc-uec.vercel.app/",
+  },
+  {
+    title: "QuizWiz",
+    description:
+      "Advanced quiz app powered by Gemini AI, generating personalized quizzes based on user preferences. Adapts to individual learning styles, ideal for students, educators, and lifelong learners.",
+    image: [quizwiz, quizwiz2, quizwiz3],
+    techStack: ["NextJS", "TailwindCSS", "Gemini API"],
+    repo: "https://github.com/DeihlReyes/next-quizwiz",
+    demo: "https://quizwiz-vert.vercel.app/",
   },
 ];
