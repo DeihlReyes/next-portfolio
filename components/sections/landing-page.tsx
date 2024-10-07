@@ -48,10 +48,11 @@ const LandingPage = () => {
           transition={{ duration: 0.8, delay: 0.8 }}
           className="text-sm lg:text-lg mt-4 max-w-2xl"
         >
-          A Full Stack Developer with a strong passion for learning. Proficient
-          in both front-end and back-end technologies, specializing in crafting
-          user-friendly and innovative solutions. Dedicated to delivering
-          seamless applications that enhance user experiences.
+          A Full Stack Developer specializing in{" "}
+          <span className="font-bold">Next JS</span>, dedicated to creating
+          user-friendly web applications. With a passion for learning and a
+          focus on seamless experiences, I&apos;m excited to collaborate on
+          innovative solutions that make an impact!
         </motion.p>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
