@@ -28,12 +28,14 @@ export function BlogPostCard({ post }: BlogPostCardProps) {
           />
         </div>
         <div className="p-6">
-          <h2 className="text-xl font-semibold mb-2 text-gray-800 group-hover:text-primary transition-colors duration-300">
+          <h2 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors duration-300">
             {post.title}
           </h2>
-          <p className="text-gray-600 mb-4 line-clamp-2">{post.excerpt}</p>
+          <p className=" text-sm sm:text-base mb-4 line-clamp-2">
+            {post.excerpt}
+          </p>
           <div className="flex justify-between items-center">
-            <time className="text-sm text-gray-500">{post.date}</time>
+            <time className="text-sm text-muted-foreground">{post.date}</time>
             <span className="text-primary font-medium flex items-center">
               Read more
               <ArrowRight className="w-4 h-4 ml-1 transition-transform duration-300 ease-in-out group-hover:translate-x-1" />
