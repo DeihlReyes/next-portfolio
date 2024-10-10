@@ -2,7 +2,7 @@ import { MetadataRoute } from "next";
 import { getPosts } from "@/lib/posts";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = process.env.NEXT_PUBLIC_URL || "https://yourdomain.com";
+  const baseUrl = process.env.NEXT_PUBLIC_URL || "https://deihlreyes.me";
 
   const posts = await getPosts();
 
@@ -14,18 +14,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   return [
     {
       url: `${baseUrl}`,
-      lastModified: new Date(),
-    },
-    {
-      url: `${baseUrl}/#about`,
-      lastModified: new Date(),
-    },
-    {
-      url: `${baseUrl}/#projects`,
-      lastModified: new Date(),
-    },
-    {
-      url: `${baseUrl}/#contact`,
       lastModified: new Date(),
     },
     {
