@@ -1,37 +1,48 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
-import { getPosts } from "@/lib/posts";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { BlogPostCard } from "../blog-post-card";
 
-export default async function BlogSection() {
-  const posts = await getPosts();
-  const featuredPosts = posts.slice(0, 3); // Get the 3 most recent posts
+interface Post {
+  slug: string;
+  title: string;
+  excerpt: string;
+  coverImage: string;
+  date: string;
+}
+
+interface BlogSectionProps {
+  featuredPosts: Post[];
+}
+
+export default function BlogSection({ featuredPosts }: BlogSectionProps) {
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
 
   return (
-    <section className="py-16">
+    <section ref={ref} className="py-16">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-8">
+        <h2 className="text-3xl lg:text-4xl font-bold mb-12">
           Featured Blog Posts
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {featuredPosts.map((post) => (
-            <Link key={post.slug} href={`/blog/${post.slug}`} className="group">
-              <div className="bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 group-hover:scale-105">
-                <Image
-                  src={post.coverImage}
-                  alt={post.title}
-                  width={400}
-                  height={225}
-                  className="w-full h-48 object-cover"
-                />
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold mb-2 group-hover:text-primary">
-                    {post.title}
-                  </h3>
-                  <p className="text-gray-600 mb-4">{post.excerpt}</p>
-                  <span className="text-primary font-medium">Read more →</span>
-                </div>
-              </div>
-            </Link>
+          {featuredPosts.map((post, index) => (
+            <motion.div
+              key={post.slug}
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{
+                duration: 0.5,
+                delay: index * 0.2,
+              }}
+            >
+              <BlogPostCard key={post.slug} post={post} />
+            </motion.div>
           ))}
         </div>
       </div>
