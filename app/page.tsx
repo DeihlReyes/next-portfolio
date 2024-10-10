@@ -5,7 +5,7 @@ import ProjectsPage from "@/components/sections/projects-pages";
 
 export default function Home() {
   return (
-    <main className="bg-[#D6D6D6]">
+    <main>
       <LandingPage />
       <AboutPage />
       <ProjectsPage />

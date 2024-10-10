@@ -58,7 +58,9 @@ export default function RootLayout({
 }) {
   return (
     <html className="scroll-smooth" lang="en">
-      <body className={`${title.variable} ${body.variable} scroll-smooth`}>
+      <body
+        className={`${title.variable} ${body.variable} scroll-smooth bg-[#D6D6D6]`}
+      >
         <Navbar />
         {children}
         <FloatingChatbot />
