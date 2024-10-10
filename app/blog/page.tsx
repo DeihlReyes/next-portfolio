@@ -1,12 +1,9 @@
-import Link from "next/link";
-import Image from "next/image";
 import { getPosts } from "@/lib/posts";
 import { Metadata } from "next";
-import { ArrowRight } from "lucide-react";
 import { BlogPostCard } from "@/components/blog-post-card";
 
 export const metadata: Metadata = {
-  title: "Blog | Your Portfolio",
+  title: "Blog | Deihl Reyes",
   description: "Read the latest articles on web development, design, and more.",
 };
 
