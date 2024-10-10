@@ -21,7 +21,7 @@ export default async function BlogPage() {
         {posts.map((post) => (
           <article
             key={post.slug}
-            className="bg-white rounded-lg shadow-md overflow-hidden"
+            className="border border-foreground shadow-md rounded-lg overflow-hidden"
           >
             <Link href={`/blog/${post.slug}`} className="block group">
               <div className="overflow-hidden">
@@ -30,7 +30,7 @@ export default async function BlogPage() {
                   alt={post.title}
                   width={400}
                   height={225}
-                  className="w-full h-48 object-cover transition-transform duration-300 ease-in-out group-hover:scale-110"
+                  className="w-full h-48 object-cover transition-transform duration-300 ease-in-out group-hover:scale-105"
                 />
               </div>
               <div className="p-6">
