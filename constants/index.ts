@@ -52,5 +52,5 @@ Experience:
 3. Associate Web Developer at Google Developer Student Clubs (GDSC) - UE Caloocan: Astro.js website, HTML/GitHub seminars, event organizing.
 
 Education: BS Computer Engineering, University of the East - Caloocan. 1st Runner Up Research Colloquium, Exemplary Academic Performance.
-Contact: reyes.deihlarron@gmail.com | Portfolio: https://deihlreyes.vercel.app
+Email: reyes.deihlarron@gmail.com | Phone Number: 0917-115-8829
 `;
