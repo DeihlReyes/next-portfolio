@@ -6,15 +6,15 @@ import ProjectsPage from "@/components/sections/projects-pages";
 import { getPosts } from "@/lib/posts";
 
 export default async function Home() {
-  const posts = await getPosts();
-  const featuredPosts = posts.slice(0, 3);
+  // const posts = await getPosts();
+  // const featuredPosts = posts.slice(0, 3);
 
   return (
     <main>
       <LandingPage />
       <AboutPage />
       <ProjectsPage />
-      <BlogSection featuredPosts={featuredPosts} />
+      {/* <BlogSection featuredPosts={featuredPosts} /> */}
       <ContactPage />
     </main>
   );
