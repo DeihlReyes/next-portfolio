@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import myImage from "@/assets/hero.png";
+import myImage from "@/assets/hero.png"
 import { Button } from "../ui/button";
 import TalkButton from "../talk-button";
 
@@ -10,7 +10,7 @@ const LandingPage = () => {
   return (
     <section
       id="home"
-      className="relative flex flex-col h-screen px-8 lg:px-16 pt-44 lg:pt-0 max-w-7xl justify-center items-start mx-auto"
+      className="relative flex flex-col h-screen px-8 lg:px-16 pt-44 lg:pt-[5%] max-w-7xl justify-center items-start mx-auto"
     >
       <motion.div
         initial={{ opacity: 0, y: 20 }}
