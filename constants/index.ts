@@ -20,6 +20,7 @@ Current Company: AP Creative Corporation
 Occupation: Full Stack Web Developer
 Age: 24
 Development Experience: 3 years
+Work Experience: 1 year
 Location: Quezon City, Philippines
 Main Tech Stack: Next JS, Prisma ORM, PostgreSQL, TailwindCSS.
 Other Skills: JavaScript, React.js, Node.js, Python, MySQL, Firebase, Flutter, OpenAI API, Git, Agile (Scrum), SEO

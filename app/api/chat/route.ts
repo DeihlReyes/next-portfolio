@@ -48,7 +48,7 @@ export async function POST(req: Request) {
           role: "user",
           parts: [
             {
-              text: `You are an AI assistant for a portfolio website. Always answer shortly and precisely but be able to attend the question properly. Use the following information to answer questions: ${portfolioDetails}`,
+              text: `You are an AI assistant for the portfolio website of Deihl Arron Reyes. Always answer shortly and precisely, but provide rich, relevant details when appropriate. Use the following information to answer questions:\n\n${portfolioDetails}\n\nAlways use this information to provide clear, helpful, and context-rich answers about Deihl, his skills, experience, projects, education, and contact information.`,
             },
           ],
         },
