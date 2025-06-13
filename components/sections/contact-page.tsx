@@ -122,13 +122,13 @@ const ContactPage = () => {
       <motion.div variants={itemVariants} className="w-full lg:w-2/3">
         <motion.h2
           variants={itemVariants}
-          className="text-xl lg:text-4xl font-bold mb-4"
+          className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 lg:mb-8"
         >
           Let&apos;s Talk!
         </motion.h2>
         <motion.p
           variants={itemVariants}
-          className="text-sm lg:text-base text-left mb-8 lg:pr-4"
+          className="text-xs md:text-base  text-left mb-8 lg:pr-4"
         >
           If you have any questions, project ideas, or just want to chat, please
           don&apos;t hesitate to reach out.

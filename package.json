@@ -27,6 +27,7 @@
     "gray-matter": "^4.0.3",
     "lucide-react": "^0.307.0",
     "micromatch": "^4.0.7",
+    "motion": "^12.17.3",
     "next": "^14.2.3",
     "next-mdx-remote": "^5.0.0",
     "react": "^18",

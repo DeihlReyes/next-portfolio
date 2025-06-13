@@ -1,30 +1,10 @@
-export const headerLinks = [
-  {
-    label: "Home",
-    route: "/#home",
-  },
-  {
-    label: "About",
-    route: "/#about",
-  },
-  {
-    label: "Projects",
-    route: "/#projects",
-  },
-];
+"use client";
 
-export const portfolioDetails = `
-Name: Deihl Arron Reyes
-Nickname: Deihl
-Current Company: AP Creative Corporation
-Occupation: Full Stack Web Developer
-Age: 24
-Development Experience: 3 years
-Location: Quezon City, Philippines
-Main Tech Stack: Next JS, Prisma ORM, PostgreSQL, TailwindCSS.
-Other Skills: JavaScript, React.js, Node.js, Python, MySQL, Firebase, Flutter, OpenAI API, Git, Agile (Scrum), SEO
+import { Timeline } from "../ui/timeline";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
-Experiences = [
+const experiences = [
   {
     date: "July 2024 – Present",
     role: "Full Stack Web Developer",
@@ -53,25 +33,64 @@ Experiences = [
   },
 ];
 
-Projects:
-1. Satiscript: Call center tool using Python, ML, OpenAI API, Next.js. 1st Runner Up in Research Colloquium.
-   - Repo: https://github.com/DeihlReyes/satiscript
-   - Demo: https://satiscript.vercel.app
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+    },
+  },
+};
 
-2. TaskQuill: Task management app with Next.js, Prisma, PostgreSQL, TailwindCSS.
-   - Repo: https://github.com/DeihlReyes/TaskQuill
-   - Demo: https://taskquill.vercel.app
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+    },
+  },
+};
 
-3. Filevert: File conversion tool using Next.js, TailwindCSS, FFMPEG.
-   - Repo: https://github.com/DeihlReyes/filevert
-   - Demo: https://filevert.vercel.app
+const timelineData = experiences.map((exp) => ({
+  title: exp.date,
+  content: (
+    <div>
+      <p className="mb-4 text-xs md:text-sm lg:text-base font-normal text-neutral-800 dark:text-neutral-200">
+        <span className="font-bold">{exp.role}</span> @{" "}
+        <span className="font-semibold">{exp.company}</span>
+      </p>
+      <ul className="mb-8 list-disc pl-5 space-y-2 text-xs md:text-sm lg:text-base font-normal text-neutral-800 dark:text-neutral-200">
+        {exp.bullets.map((b, i) => (
+          <li key={i}>{b}</li>
+        ))}
+      </ul>
+    </div>
+  ),
+}));
 
-4. GDSC Website: Official GDSC site using Astro.js, TailwindCSS, TypeScript.
-   - Repo: https://github.com/DeihlReyes/gdsc-uecal-website
-   - Demo: https://gdsc-uec.vercel.app
+const ExperiencePage = () => {
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
 
+  return (
+    <motion.section
+      id="experience"
+      ref={ref}
+      initial="hidden"
+      animate={inView ? "visible" : "hidden"}
+      variants={containerVariants}
+      className="flex flex-col justify-center items-start px-8 pt-32 lg:pt-36 max-w-7xl mx-auto h-full"
+    >
+      <div className="relative w-full overflow-clip">
+        <Timeline data={timelineData} />
+      </div>
+    </motion.section>
+  );
+};
 
-Education: BS Computer Engineering, University of the East - Caloocan. 1st Runner Up Research Colloquium, Exemplary Academic Performance.
-Associate Web Developer at Google Developer Student Clubs (GDSC) - UE Caloocan: Astro.js website, HTML/GitHub seminars, event organizing.
-Email: reyes.deihlarron@gmail.com | Phone Number: 0917-115-8829
-`;
+export default ExperiencePage;

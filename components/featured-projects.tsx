@@ -69,7 +69,10 @@ const ProjectItem: FC<ProjectItemProps> = ({ project, index }) => {
         }}
         className="w-full lg:w-1/2"
       >
-        <ProjectCarousel projectImages={project.image} />
+        <ProjectCarousel
+          projectImages={project.image}
+          projectTitle={project.title}
+        />
       </motion.div>
       <motion.div
         variants={{
@@ -82,10 +85,10 @@ const ProjectItem: FC<ProjectItemProps> = ({ project, index }) => {
         }}
         className="w-full lg:w-1/2 lg:mb-8"
       >
-        <h2 className="text-xl sm:text-2xl font-bold mt-4 lg:mt-0">
+        <h2 className="text-2xl md:text-3xl font-bold mt-4 lg:mt-0">
           {project.title}
         </h2>
-        <p className="text-sm sm:text-base mt-3 sm:mt-4">
+        <p className="text-xs md:text-base mt-3 sm:mt-4">
           {project.description}
         </p>
         <div>
@@ -102,7 +105,7 @@ const ProjectItem: FC<ProjectItemProps> = ({ project, index }) => {
                   },
                 }}
               >
-                <Badge className="py-1 text-xs sm:text-sm">{tech}</Badge>
+                <Badge>{tech}</Badge>
               </motion.li>
             ))}
           </ul>

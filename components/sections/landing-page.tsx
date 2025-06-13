@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import myImage from "@/assets/hero.png"
+import myImage from "@/assets/hero.png";
 import { Button } from "../ui/button";
 import TalkButton from "../talk-button";
 
@@ -33,20 +33,20 @@ const LandingPage = () => {
           >
             HELLO! I&apos;M DEIHL
           </motion.h1>
-          <motion.h1
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
             className="font-extrabold lg:text-[53px]"
           >
             FULL STACK DEVELOPER
-          </motion.h1>
+          </motion.h2>
         </div>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8 }}
-          className="text-sm lg:text-lg mt-4 max-w-2xl"
+          className="text-xs md:text-base mt-4 max-w-2xl"
         >
           A Full Stack Developer specializing in{" "}
           <span className="font-bold">Next JS</span>, dedicated to creating

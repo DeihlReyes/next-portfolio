@@ -13,8 +13,10 @@ import { CarouselApi } from "@/components/ui/carousel";
 
 const ProjectCarousel = ({
   projectImages,
+  projectTitle,
 }: {
   projectImages: StaticImageData[];
+  projectTitle: string;
 }) => {
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
@@ -46,7 +48,7 @@ const ProjectCarousel = ({
               <Image
                 className="object-contain w-full h-full"
                 src={img}
-                alt={`Project Image ${index + 1}`}
+                alt={`${projectTitle} screenshot ${index + 1}`}
                 quality={90}
                 priority={index === 0}
               />

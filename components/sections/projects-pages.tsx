@@ -45,13 +45,13 @@ const ProjectsPage = () => {
         <div className="">
           <motion.h1
             variants={itemVariants}
-            className="text-3xl lg:text-4xl font-bold mb-4 lg:mb-8"
+            className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 lg:mb-8"
           >
             Projects
           </motion.h1>
           <motion.p
             variants={itemVariants}
-            className="text-base lg:text-lg text-left mb-6 lg:pr-4"
+            className="text-xs md:text-base  text-left mb-6 lg:pr-4"
           >
             Here are some projects that I have built.
           </motion.p>

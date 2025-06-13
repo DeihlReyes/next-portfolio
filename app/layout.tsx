@@ -5,6 +5,7 @@ import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import { Toaster } from "@/components/ui/toaster";
 import FloatingChatbot from "@/components/chatbot";
+import Head from "next/head";
 
 const title = Mulish({
   subsets: ["latin"],
@@ -58,6 +59,36 @@ export default function RootLayout({
 }) {
   return (
     <html className="scroll-smooth" lang="en">
+      <Head>
+        <link rel="canonical" href="https://www.deihlreyes.me/" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              name: "Deihl Reyes",
+              url: "https://www.deihlreyes.me/",
+              image: "https://www.deihlreyes.me/assets/deihl_logo.png",
+              sameAs: [
+                "https://www.linkedin.com/in/deihl-arron-reyes/",
+                "https://github.com/DeihlReyes",
+                "https://www.facebook.com/deihl.reyes08/",
+              ],
+              jobTitle: "Full Stack Developer",
+              worksFor: {
+                "@type": "Organization",
+                name: "AP Creative Corporation",
+              },
+              address: {
+                "@type": "PostalAddress",
+                addressLocality: "Quezon City",
+                addressCountry: "PH",
+              },
+            }),
+          }}
+        />
+      </Head>
       <body
         className={`${title.variable} ${body.variable} scroll-smooth bg-[#D6D6D6]`}
       >

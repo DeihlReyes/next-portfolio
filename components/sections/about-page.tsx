@@ -85,13 +85,13 @@ const AboutPage = () => {
       <div className="w-full lg:w-1/2 flex flex-col justify-center items-start">
         <motion.h1
           variants={itemVariants}
-          className="text-3xl lg:text-4xl font-bold mb-4 lg:mb-8"
+          className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 lg:mb-8"
         >
           About me
         </motion.h1>
         <motion.p
           variants={itemVariants}
-          className="text-sm lg:text-lg lg:pr-4"
+          className="text-xs md:text-base lg:pr-4"
         >
           I&apos;m a Computer Engineering graduate from the University of the
           East - Caloocan, now working as a full stack web developer. I enjoy
