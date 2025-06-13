@@ -11,10 +11,6 @@ export const headerLinks = [
     label: "Projects",
     route: "/#projects",
   },
-  {
-    label: "Blogs",
-    route: "/blog",
-  },
 ];
 
 export const portfolioDetails = `
