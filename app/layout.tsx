@@ -83,7 +83,7 @@ export default function RootLayout({
       </Head>
       <body className={`${inter.variable} scroll-smooth bg-white`}>
         <Navbar />
-        <main className="min-h-screen">{children}</main>
+        <main className="min-h-screen scroll-smooth">{children}</main>
         <FloatingChatbot />
         <Footer />
         <Toaster />

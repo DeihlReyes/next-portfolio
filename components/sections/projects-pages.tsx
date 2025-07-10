@@ -87,7 +87,7 @@ const ProjectsPage = () => {
                 amazing.
               </p>
               <Button asChild>
-                <a href="#contact">Start a project</a>
+                <Link href="/contact">Start a project</Link>
               </Button>
             </div>
           </motion.div>
