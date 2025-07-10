@@ -50,7 +50,7 @@ const ProjectsPage = () => {
           >
             <p className="text-label text-gray-500 mb-4">My Work</p>
             <h2 className="text-section-title text-gray-900 mb-6">Projects</h2>
-            <p className="text-lg max-w-2xl mx-auto leading-relaxed">
+            <p className="text-body max-w-2xl mx-auto leading-relaxed">
               A collection of projects that showcase my expertise in full-stack
               development, UI/UX design, and problem-solving across various
               technologies.

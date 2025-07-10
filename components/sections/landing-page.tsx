@@ -6,6 +6,7 @@ import myImage from "@/assets/hero.png";
 import { Button } from "../ui/button";
 import TalkButton from "../talk-button";
 import { Badge } from "../ui/badge";
+import Link from "next/link";
 
 const LandingPage = () => {
   return (
@@ -49,11 +50,11 @@ const LandingPage = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
-              className="flex flex-col sm:flex-row gap-4"
+              className="flex flex-row gap-4"
             >
               <TalkButton />
               <Button variant="outline" asChild>
-                <a href="#projects">View My Work</a>
+                <Link href="/projects">View My Work</Link>
               </Button>
             </motion.div>
             {/* Tech Stack

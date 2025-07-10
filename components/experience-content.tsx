@@ -82,13 +82,13 @@ export default function ExperienceContent() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
-      <div className="container mx-auto px-4 py-16 md:py-24">
+      <div className="mx-auto px-4 container">
         <motion.div
           ref={ref}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
           variants={containerVariants}
-          className="max-w-4xl mx-auto"
+          className="max-w-5xl mx-auto py-16 md:py-24"
         >
           {/* Header */}
           <motion.div
@@ -136,17 +136,17 @@ export default function ExperienceContent() {
                   <div className="flex-1 space-y-6">
                     <div>
                       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3">
-                        <h3 className="text-xl md:text-2xl font-semibold text-gray-900">
+                        <h3 className="text-xl md:text-2xl font-bold text-gray-900">
                           {exp.role}
                         </h3>
                         <span className="text-sm md:text-base text-gray-500 font-medium">
                           {exp.date}
                         </span>
                       </div>
-                      <p className="text-lg md:text-xl font-medium text-gray-700 mb-3">
+                      <p className="text-lg font-medium text-gray-700 mb-3">
                         {exp.company}
                       </p>
-                      <p className="text-base md:text-lg text-gray-600 mb-6 leading-relaxed">
+                      <p className="text-base text-gray-600 mb-6 leading-relaxed">
                         {exp.description}
                       </p>
                     </div>
@@ -168,7 +168,7 @@ export default function ExperienceContent() {
                           className="flex items-start gap-3"
                         >
                           <div className="w-1.5 h-1.5 bg-black rounded-full mt-2 flex-shrink-0"></div>
-                          <span className="text-sm md:text-base leading-relaxed">
+                          <span className="text-base leading-relaxed">
                             {bullet}
                           </span>
                         </li>
