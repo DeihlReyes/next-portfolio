@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { Badge } from "../ui/badge";
+import { Badge } from "@/components/ui/badge";
 
 const experiences = [
   {
@@ -74,15 +74,15 @@ const itemVariants = {
   },
 };
 
-const ExperiencePage = () => {
+export default function ExperienceContent() {
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
 
   return (
-    <section id="experience" className="md:py-20 py-12 gradient-bg-alt">
-      <div className="container">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
+      <div className="container mx-auto px-4 py-16 md:py-24">
         <motion.div
           ref={ref}
           initial="hidden"
@@ -91,12 +91,17 @@ const ExperiencePage = () => {
           className="max-w-4xl mx-auto"
         >
           {/* Header */}
-          <motion.div variants={itemVariants} className="text-center mb-16">
-            <p className="text-label text-gray-500 mb-4">Experience</p>
-            <h2 className="text-section-title text-gray-900 mb-6">
+          <motion.div
+            variants={itemVariants}
+            className="text-center mb-16 md:mb-20"
+          >
+            <p className="text-sm md:text-base text-gray-500 mb-4 font-medium">
+              Experience
+            </p>
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
               Professional Journey
-            </h2>
-            <p className="text-lg max-w-2xl mx-auto">
+            </h1>
+            <p className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
               My experience spans from internships to full-stack development,
               with a focus on building scalable web applications and delivering
               exceptional user experiences.
@@ -104,7 +109,10 @@ const ExperiencePage = () => {
           </motion.div>
 
           {/* Experience Timeline */}
-          <motion.div variants={itemVariants} className="space-y-12">
+          <motion.div
+            variants={itemVariants}
+            className="space-y-12 md:space-y-16"
+          >
             {experiences.map((exp, index) => (
               <motion.div
                 key={index}
@@ -113,14 +121,14 @@ const ExperiencePage = () => {
               >
                 {/* Timeline connector */}
                 {index < experiences.length - 1 && (
-                  <div className="absolute left-6 top-16 bottom-0 w-0.5 bg-gray-200"></div>
+                  <div className="absolute left-6 md:left-8 top-16 bottom-0 w-0.5 bg-gray-200 hidden md:block"></div>
                 )}
 
-                <div className="flex gap-8">
+                <div className="flex flex-col md:flex-row gap-6 md:gap-8">
                   {/* Timeline dot */}
-                  <div className="flex-shrink-0">
-                    <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center">
-                      <div className="w-4 h-4 bg-white rounded-full"></div>
+                  <div className="flex-shrink-0 flex justify-center md:justify-start">
+                    <div className="w-12 h-12 md:w-16 md:h-16 bg-black rounded-full flex items-center justify-center">
+                      <div className="w-4 h-4 md:w-6 md:h-6 bg-white rounded-full"></div>
                     </div>
                   </div>
 
@@ -128,17 +136,17 @@ const ExperiencePage = () => {
                   <div className="flex-1 space-y-6">
                     <div>
                       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3">
-                        <h3 className="text-xl font-semibold text-gray-900">
+                        <h3 className="text-xl md:text-2xl font-semibold text-gray-900">
                           {exp.role}
                         </h3>
-                        <span className="text-caption text-gray-500 font-medium">
+                        <span className="text-sm md:text-base text-gray-500 font-medium">
                           {exp.date}
                         </span>
                       </div>
-                      <p className="text-lg font-medium text-gray-700 mb-3">
+                      <p className="text-lg md:text-xl font-medium text-gray-700 mb-3">
                         {exp.company}
                       </p>
-                      <p className="text-lg text-gray-600 mb-6 leading-relaxed">
+                      <p className="text-base md:text-lg text-gray-600 mb-6 leading-relaxed">
                         {exp.description}
                       </p>
                     </div>
@@ -146,7 +154,9 @@ const ExperiencePage = () => {
                     {/* Technologies */}
                     <div className="flex flex-wrap gap-2 mb-6">
                       {exp.technologies.map((tech, techIndex) => (
-                        <Badge key={techIndex}>{tech}</Badge>
+                        <Badge key={techIndex} className="text-xs md:text-sm">
+                          {tech}
+                        </Badge>
                       ))}
                     </div>
 
@@ -158,7 +168,7 @@ const ExperiencePage = () => {
                           className="flex items-start gap-3"
                         >
                           <div className="w-1.5 h-1.5 bg-black rounded-full mt-2 flex-shrink-0"></div>
-                          <span className="text-body-small leading-relaxed">
+                          <span className="text-sm md:text-base leading-relaxed">
                             {bullet}
                           </span>
                         </li>
@@ -171,8 +181,6 @@ const ExperiencePage = () => {
           </motion.div>
         </motion.div>
       </div>
-    </section>
+    </div>
   );
-};
-
-export default ExperiencePage;
+}

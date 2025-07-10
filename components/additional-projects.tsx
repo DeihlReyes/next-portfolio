@@ -20,7 +20,7 @@ interface Project {
   description: string;
   techStack: string[];
   demo?: string;
-  repo: string;
+  repo?: string;
 }
 
 const ProjectCard = ({
@@ -81,9 +81,11 @@ const ProjectCard = ({
               </Button>
             </Link>
           )}
-          <Link className="w-full" href={project.repo} target="_blank">
-            <Button className="w-full">Repo</Button>
-          </Link>
+          {project.repo && (
+            <Link className="w-full" href={project.repo} target="_blank">
+              <Button className="w-full">Repo</Button>
+            </Link>
+          )}
         </CardFooter>
       </Card>
     </motion.div>
@@ -121,7 +123,7 @@ const AdditionalProjects = () => {
           hidden: { opacity: 0, y: 20 },
           visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
         }}
-        className="text-2xl md:text-3xl font-bold mb-8"
+        className="text-xl md:text-2xl font-bold mb-8"
       >
         More Projects
       </motion.h2>

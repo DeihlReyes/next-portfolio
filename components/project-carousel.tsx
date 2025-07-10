@@ -36,17 +36,17 @@ const ProjectCarousel = ({
   }, [api]);
 
   return (
-    <div className="flex flex-col space-y-5 items-center justify-center w-full">
+    <div className="w-full">
       <Carousel
         setApi={setApi}
         opts={{ loop: true }}
-        className="w-full max-w-[650px] aspect-[16/9] relative shadow-lg shadow-slate-400 rounded-lg overflow-hidden"
+        className="w-full aspect-[16/10] relative overflow-hidden"
       >
         <CarouselContent className="h-full">
           {projectImages.map((img, index) => (
             <CarouselItem key={index} className="relative w-full h-full">
               <Image
-                className="object-contain w-full h-full"
+                className="object-cover w-full h-full"
                 src={img}
                 alt={`${projectTitle} screenshot ${index + 1}`}
                 quality={90}
@@ -55,19 +55,37 @@ const ProjectCarousel = ({
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselNext className="absolute right-2 md:right-4" />
-        <CarouselPrevious className="absolute left-2 md:left-4" />
+
+        {/* Navigation Arrows - Only show on hover */}
+        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-gray-900 border-0 shadow-lg backdrop-blur-sm" />
+          <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-gray-900 border-0 shadow-lg backdrop-blur-sm" />
+        </div>
+
+        {/* Image Counter */}
+        {count > 1 && (
+          <div className="absolute bottom-4 right-4 bg-black/70 text-white px-3 py-1.5 rounded-full text-sm font-medium backdrop-blur-sm">
+            {current} / {count}
+          </div>
+        )}
       </Carousel>
-      <div className="flex flex-row gap-2 justify-center items-center">
-        {Array.from({ length: count }, (_, i) => (
-          <span
-            key={i}
-            className={`w-2 h-2 md:w-3 md:h-3 rounded-full ${
-              i === current - 1 ? "bg-primary" : "border border-primary"
-            }`}
-          ></span>
-        ))}
-      </div>
+
+      {/* Dots Indicator - Only show if multiple images */}
+      {count > 1 && (
+        <div className="flex justify-center items-center gap-2 mt-6">
+          {Array.from({ length: count }, (_, i) => (
+            <button
+              key={i}
+              onClick={() => api?.scrollTo(i)}
+              className={`w-2 h-2 rounded-full transition-all duration-200 ${
+                i === current - 1
+                  ? "bg-gray-900 w-8"
+                  : "bg-gray-300 hover:bg-gray-400"
+              }`}
+            />
+          ))}
+        </div>
+      )}
     </div>
   );
 };

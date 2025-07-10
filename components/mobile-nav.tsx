@@ -1,21 +1,25 @@
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import NavItems from "./nav-items";
-import { AiOutlineMenu } from "react-icons/ai";
+import { Menu } from "lucide-react";
 
 const MobileNav = () => {
   return (
-    <nav className="lg:hidden bg-[#D6D6D6]">
-      <Sheet>
-        <SheetTrigger className="align-middle">
-          <AiOutlineMenu className="text-2xl" />
-        </SheetTrigger>
-        <SheetContent className="flex flex-col gap-6 bg-[#D6D6D6] lg:hidden pt-20">
-          <ul className="flex w-full items-start gap-12 flex-col lg:flex-row">
+    <Sheet>
+      <SheetTrigger className="lg:hidden p-2 hover:bg-gray-100 rounded-lg transition-colors">
+        <Menu className="h-6 w-6 text-gray-700" />
+      </SheetTrigger>
+      <SheetContent side="right" className="w-80 bg-white">
+        <div className="flex flex-col gap-8 pt-8">
+          <div className="space-y-2">
+            <h3 className="text-lg font-semibold text-gray-900">Navigation</h3>
+            <p className="text-sm text-gray-500">Explore my portfolio</p>
+          </div>
+          <ul className="flex flex-col gap-4">
             <NavItems />
           </ul>
-        </SheetContent>
-      </Sheet>
-    </nav>
+        </div>
+      </SheetContent>
+    </Sheet>
   );
 };
 

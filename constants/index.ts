@@ -4,12 +4,12 @@ export const headerLinks = [
     route: "/#home",
   },
   {
-    label: "About",
-    route: "/#about",
+    label: "Experience",
+    route: "/experience",
   },
   {
     label: "Projects",
-    route: "/#projects",
+    route: "/projects",
   },
 ];
 
@@ -23,7 +23,7 @@ Development Experience: 3 years
 Work Experience: 1 year
 Location: Quezon City, Philippines
 Main Tech Stack: Next JS, Prisma ORM, PostgreSQL, TailwindCSS.
-Other Skills: JavaScript, React.js, Node.js, Python, MySQL, Firebase, Flutter, OpenAI API, Git, Agile (Scrum), SEO
+Other Skills: JavaScript, TypeScript, React.js, Node.js, Python, MySQL, Firebase, Flutter, OpenAI API, Git, Agile (Scrum), SEO
 
 Experiences = [
   {
@@ -31,12 +31,11 @@ Experiences = [
     role: "Full Stack Web Developer",
     company: "AP Creative Corporation",
     bullets: [
-      "Sole developer managing the complete lifecycle of company web applications, from planning and UI/UX design to testing and deployment.",
-      "Worked closely with the CEO to ensure alignment on tools, technical decisions, and business objectives.",
-      "Developed and launched five web platforms using Wix Headless CMS and Vercel, overseeing domain setup, hosting, performance optimization, and CMS integration.",
-      "Enhanced team collaboration by leading client meetings, clarifying task workflows, and delivering presentations aligned with business goals.",
-      "Boosted website SEO and responsiveness, significantly increasing PageSpeed and Lighthouse performance scores.",
-      "Key Projects: E-Bike E-Commerce Website (Next.js, Wix Headless Studio, Xendit), Real Estate Website (Google Maps API, lead capture), Marketing Agency Sites, Real Estate Admin Dashboard (Next.js, Prisma, PostgreSQL), Property Developer Website.",
+      "Developed internal tools and client-facing websites using Next.js, PostgreSQL, Prisma, and Tailwind CSS.",
+      "Built a custom HRIS platform with request handling, disciplinary tracking, time log viewing via biometric integration, and a task management module.",
+      "Managed full-stack development and deployment of multiple production websites using Vercel and Wix Headless CMS.",
+      "Integrated third-party services such as Xendit and Google Maps API into e-commerce and real estate projects.",
+      "Collaborated with business leads and marketing teams to align technical solutions with real-world needs."
     ],
   },
   {
@@ -44,35 +43,49 @@ Experiences = [
     role: "Full Stack Developer Intern",
     company: "Achieve Without Borders Inc.",
     bullets: [
-      "Resolved bugs, improving platform stability and user satisfaction.",
-      "Gained recognition for consistent performance, leading to more complex tasks.",
-      "Proposed new search technologies for better performance and user experience.",
-      "Fixed a cloud function bug impacting purchase status tracking.",
-      "Utilized Flutter for front-end and Node.js for back-end integration.",
-      "Engaged in code reviews, agile stand-ups, and design discussions to ensure quality and timelines.",
+      "Maintained and enhanced features for a merchant-facing e-commerce platform using Flutter and Firebase.",
+      "Resolved critical bugs, including issues in cloud functions affecting order status updates.",
+      "Gained hands-on experience with Agile methodology, code reviews, QA collaboration, and team stand-ups.",
+      "Explored search optimization through Algolia as part of ongoing platform improvement."
     ],
   },
 ];
 
 Projects:
+
 1. Satiscript: Call center tool using Python, ML, OpenAI API, Next.js. 1st Runner Up in Research Colloquium.
    - Repo: https://github.com/DeihlReyes/satiscript
    - Demo: https://satiscript.vercel.app
 
-2. TaskQuill: Task management app with Next.js, Prisma, PostgreSQL, TailwindCSS.
+2. Pro Group E-Bike & Scooter: E-commerce site built with CMS and Xendit integration.
+   - Demo: https://www.progroup.com.ph/
+
+3. TaskQuill: Task management app with user auth, project tracking, and real-time collaboration.
    - Repo: https://github.com/DeihlReyes/TaskQuill
    - Demo: https://taskquill.vercel.app
 
-3. Filevert: File conversion tool using Next.js, TailwindCSS, FFMPEG.
+4. OV Realty: Real estate website with CMS-powered listings and Google Maps.
+   - Demo: https://www.ovrealtycorp.com/
+
+5. AP Creative Sites: Developed multiple web platforms for corporate, marketing, and events.
+   - Main: https://www.apcreativecorp.com/
+   - Marketing: https://marketing.apcreativecorp.com/
+   - Events: https://events.apcreativecorp.com/
+
+6. Filevert: File conversion tool using Next.js and FFMPEG.
    - Repo: https://github.com/DeihlReyes/filevert
    - Demo: https://filevert.vercel.app
 
-4. GDSC Website: Official GDSC site using Astro.js, TailwindCSS, TypeScript.
-   - Repo: https://github.com/DeihlReyes/gdsc-uecal-website
-   - Demo: https://gdsc-uec.vercel.app
+7. QuizWiz: Quiz generator powered by Gemini AI.
+   - Repo: https://github.com/DeihlReyes/next-quizwiz
+   - Demo: https://quizwiz-vert.vercel.app/
 
+8. GDSC Website: Official student dev club site built using Astro.js.
+   - Repo: https://github.com/DeihlReyes/gdsc-uecal-website
+   - Demo: https://gdsc-uec.vercel.app/
 
 Education: BS Computer Engineering, University of the East - Caloocan. 1st Runner Up Research Colloquium, Exemplary Academic Performance.
-Associate Web Developer at Google Developer Student Clubs (GDSC) - UE Caloocan: Astro.js website, HTML/GitHub seminars, event organizing.
+GDSC UE Caloocan: Associate Developer. Contributed to club website, developer events, and tech sessions.
+
 Email: reyes.deihlarron@gmail.com | Phone Number: 0917-115-8829
 `;

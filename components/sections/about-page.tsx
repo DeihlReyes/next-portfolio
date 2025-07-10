@@ -38,103 +38,127 @@ const AboutPage = () => {
   };
 
   return (
-    <motion.section
-      id="about"
-      ref={ref}
-      initial="hidden"
-      animate={inView ? "visible" : "hidden"}
-      variants={containerVariants}
-      className="flex flex-col-reverse lg:flex-row justify-center items-center gap-12 px-8 pt-40 lg:pt-52 lg:mb-44 w-full h-full max-w-7xl mx-auto"
-    >
-      <motion.div
-        variants={itemVariants}
-        className="w-full lg:w-1/2 mt-16 lg:mt-0 mb-32 lg:mb-0"
-      >
-        <div className="relative h-[350px] md:max-w-lg mx-auto">
-          <motion.div
-            initial={{ opacity: 0, x: "-100%" }}
-            animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: "-100%" }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-          >
-            <Image
-              quality={60}
-              className="absolute w-[200px] md:w-[300px] lg:w-[320px] h-full bottom-16 object-cover rounded-xl shadow-xl"
-              src={about2}
-              width={320}
-              height={450}
-              alt="About Image"
-            />
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, x: "100%" }}
-            animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: "100%" }}
-            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-          >
-            <Image
-              quality={60}
-              className="absolute w-[200px] md:w-[300px] lg:w-[320px] h-full object-cover top-32 lg:top-16 right-0 z-10 rounded-xl shadow-xl"
-              src={about1}
-              width={320}
-              height={450}
-              alt="About Image"
-            />
-          </motion.div>
-        </div>
-      </motion.div>
-
-      <div className="w-full lg:w-1/2 flex flex-col justify-center items-start">
-        <motion.h1
-          variants={itemVariants}
-          className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 lg:mb-8"
-        >
-          About me
-        </motion.h1>
-        <motion.p
-          variants={itemVariants}
-          className="text-xs md:text-base lg:pr-4"
-        >
-          I&apos;m a Computer Engineering graduate from the University of the
-          East - Caloocan, now working as a full stack web developer. I enjoy
-          solving complex problems and building innovative applications. Outside
-          of work, I balance my passion for coding with basketball and music
-          production, always eager to learn and take on new challenges.
-        </motion.p>
+    <section id="about" className="section-padding bg-white">
+      <div className="container">
         <motion.div
-          variants={itemVariants}
-          className="flex flex-row justify-start items-start gap-4 mt-10"
+          ref={ref}
+          initial="hidden"
+          animate={inView ? "visible" : "hidden"}
+          variants={containerVariants}
+          className="grid lg:grid-cols-2 gap-20 items-center"
         >
-          <Link
-            className="h-10 w-10 lg:h-12 lg:w-12 rounded-full bg-[#333232] text-white p-3 shadow-lg hover:translate-y-[-6px] active:translate-y-0 transition-all ease-in-out duration-150"
-            href="https://www.linkedin.com/in/deihl-arron-reyes/"
-            target="blank"
+          {/* Content */}
+          <motion.div variants={itemVariants} className="space-y-8">
+            <div className="space-y-6">
+              <p className="text-label text-gray-500">About Me</p>
+              <h2 className="text-section-title text-gray-900">
+                Creating meaningful digital experiences
+              </h2>
+            </div>
+
+            <div className="space-y-6 text-gray-600 leading-relaxed text-body-small">
+              <p>
+                I’m Deihl Arron Reyes, a full stack web developer based in the
+                Philippines. I specialize in building clean and scalable web
+                applications using tools like Next.js, PostgreSQL, Prisma, and
+                Tailwind CSS. My work spans internal systems, client websites,
+                and e-commerce platforms, where I handle everything from
+                frontend design to backend development and deployment.
+              </p>
+              <p>
+                I enjoy solving real problems through thoughtful and
+                maintainable code. Whether working independently or within a
+                team, I focus on creating solutions that are efficient,
+                user-friendly, and aligned with business goals.
+              </p>
+            </div>
+
+            {/* Social Links */}
+            <motion.div
+              variants={itemVariants}
+              className="flex items-center space-x-4 pt-4"
+            >
+              <p className="text-caption text-gray-500 font-medium">
+                Connect with me:
+              </p>
+              <div className="flex space-x-3">
+                <Link
+                  className="p-3 rounded-full bg-[#333232] hover:bg-[#333232]/60 transition-colors"
+                  href="https://www.linkedin.com/in/deihl-arron-reyes/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn"
+                >
+                  <Image className="w-5 h-5" src={linkedin} alt="LinkedIn" />
+                </Link>
+                <Link
+                  className="p-3 rounded-full bg-[#333232] hover:bg-[#333232]/60 transition-colors"
+                  href="https://github.com/DeihlReyes"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="GitHub"
+                >
+                  <Image className="w-5 h-5" src={github} alt="GitHub" />
+                </Link>
+                <Link
+                  className="p-3 rounded-full bg-[#333232] hover:bg-[#333232]/60 transition-colors"
+                  href="https://www.facebook.com/deihl.reyes08/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Facebook"
+                >
+                  <Image className="w-5 h-5" src={facebook} alt="Facebook" />
+                </Link>
+              </div>
+            </motion.div>
+          </motion.div>
+
+          {/* Images */}
+          <motion.div
+            variants={itemVariants}
+            className="relative flex justify-center lg:justify-end"
           >
-            <Image
-              className="w-full h-full"
-              src={linkedin}
-              alt="LinkedIn Logo"
-            />
-          </Link>
-          <Link
-            className="h-10 w-10 lg:h-12 lg:w-12 rounded-full bg-[#333232] text-white p-3 shadow-lg hover:translate-y-[-6px] active:translate-y-0 transition-all ease-in-out duration-150"
-            href="https://github.com/DeihlReyes"
-            target="blank"
-          >
-            <Image className="w-full h-full" src={github} alt="Github Logo" />
-          </Link>
-          <Link
-            className="h-10 w-10 lg:h-12 lg:w-12 rounded-full bg-[#333232] text-white p-3 shadow-lg hover:translate-y-[-6px] active:translate-y-0 transition-all ease-in-out duration-150"
-            href="https://www.facebook.com/deihl.reyes08/"
-            target="blank"
-          >
-            <Image
-              className="w-full h-full"
-              src={facebook}
-              alt="Facebook Logo"
-            />
-          </Link>
+            <div className="relative w-full max-w-[500px] h-[400px] sm:h-[500px] lg:h-[600px]">
+              {/* Main Image - Bottom Layer */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                className="absolute bottom-0 left-0 w-56 h-64 sm:w-64 sm:h-72 lg:w-80 lg:h-96"
+              >
+                <div className="relative w-full h-full">
+                  <Image
+                    quality={90}
+                    className="w-full h-full object-cover rounded-2xl shadow-xl"
+                    src={about2}
+                    alt="Deihl Reyes - Developer"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-2xl"></div>
+                </div>
+              </motion.div>
+
+              {/* Overlapping Image - Top Layer */}
+              <motion.div
+                initial={{ opacity: 0, y: -30 }}
+                animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: -30 }}
+                transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+                className="absolute top-0 right-0 w-56 h-64 sm:w-64 sm:h-72 lg:w-80 lg:h-96"
+              >
+                <div className="relative w-full h-full">
+                  <Image
+                    quality={90}
+                    className="w-full h-full object-cover rounded-2xl shadow-xl"
+                    src={about1}
+                    alt="Deihl Reyes - Working"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-2xl"></div>
+                </div>
+              </motion.div>
+            </div>
+          </motion.div>
         </motion.div>
       </div>
-    </motion.section>
+    </section>
   );
 };
 

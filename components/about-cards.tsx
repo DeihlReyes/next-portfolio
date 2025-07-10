@@ -7,7 +7,8 @@ const AboutCards = () => {
         <div className="space-y-6 md:space-y-4">
           <Card
             id="card"
-            className="h-56 shadow-md shadow-slate-300 overflow-hidden hover:scale-105 [&:not(:hover)]:group-hover:opacity-50 transition-all ease-linear duration-150">
+            className="h-56 shadow-md shadow-slate-300 overflow-hidden hover:scale-105 [&:not(:hover)]:group-hover:opacity-50 transition-all ease-linear duration-150"
+          >
             <CardHeader>
               <CardTitle className="text-xl">Web Development</CardTitle>
             </CardHeader>
@@ -21,7 +22,8 @@ const AboutCards = () => {
 
           <Card
             id="card"
-            className="h-56 shadow-md shadow-slate-300 overflow-hidden hover:scale-105 [&:not(:hover)]:group-hover:opacity-50 transition-all ease-linear duration-150">
+            className="h-56 shadow-md shadow-slate-300 overflow-hidden hover:scale-105 [&:not(:hover)]:group-hover:opacity-50 transition-all ease-linear duration-150"
+          >
             <CardHeader>
               <CardTitle className="text-xl">Code Quality</CardTitle>
             </CardHeader>
@@ -37,7 +39,8 @@ const AboutCards = () => {
         <div className="space-y-6 md:space-y-4 md:mt-16">
           <Card
             id="card"
-            className="h-56 shadow-md shadow-slate-300 overflow-hidden hover:scale-105 [&:not(:hover)]:group-hover:opacity-50 transition-all ease-linear duration-150">
+            className="h-56 shadow-md shadow-slate-300 overflow-hidden hover:scale-105 [&:not(:hover)]:group-hover:opacity-50 transition-all ease-linear duration-150"
+          >
             <CardHeader>
               <CardTitle className="text-xl">Responsive Design</CardTitle>
             </CardHeader>
@@ -51,7 +54,8 @@ const AboutCards = () => {
 
           <Card
             id="card"
-            className="h-56 shadow-md shadow-slate-300 overflow-hidden hover:scale-105 [&:not(:hover)]:group-hover:opacity-50 transition-all ease-linear duration-150">
+            className="h-56 shadow-md shadow-slate-300 overflow-hidden hover:scale-105 [&:not(:hover)]:group-hover:opacity-50 transition-all ease-linear duration-150"
+          >
             <CardHeader>
               <CardTitle className="text-xl">Problem Solving</CardTitle>
             </CardHeader>

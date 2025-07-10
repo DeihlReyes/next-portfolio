@@ -31,11 +31,11 @@ export function BlogPostCard({ post }: BlogPostCardProps) {
           <h2 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors duration-300">
             {post.title}
           </h2>
-          <p className=" text-sm sm:text-base mb-4 line-clamp-2">
-            {post.excerpt}
-          </p>
+          <p className="text-lg mb-4 line-clamp-2">{post.excerpt}</p>
           <div className="flex justify-between items-center">
-            <time className="text-sm text-muted-foreground">{post.date}</time>
+            <time className="text-caption text-muted-foreground">
+              {post.date}
+            </time>
             <span className="text-primary font-medium flex items-center">
               Read more
               <ArrowRight className="w-4 h-4 ml-1 transition-transform duration-300 ease-in-out group-hover:translate-x-1" />

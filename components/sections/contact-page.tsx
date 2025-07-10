@@ -19,7 +19,7 @@ import contactImage from "@/assets/contact.svg";
 import emailjs from "@emailjs/browser";
 import { useToast } from "../ui/use-toast";
 import { useState } from "react";
-import { SendHorizonal } from "lucide-react";
+import { SendHorizonal, Mail, MapPin, Phone } from "lucide-react";
 import Loading from "@/assets/loading.svg";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
@@ -64,16 +64,16 @@ const ContactPage = () => {
       );
       form.reset();
       toast({
-        title: "Email Sent!",
+        title: "Message Sent!",
         description:
-          "Your email has been sent successfully! I will get back to you as soon as possible.",
+          "Your message has been sent successfully! I will get back to you as soon as possible.",
         duration: 3000,
       });
     } catch (error) {
       toast({
-        title: "Email Failed!",
+        title: "Message Failed!",
         description:
-          "There was an error sending your email. Please try again later.",
+          "There was an error sending your message. Please try again later.",
         duration: 3000,
       });
     } finally {
@@ -103,106 +103,183 @@ const ContactPage = () => {
   };
 
   return (
-    <motion.section
-      id="contact"
-      ref={ref}
-      initial="hidden"
-      animate={inView ? "visible" : "hidden"}
-      variants={containerVariants}
-      className="relative flex flex-col lg:flex-row h-full px-8 lg:px-16 pt-16 pb-32 lg:pt-44 max-w-7xl justify-center items-center mx-auto gap-12 lg:gap-16"
-    >
-      <motion.div variants={itemVariants}>
-        <Image
-          width={700}
-          height={700}
-          src={contactImage}
-          alt="Contact Image"
-        />
-      </motion.div>
-      <motion.div variants={itemVariants} className="w-full lg:w-2/3">
-        <motion.h2
-          variants={itemVariants}
-          className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 lg:mb-8"
+    <section id="contact" className="section-padding gradient-bg">
+      <div className="container">
+        <motion.div
+          ref={ref}
+          initial="hidden"
+          animate={inView ? "visible" : "hidden"}
+          variants={containerVariants}
+          className="max-w-6xl mx-auto"
         >
-          Let&apos;s Talk!
-        </motion.h2>
-        <motion.p
-          variants={itemVariants}
-          className="text-xs md:text-base  text-left mb-8 lg:pr-4"
-        >
-          If you have any questions, project ideas, or just want to chat, please
-          don&apos;t hesitate to reach out.
-        </motion.p>
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-            <motion.div variants={itemVariants}>
-              <FormField
-                control={form.control}
-                name="email"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Email</FormLabel>
-                    <FormControl>
-                      <Input placeholder="example@mail.com" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+          {/* Header */}
+          <motion.div variants={itemVariants} className="text-center mb-16">
+            <p className="text-label text-gray-500 mb-4">Get In Touch</p>
+            <h2 className="text-section-title text-gray-900 mb-6">
+              Let&apos;s Work Together
+            </h2>
+            <p className="text-body max-w-2xl mx-auto">
+              Ready to start your next project? I&apos;d love to hear about your
+              ideas and help bring them to life.
+            </p>
+          </motion.div>
+
+          <div className="grid lg:grid-cols-2 gap-20 items-start">
+            {/* Contact Form */}
+            <motion.div variants={itemVariants} className="space-y-8">
+              <div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-4">
+                  Send me a message
+                </h3>
+                <p className="text-body-small text-gray-600 mb-8">
+                  Fill out the form below and I&apos;ll get back to you as soon
+                  as possible.
+                </p>
+              </div>
+
+              <Form {...form}>
+                <form
+                  onSubmit={form.handleSubmit(onSubmit)}
+                  className="space-y-6"
+                >
+                  <FormField
+                    control={form.control}
+                    name="email"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="text-gray-700 font-medium">
+                          Email
+                        </FormLabel>
+                        <FormControl>
+                          <Input
+                            placeholder="your.email@example.com"
+                            {...field}
+                            className="border-gray-300 focus:border-black focus:ring-black rounded-lg"
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
+                  <FormField
+                    control={form.control}
+                    name="subject"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="text-gray-700 font-medium">
+                          Subject
+                        </FormLabel>
+                        <FormControl>
+                          <Input
+                            placeholder="What's this about?"
+                            {...field}
+                            className="border-gray-300 focus:border-black focus:ring-black rounded-lg"
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
+                  <FormField
+                    control={form.control}
+                    name="content"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="text-gray-700 font-medium">
+                          Message
+                        </FormLabel>
+                        <FormControl>
+                          <Textarea
+                            placeholder="Tell me about your project..."
+                            {...field}
+                            className="border-gray-300 focus:border-black focus:ring-black rounded-lg min-h-[120px]"
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
+                  <Button type="submit" disabled={isSending}>
+                    {isSending ? (
+                      <div className="flex items-center gap-2">
+                        <Image
+                          src={Loading}
+                          alt="Loading"
+                          width={20}
+                          height={20}
+                        />
+                        <span>Sending...</span>
+                      </div>
+                    ) : (
+                      <div className="flex items-center gap-2">
+                        <span>Send Message</span>
+                        <SendHorizonal size={20} />
+                      </div>
+                    )}
+                  </Button>
+                </form>
+              </Form>
             </motion.div>
-            <motion.div variants={itemVariants}>
-              <FormField
-                control={form.control}
-                name="subject"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Subject</FormLabel>
-                    <FormControl>
-                      <Input placeholder="Enter a Subject" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+
+            {/* Contact Info & Image */}
+            <motion.div variants={itemVariants} className="space-y-8">
+              <div className="space-y-6">
+                <h3 className="text-2xl font-semibold text-gray-900">
+                  Other ways to connect
+                </h3>
+
+                <div className="space-y-4">
+                  <div className="card">
+                    <div className="flex items-center gap-4">
+                      <div className="p-3 bg-gray-100 rounded-full">
+                        <Mail className="w-5 h-5 text-gray-700" />
+                      </div>
+                      <div>
+                        <p className="font-medium text-gray-900">Email</p>
+                        <p className="text-gray-600">
+                          reyes.deihlarron@gmail.com
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="card">
+                    <div className="flex items-center gap-4">
+                      <div className="p-3 bg-gray-100 rounded-full">
+                        <Phone className="w-5 h-5 text-gray-700" />
+                      </div>
+                      <div>
+                        <p className="font-medium text-gray-900">
+                          Phone Number
+                        </p>
+                        <p className="text-gray-600">+63 917 115 8829</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="card">
+                    <div className="flex items-center gap-4">
+                      <div className="p-3 bg-gray-100 rounded-full">
+                        <MapPin className="w-5 h-5 text-gray-700" />
+                      </div>
+                      <div>
+                        <p className="font-medium text-gray-900">Location</p>
+                        <p className="text-gray-600">
+                          Quezon City, Philippines
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </motion.div>
-            <motion.div variants={itemVariants}>
-              <FormField
-                control={form.control}
-                name="content"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Message</FormLabel>
-                    <FormControl>
-                      <Textarea
-                        placeholder="Type your message here..."
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            </motion.div>
-            <motion.div variants={itemVariants}>
-              <Button
-                className="px-12 mt-5 w-full md:w-fit"
-                disabled={isSending}
-              >
-                {isSending ? (
-                  <>
-                    <Image src={Loading} alt="Loading" width={20} height={20} />
-                  </>
-                ) : (
-                  <>
-                    Send <SendHorizonal size={20} className="ml-3 text-white" />
-                  </>
-                )}
-              </Button>
-            </motion.div>
-          </form>
-        </Form>
-      </motion.div>
-    </motion.section>
+          </div>
+        </motion.div>
+      </div>
+    </section>
   );
 };
 

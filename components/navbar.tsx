@@ -7,29 +7,36 @@ import Link from "next/link";
 
 const Navbar = () => {
   return (
-    <header>
-      <nav className="z-50 bg-[#D6D6D6] fixed lg:flex hidden justify-between border-b border-[#161616] py-5 px-32 w-full">
-        <Link className="flex justify-center items-center gap-3" href="/">
-          <Image className="object-cover w-auto h-10" src={logo} alt="Logo" />
-          <h1 className="text-2xl font-bold">Deihl Reyes</h1>
+    <header className="sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60">
+      <nav className="container flex h-16 sm:h-20 items-center justify-between">
+        <Link className="flex items-center space-x-3" href="/">
+          <Image
+            className="h-6 sm:h-8 w-auto"
+            src={logo}
+            alt="Deihl Reyes Logo"
+            width={32}
+            height={32}
+          />
+          <span className="hidden sm:block text-lg sm:text-xl font-bold text-gray-900">
+            Deihl Reyes
+          </span>
         </Link>
 
-        <div className="flex flex-row gap-12 justify-center items-center text-lg">
-          <ul className="flex w-full items-start gap-12 flex-row">
+        {/* Desktop Navigation */}
+        <div className="hidden lg:flex items-center space-x-8">
+          <ul className="flex items-center space-x-8">
             <NavItems />
           </ul>
-          <Link href={"#contact"}>
-            <Button>Contact me</Button>
+          <Link href="/contact">
+            <Button className="rounded-full">Get in touch</Button>
           </Link>
         </div>
-      </nav>
 
-      <nav className="z-50 fixed top-0 bg-[#D6D6D6] flex lg:hidden items-center w-full h-20 justify-between px-8">
-        <Link href="/">
-          <Image className="object-cover w-auto h-10" src={logo} alt="Logo" />
-        </Link>
-        <div className="flex flex-row gap-8 justify-center items-center">
-          <Button className="rounded-lg text-xs">Contact me</Button>
+        {/* Mobile Navigation */}
+        <div className="flex lg:hidden items-center space-x-4">
+          <Link href="/contact">
+            <Button size="sm">Get in touch</Button>
+          </Link>
           <MobileNav />
         </div>
       </nav>

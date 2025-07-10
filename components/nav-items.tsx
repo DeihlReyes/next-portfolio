@@ -8,11 +8,11 @@ const NavItems = () => {
     <>
       {headerLinks.map((link) => {
         return (
-          <li
-            key={link.route}
-            className="flex-center py-2 whitespace-nowrap hover:font-bold transition-all ease-in-out duration-150"
-          >
-            <Link className="text-base" href={link.route}>
+          <li key={link.route}>
+            <Link
+              className="text-gray-700 hover:text-black text-sm font-medium transition-colors duration-200"
+              href={link.route}
+            >
               {link.label}
             </Link>
           </li>

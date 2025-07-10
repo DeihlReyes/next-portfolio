@@ -13,13 +13,31 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // }));
 
   const projectEntries = projects.map((project) => ({
-    url: project.demo,
+    url: `${baseUrl}/projects/${project.title
+      .toLowerCase()
+      .replace(/\s+/g, "-")}`,
     lastModified: new Date(),
   }));
 
   return [
     {
       url: `${baseUrl}`,
+      lastModified: new Date(),
+    },
+    {
+      url: `${baseUrl}/about`,
+      lastModified: new Date(),
+    },
+    {
+      url: `${baseUrl}/experience`,
+      lastModified: new Date(),
+    },
+    {
+      url: `${baseUrl}/projects`,
+      lastModified: new Date(),
+    },
+    {
+      url: `${baseUrl}/contact`,
       lastModified: new Date(),
     },
     {

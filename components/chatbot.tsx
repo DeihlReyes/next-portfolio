@@ -139,7 +139,7 @@ export default function FloatingChatbot() {
                     }`}
                   >
                     <span
-                      className={`inline-block p-3 text-sm rounded-lg shadow-sm max-w-sm md:max-w-xl ${
+                      className={`inline-block p-3 text-xs rounded-lg shadow-sm max-w-sm md:max-w-xl ${
                         message.role === "user" ? "bg-[#333232]/20" : "bg-white"
                       }`}
                     >
@@ -153,7 +153,7 @@ export default function FloatingChatbot() {
                   </div>
                 ))}
                 {isLoading && (
-                  <div className="text-center text-xs mt-5 text-gray-500 animate-pulse">
+                  <div className="text-center text-caption mt-5 text-gray-500 animate-pulse">
                     Thinking...
                   </div>
                 )}

@@ -2,8 +2,9 @@
 
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-
-import FeaturedProjects from "../featured-projects";
+import { Button } from "../ui/button";
+import FeaturedProjectsGrid from "../featured-projects-grid";
+import Link from "next/link";
 
 const ProjectsPage = () => {
   const [ref, inView] = useInView({
@@ -33,32 +34,66 @@ const ProjectsPage = () => {
   };
 
   return (
-    <motion.section
-      id="projects"
-      ref={ref}
-      initial="hidden"
-      animate={inView ? "visible" : "hidden"}
-      variants={containerVariants}
-      className="flex flex-col justify-center items-center px-8 pt-32 lg:pt-36 max-w-7xl mx-auto h-full"
-    >
-      <div className="flex flex-col gap-12 justify-center items-start w-full max-w-7xl h-full">
-        <div className="">
-          <motion.h1
+    <section id="projects" className="section-padding bg-white">
+      <div className="container">
+        <motion.div
+          ref={ref}
+          initial="hidden"
+          animate={inView ? "visible" : "hidden"}
+          variants={containerVariants}
+          className="max-w-6xl mx-auto"
+        >
+          {/* Header */}
+          <motion.div
             variants={itemVariants}
-            className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 lg:mb-8"
+            className="text-center mb-16 md:mb-24"
           >
-            Projects
-          </motion.h1>
-          <motion.p
+            <p className="text-label text-gray-500 mb-4">My Work</p>
+            <h2 className="text-section-title text-gray-900 mb-6">Projects</h2>
+            <p className="text-lg max-w-2xl mx-auto leading-relaxed">
+              A collection of projects that showcase my expertise in full-stack
+              development, UI/UX design, and problem-solving across various
+              technologies.
+            </p>
+          </motion.div>
+
+          {/* Projects Grid */}
+          <motion.div variants={itemVariants}>
+            <FeaturedProjectsGrid />
+          </motion.div>
+
+          {/* View All Projects Button */}
+          <motion.div
             variants={itemVariants}
-            className="text-xs md:text-base  text-left mb-6 lg:pr-4"
+            className="flex justify-center pt-12"
           >
-            Here are some projects that I have built.
-          </motion.p>
-        </div>
-        <FeaturedProjects />
+            <Button asChild size="lg">
+              <Link href="/projects">View All Projects</Link>
+            </Button>
+          </motion.div>
+
+          {/* Call to Action */}
+          <motion.div
+            variants={itemVariants}
+            className="text-center mt-20 md:mt-32"
+          >
+            <div className="bg-gradient-to-r from-gray-50 to-gray-100 rounded-2xl md:rounded-3xl p-8 md:p-12">
+              <h3 className="text-subtitle font-semibold text-gray-900 mb-4">
+                Ready to collaborate?
+              </h3>
+              <p className="text-lg mb-8 max-w-2xl mx-auto">
+                Let&apos;s work together to bring your ideas to life. I&apos;m
+                always excited to take on new challenges and create something
+                amazing.
+              </p>
+              <Button asChild>
+                <a href="#contact">Start a project</a>
+              </Button>
+            </div>
+          </motion.div>
+        </motion.div>
       </div>
-    </motion.section>
+    </section>
   );
 };
 

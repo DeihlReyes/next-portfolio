@@ -60,7 +60,6 @@ const ProjectItem: FC<ProjectItemProps> = ({ project, index }) => {
       initial="hidden"
       animate={controls}
       variants={itemVariants}
-      className="mb-24 last:mb-0"
     >
       <div
         className={`flex flex-col lg:flex-row gap-16 items-center ${
@@ -92,13 +91,6 @@ const ProjectItem: FC<ProjectItemProps> = ({ project, index }) => {
               {/* Subtle overlay on hover */}
               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-300" />
             </div>
-
-            {/* Project badge */}
-            <div className="absolute top-4 left-4">
-              <span className="px-3 py-1 bg-white/90 backdrop-blur-sm text-gray-700 text-caption font-medium rounded-full shadow-sm">
-                Featured Project
-              </span>
-            </div>
           </div>
         </motion.div>
 
@@ -116,10 +108,10 @@ const ProjectItem: FC<ProjectItemProps> = ({ project, index }) => {
         >
           {/* Project Header */}
           <div className="space-y-6">
-            <h3 className="text-xl font-semibold text-gray-900 leading-tight">
+            <h3 className="text-xl uppercase font-bold text-gray-900 leading-tight">
               {project.title}
             </h3>
-            <p className="text-lg text-gray-600 leading-relaxed">
+            <p className="text-md text-gray-600 leading-relaxed">
               {project.description}
             </p>
           </div>
@@ -180,9 +172,15 @@ const ProjectItem: FC<ProjectItemProps> = ({ project, index }) => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Button className="flex items-center gap-2" variant="outline">
+                <Button
+                  className="flex items-center gap-2 group"
+                  variant="outline"
+                >
                   <span>View Code</span>
-                  <Github size={16} />
+                  <Github
+                    className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
+                    size={16}
+                  />
                 </Button>
               </Link>
             )}
@@ -193,16 +191,14 @@ const ProjectItem: FC<ProjectItemProps> = ({ project, index }) => {
   );
 };
 
-const FeaturedProjects = () => {
-  const featuredProjects = projects;
-
+const AllProjects = () => {
   return (
-    <div className="space-y-0">
-      {featuredProjects.map((project, index) => (
+    <div className="space-y-32">
+      {projects.map((project, index) => (
         <ProjectItem key={index} project={project} index={index} />
       ))}
     </div>
   );
 };
 
-export default FeaturedProjects;
+export default AllProjects;

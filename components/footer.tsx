@@ -1,6 +1,5 @@
 import React from "react";
 import logo from "@/assets/logo.png";
-import NavItems from "./nav-items";
 import Image from "next/image";
 import facebook from "@/assets/logos/facebook.svg";
 import linkedin from "@/assets/logos/linkedin.svg";
@@ -9,63 +8,138 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <footer className="bg-[#D6D6D6]">
-      <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
-        <div className="md:flex md:justify-between items-start">
-          <div className="mb-6 md:mb-0">
-            <Link href={"/"} className="flex justify-start items-start gap-4">
+    <footer className="bg-white border-t border-gray-200 py-16">
+      <div className="container">
+        {/* Main Footer Content */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 items-start">
+          {/* Brand Section */}
+          <div className="md:col-span-2 space-y-6">
+            <Link href="/" className="flex items-center space-x-3">
               <Image
-                className="object-cover w-auto h-10"
+                className="h-8 w-auto"
                 src={logo}
-                alt="Logo"
+                alt="Deihl Reyes Logo"
+                width={32}
+                height={32}
               />
-              <h2 className="self-center md:text-2xl font-semibold whitespace-nowrap dark:text-white">
+              <span className="text-xl font-semibold text-gray-900">
                 Deihl Reyes
-              </h2>
+              </span>
             </Link>
+            <p className="text-body-small text-gray-600 leading-relaxed max-w-md">
+              Full Stack Developer passionate about creating meaningful digital
+              experiences and building innovative web applications.
+            </p>
+
+            {/* Social Links */}
+            <div className="flex space-x-4">
+              <Link
+                className="p-3 rounded-full bg-[#333232] hover:bg-[#333232]/60 transition-colors"
+                href="https://www.linkedin.com/in/deihl-arron-reyes/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+              >
+                <Image className="w-5 h-5" src={linkedin} alt="LinkedIn" />
+              </Link>
+              <Link
+                className="p-3 rounded-full bg-[#333232] hover:bg-[#333232]/60 transition-colors"
+                href="https://github.com/DeihlReyes"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub"
+              >
+                <Image className="w-5 h-5" src={github} alt="GitHub" />
+              </Link>
+              <Link
+                className="p-3 rounded-full bg-[#333232] hover:bg-[#333232]/60 transition-colors"
+                href="https://www.facebook.com/deihl.reyes08/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+              >
+                <Image className="w-5 h-5" src={facebook} alt="Facebook" />
+              </Link>
+            </div>
           </div>
-          <div className="flex flex-row gap-12 justify-center items-center text-md">
-            <ul className="flex w-full items-start gap-12 flex-row">
-              <NavItems />
+
+          {/* Quick Links */}
+          <div className="space-y-6">
+            <h3 className="text-xl font-semibold text-gray-900">Quick Links</h3>
+            <ul className="space-y-4">
+              <li>
+                <Link
+                  href="#about"
+                  className="text-body-small text-gray-600 hover:text-gray-900 transition-colors"
+                >
+                  About
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="#experience"
+                  className="text-body-small text-gray-600 hover:text-gray-900 transition-colors"
+                >
+                  Experience
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="#projects"
+                  className="text-body-small text-gray-600 hover:text-gray-900 transition-colors"
+                >
+                  Projects
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/contact"
+                  className="text-body-small text-gray-600 hover:text-gray-900 transition-colors"
+                >
+                  Contact
+                </Link>
+              </li>
             </ul>
           </div>
-        </div>
-        <hr className="my-6 border-[#161616]/60 sm:mx-auto lg:my-8" />
-        <div className="sm:flex sm:items-center sm:justify-between">
-          <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">
-            © 2024 Deihl Reyes. All Rights Reserved.
-          </span>
-          <div className="flex mt-4 sm:justify-center sm:mt-0 gap-4">
-            <Link
-              className="rounded-full h-8 w-8 bg-[#333232] text-white p-2 shadow-md hover:translate-y-[-6px] active:translate-y-0 transition-all ease-in-out duration-150"
-              href="https://www.linkedin.com/in/deihl-arron-reyes/"
-              target="blank"
-            >
-              <Image
-                className="w-full h-full"
-                src={linkedin}
-                alt="LinkedIn Logo"
-              />
-            </Link>
-            <Link
-              className="rounded-full h-8 w-8 bg-[#333232] text-white p-2 shadow-md hover:translate-y-[-6px] active:translate-y-0 transition-all ease-in-out duration-150"
-              href="https://github.com/DeihlReyes"
-              target="blank"
-            >
-              <Image className="w-full h-full" src={github} alt="Github Logo" />
-            </Link>
-            <Link
-              className="rounded-full h-8 w-8 bg-[#333232] text-white p-2 shadow-md hover:translate-y-[-6px] active:translate-y-0 transition-all ease-in-out duration-150"
-              href="https://www.facebook.com/deihl.reyes08/"
-              target="blank"
-            >
-              <Image
-                className="w-full h-full"
-                src={facebook}
-                alt="Facebook Logo"
-              />
-            </Link>
+
+          {/* Contact Info */}
+          <div className="space-y-6">
+            <h3 className="text-xl font-semibold text-gray-900">
+              Get in Touch
+            </h3>
+            <div className="space-y-4">
+              <div>
+                <p className="text-caption text-gray-500 font-medium">Email</p>
+                <p className="text-body-small text-gray-600">
+                  reyes.deihlarron@gmail.com
+                </p>
+              </div>
+              <div>
+                <p className="text-caption text-gray-500 font-medium">Phone</p>
+                <p className="text-body-small text-gray-600">
+                  +63 917 115 8829
+                </p>
+              </div>
+              <div>
+                <p className="text-caption text-gray-500 font-medium">
+                  Location
+                </p>
+                <p className="text-body-small text-gray-600">
+                  Quezon City, Philippines
+                </p>
+              </div>
+            </div>
           </div>
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="border-t border-gray-200 mt-12 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+          <p className="text-caption text-gray-500">
+            © 2024 Deihl Reyes. All rights reserved.
+          </p>
+          <p className="text-caption text-gray-500">
+            Built with Next.js and Tailwind CSS
+          </p>
         </div>
       </div>
     </footer>
