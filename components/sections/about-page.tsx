@@ -83,7 +83,7 @@ const AboutPage = () => {
               </p>
               <div className="flex space-x-3">
                 <Link
-                  className="p-3 rounded-full bg-[#333232] hover:bg-[#333232]/60 transition-colors"
+                  className="p-3 rounded-full bg-primary hover:bg-primary/60 transition-colors"
                   href="https://www.linkedin.com/in/deihl-arron-reyes/"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -92,7 +92,7 @@ const AboutPage = () => {
                   <Image className="w-5 h-5" src={linkedin} alt="LinkedIn" />
                 </Link>
                 <Link
-                  className="p-3 rounded-full bg-[#333232] hover:bg-[#333232]/60 transition-colors"
+                  className="p-3 rounded-full bg-primary hover:bg-primary/60 transition-colors"
                   href="https://github.com/DeihlReyes"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -101,7 +101,7 @@ const AboutPage = () => {
                   <Image className="w-5 h-5" src={github} alt="GitHub" />
                 </Link>
                 <Link
-                  className="p-3 rounded-full bg-[#333232] hover:bg-[#333232]/60 transition-colors"
+                  className="p-3 rounded-full bg-primary hover:bg-primary/60 transition-colors"
                   href="https://www.facebook.com/deihl.reyes08/"
                   target="_blank"
                   rel="noopener noreferrer"

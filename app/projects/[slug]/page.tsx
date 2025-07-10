@@ -101,7 +101,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
               </h2>
               <div className="flex flex-wrap gap-3">
                 {project.techStack.map((tech, index) => (
-                  <Badge key={index} variant="secondary">
+                  <Badge key={index} className="text-xs">
                     {tech}
                   </Badge>
                 ))}
@@ -114,10 +114,10 @@ export default function ProjectPage({ params }: ProjectPageProps) {
                 <h2 className="text-xl font-semibold text-gray-900">
                   Key Features
                 </h2>
-                <ul className="space-y-3 text-lg text-gray-600">
+                <ul className="space-y-3 text-body-small text-gray-600">
                   {project.features.map((feature, index) => (
                     <li key={index} className="flex items-start gap-3">
-                      <div className="w-2 h-2 bg-gray-400 rounded-full mt-3 flex-shrink-0"></div>
+                      <div className="w-2 h-2 bg-primary rounded-full mt-3 flex-shrink-0"></div>
                       <span>{feature}</span>
                     </li>
                   ))}
@@ -131,7 +131,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
                 <h2 className="text-xl font-semibold text-gray-900">
                   Project Overview
                 </h2>
-                <div className="space-y-4 text-lg text-gray-600 leading-relaxed">
+                <div className="space-y-4 text-body-small text-gray-600 leading-relaxed">
                   <div dangerouslySetInnerHTML={{ __html: project.overview }} />
                 </div>
               </div>

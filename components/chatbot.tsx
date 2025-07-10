@@ -109,7 +109,7 @@ export default function FloatingChatbot() {
       >
         <Button
           onClick={isOpen ? () => setIsOpen(false) : handleOpenChat}
-          className="rounded-full w-14 h-14 bg-secondary hover:bg-secondary/70 text-secondary-foreground shadow-lg"
+          className="rounded-full w-14 h-14 bg-primary hover:bg-primary/70 text-[#FFF9F9] shadow-lg"
         >
           {isOpen ? <X size={24} /> : <MessageCircle size={24} />}
         </Button>
@@ -124,7 +124,7 @@ export default function FloatingChatbot() {
             className="fixed bottom-24 right-5 md:right-8 w-[22rem] md:w-[27rem] h-[32rem] bg-white rounded-lg shadow-2xl overflow-hidden z-40"
           >
             <div className="flex flex-col h-full">
-              <div className="bg-[#333232] text-white p-4 flex justify-between items-center">
+              <div className="bg-primary text-white p-4 flex justify-between items-center">
                 <h3 className="text-lg flex items-center">
                   <BotIcon size={40} className="mr-2" />
                   Ask my bot!
@@ -140,7 +140,7 @@ export default function FloatingChatbot() {
                   >
                     <span
                       className={`inline-block p-3 text-xs rounded-lg shadow-sm max-w-sm md:max-w-xl ${
-                        message.role === "user" ? "bg-[#333232]/20" : "bg-white"
+                        message.role === "user" ? "bg-primary/20" : "bg-white"
                       }`}
                     >
                       <ReactMarkdown
