@@ -126,26 +126,16 @@ export default function ProjectPage({ params }: ProjectPageProps) {
             )}
 
             {/* Project Overview */}
-            <div className="space-y-4">
-              <h2 className="text-xl font-semibold text-gray-900">
-                Project Overview
-              </h2>
-              <div className="space-y-4 text-lg text-gray-600 leading-relaxed">
-                <p>
-                  This project demonstrates my expertise in full-stack
-                  development, combining modern frontend technologies with
-                  robust backend solutions. The application showcases clean
-                  architecture, responsive design, and user-centric development
-                  practices.
-                </p>
-                <p>
-                  Built with a focus on scalability and maintainability, this
-                  project serves as a testament to my ability to deliver
-                  high-quality, production-ready applications that meet both
-                  technical requirements and business objectives.
-                </p>
+            {project.overview && (
+              <div className="space-y-4">
+                <h2 className="text-xl font-semibold text-gray-900">
+                  Project Overview
+                </h2>
+                <div className="space-y-4 text-lg text-gray-600 leading-relaxed">
+                  <div dangerouslySetInnerHTML={{ __html: project.overview }} />
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
       </div>

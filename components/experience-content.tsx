@@ -121,14 +121,14 @@ export default function ExperienceContent() {
               >
                 {/* Timeline connector */}
                 {index < experiences.length - 1 && (
-                  <div className="absolute left-6 md:left-8 top-16 bottom-0 w-0.5 bg-gray-200 hidden md:block"></div>
+                  <div className="absolute left-2 md:left-4 top-16 bottom-0 w-0.5 bg-gray-200 hidden md:block"></div>
                 )}
 
                 <div className="flex flex-col md:flex-row gap-6 md:gap-8">
                   {/* Timeline dot */}
                   <div className="flex-shrink-0 flex justify-center md:justify-start">
-                    <div className="w-12 h-12 md:w-16 md:h-16 bg-black rounded-full flex items-center justify-center">
-                      <div className="w-4 h-4 md:w-6 md:h-6 bg-white rounded-full"></div>
+                    <div className="w-6 h-6 md:w-8 md:h-8 bg-black rounded-full flex items-center justify-center">
+                      <div className="w-2 h-2 md:w-3 md:h-3 bg-white rounded-full"></div>
                     </div>
                   </div>
 

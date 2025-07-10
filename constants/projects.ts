@@ -16,6 +16,7 @@ interface Project {
   image: StaticImageData;
   techStack: string[];
   features?: string[];
+  overview?: string;
   repo?: string;
   demo?: string;
 }
@@ -35,11 +36,13 @@ export const projects: Project[] = [
     ],
     repo: "https://github.com/DeihlReyes/satiscript",
     demo: "https://satiscript.vercel.app",
+    overview: `       <p>Satiscript is a smart AI-powered tool designed for call centers to improve agent communication through dynamic scripting.</p>       <p>It features real-time dashboards, performance tracking, and insights tailored to customer satisfaction goals.</p>       <p>This project was awarded 1st Runner Up at UE Caloocan's Engineering Research Colloquium.</p>
+    `,
   },
   {
     title: "Pro Group E-bike and Scooter",
     description:
-      "E-commerce website for Pro Group’s electric bike and scooter brand. Built with CMS-managed content, product catalog, and integrated payment via Xendit for smooth online transactions.",
+      "E-commerce website for Pro Group's electric bike and scooter brand. Built with CMS-managed content, product catalog, and integrated payment via Xendit for smooth online transactions.",
     image: progroup,
     techStack: ["Next JS", "TailwindCSS", "Wix Headless CMS", "Xendit"],
     features: [
@@ -49,6 +52,8 @@ export const projects: Project[] = [
       "Product highlights and promo banners",
     ],
     demo: "https://www.progroup.com.ph/",
+    overview: `       <p>This website was developed to help Pro Group promote and sell its range of electric bikes and scooters online.</p>       <p>Users can browse models, read product specs, and complete purchases directly through Xendit-integrated checkout.</p>
+    `,
   },
   {
     title: "TaskQuill",
@@ -65,6 +70,8 @@ export const projects: Project[] = [
     ],
     repo: "https://github.com/DeihlReyes/TaskQuill",
     demo: "https://taskquill.vercel.app",
+    overview: `       <p>TaskQuill is a productivity-focused application for individuals and teams looking to manage work efficiently.</p>       <p>It supports user authentication, project creation, task assignment, and real-time updates using modern web technologies.</p>
+    `,
   },
   {
     title: "OV Realty",
@@ -79,11 +86,13 @@ export const projects: Project[] = [
       "Clean layout for easy browsing",
     ],
     demo: "https://www.ovrealtycorp.com/",
+    overview: `       <p>This real estate platform showcases properties managed by OV Realty, complete with listings, photos, and inquiry forms.</p>       <p>Built to support easy client updates and lead capture through headless CMS features.</p>
+    `,
   },
   {
     title: "AP Creative Main",
     description:
-      "Corporate website for AP Creative, serving as the central hub for the company’s profile, service overview, and contact inquiries. Built for clarity, responsiveness, and content flexibility through a headless CMS.",
+      "Corporate website for AP Creative, serving as the central hub for the company's profile, service overview, and contact inquiries. Built for clarity, responsiveness, and content flexibility through a headless CMS.",
     image: apcreative,
     techStack: ["Next JS", "TailwindCSS", "Wix Headless CMS"],
     features: [
@@ -93,11 +102,13 @@ export const projects: Project[] = [
       "Responsive layout across devices",
     ],
     demo: "https://www.apcreativecorp.com/",
+    overview: `       <p>AP Creative's official site designed to represent the brand and services across digital and events verticals.</p>       <p>Offers flexible CMS for updates and integrates lead generation features via forms.</p>
+    `,
   },
   {
     title: "AP Creative Events",
     description:
-      "Portfolio-style site dedicated to the agency’s events and exhibitions team. Highlights event coverage, services, and past projects in a bold yet minimalist layout.",
+      "Portfolio-style site dedicated to the agency's events and exhibitions team. Highlights event coverage, services, and past projects in a bold yet minimalist layout.",
     image: apcreativeevents,
     techStack: ["Next JS", "TailwindCSS", "Wix Headless CMS"],
     features: [
@@ -107,6 +118,8 @@ export const projects: Project[] = [
       "Optimized for performance and mobile",
     ],
     demo: "https://events.apcreativecorp.com/",
+    overview: `       <p>This microsite highlights AP Creative's expertise in event management and execution.</p>       <p>It includes case studies, event media, and descriptive service breakdowns.</p>
+    `,
   },
   {
     title: "AP Creative Marketing",
@@ -121,6 +134,8 @@ export const projects: Project[] = [
       "Fully responsive design",
     ],
     demo: "https://marketing.apcreativecorp.com/",
+    overview: `       <p>This landing page promotes the digital marketing capabilities of AP Creative with a portfolio of past campaigns.</p>       <p>It allows dynamic updates and streamlined presentation of service offerings.</p>
+    `,
   },
   {
     title: "Filevert",
@@ -136,6 +151,8 @@ export const projects: Project[] = [
     ],
     repo: "https://github.com/DeihlReyes/filevert",
     demo: "https://filevert.vercel.app",
+    overview: `       <p>Filevert is a browser-based utility that lets users convert files quickly using FFMPEG on the backend.</p>       <p>Its minimalist interface makes the conversion process seamless and intuitive.</p>
+    `,
   },
   {
     title: "QuizWiz",
@@ -151,6 +168,8 @@ export const projects: Project[] = [
     ],
     repo: "https://github.com/DeihlReyes/next-quizwiz",
     demo: "https://quizwiz-vert.vercel.app/",
+    overview: `       <p>QuizWiz is an experimental education app that uses Google's Gemini AI to create adaptive quizzes.</p>       <p>It personalizes content based on topics selected by users and returns immediate learning feedback.</p>
+    `,
   },
   {
     title: "Google Developer Student Clubs - UE Caloocan Website",
@@ -166,5 +185,7 @@ export const projects: Project[] = [
     ],
     repo: "https://github.com/DeihlReyes/gdsc-uecal-website",
     demo: "https://gdsc-uec.vercel.app/",
+    overview: `       <p>This platform was created to centralize information about GDSC UE Caloocan's initiatives and resources.</p>       <p>It features event archives, speaker profiles, and tech community updates built with Astro JS.</p>
+    `,
   },
 ];
