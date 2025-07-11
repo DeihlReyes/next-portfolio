@@ -8,6 +8,7 @@ import apcreativemarketing from "@/assets/projects/apcreative-marketing.png";
 import apcreativeevents from "@/assets/projects/apcreative-events.png";
 import progroup from "@/assets/projects/progroup.png";
 import ovrealty from "@/assets/projects/ovrealty.png";
+import ridingBehaviorApp from "@/assets/projects/riding-behavior-app.jpg";
 import { StaticImageData } from "next/image";
 
 interface Project {
@@ -37,7 +38,11 @@ export const projects: Project[] = [
     ],
     repo: "https://github.com/DeihlReyes/satiscript",
     demo: "https://satiscript.vercel.app",
-    overview: `       <p>Satiscript is a smart AI-powered tool designed for call centers to improve agent communication through dynamic scripting.</p>       <p>It features real-time dashboards, performance tracking, and insights tailored to customer satisfaction goals.</p>       <p>This project was awarded 1st Runner Up at UE Caloocan's Engineering Research Colloquium.</p>
+    overview: `<p>Satiscript is a smart AI-powered tool designed for call centers to improve agent communication through dynamic scripting.</p>
+    </br>
+    <p>It features real-time dashboards, performance tracking, and insights tailored to customer satisfaction goals.</p>
+    </br>
+    <p>This project was awarded 1st Runner Up at UE Caloocan's Engineering Research Colloquium.</p>
     `,
   },
   {
@@ -55,7 +60,9 @@ export const projects: Project[] = [
     disclaimer:
       "This website was solely developed during my employment at AP Creative Corporation. All rights to the project belong to the company.",
     demo: "https://www.progroup.com.ph/",
-    overview: `       <p>This website was developed to help Pro Group promote and sell its range of electric bikes and scooters online.</p>       <p>Users can browse models, read product specs, and complete purchases directly through Xendit-integrated checkout.</p>
+    overview: `<p>This website was developed to help Pro Group promote and sell its range of electric bikes and scooters online.</p>
+    </br>
+    <p>Users can browse models, read product specs, and complete purchases directly through Xendit-integrated checkout.</p>
     `,
   },
   {
@@ -73,7 +80,39 @@ export const projects: Project[] = [
     ],
     repo: "https://github.com/DeihlReyes/TaskQuill",
     demo: "https://taskquill.vercel.app",
-    overview: `       <p>TaskQuill is a productivity-focused application for individuals and teams looking to manage work efficiently.</p>       <p>It supports user authentication, project creation, task assignment, and real-time updates using modern web technologies.</p>
+    overview: `<p>TaskQuill is a productivity-focused application for individuals and teams looking to manage work efficiently.</p>
+    </br>
+    <p>It supports user authentication, project creation, task assignment, and real-time updates using modern web technologies.</p>
+    `,
+  },
+  {
+    title: "Riding Behavior Monitoring App",
+    description:
+      "Real-time motorcycle monitoring system built on Raspberry Pi. Features LSTM-based riding behavior prediction and smart OBD-II diagnostics with alerts for battery and engine health.",
+    image: ridingBehaviorApp, // replace with your image variable
+    techStack: [
+      "Python",
+      "TensorFlow/Keras",
+      "HTML/CSS/JS",
+      "Raspberry Pi",
+      "MPU6050",
+      "OBD-II",
+    ],
+    features: [
+      "LSTM-based riding behavior prediction",
+      "Live stream of MPU6050 sensor data",
+      "Real-time OBD-II engine diagnostics",
+      "Smart alerts for battery and coolant health",
+      "Dashboard with behavior trends",
+      "Touchscreen-optimized UI",
+    ],
+    repo: "https://github.com/DeihlReyes/Vehicle-Monitoring", // update if available
+    overview: `
+      <p>This personal project monitors motorcycle diagnostics and riding behavior using real-time sensor data and machine learning.</p>
+      </br>
+      <p>I independently designed and developed the entire system from hardware integration and backend logic to training the LSTM model and building the frontend UI.</p>
+      </br>
+      <p>The app runs on a Raspberry Pi with a 7-inch touchscreen and combines MPU6050 motion data with OBD-II engine readings. It classifies riding patterns and triggers smart alerts for battery and coolant issues.</p>
     `,
   },
   {
@@ -91,7 +130,9 @@ export const projects: Project[] = [
     disclaimer:
       "This website was solely developed during my employment at AP Creative Corporation. All rights to the project belong to the company.",
     demo: "https://www.ovrealtycorp.com/",
-    overview: `       <p>This real estate platform showcases properties managed by OV Realty, complete with listings, photos, and inquiry forms.</p>       <p>Built to support easy client updates and lead capture through headless CMS features.</p>
+    overview: `<p>This real estate platform showcases properties managed by OV Realty, complete with listings, photos, and inquiry forms.</p>
+    </br>
+    <p>Built to support easy client updates and lead capture through headless CMS features.</p>
     `,
   },
   {
@@ -109,7 +150,9 @@ export const projects: Project[] = [
     disclaimer:
       "This website was solely developed during my employment at AP Creative Corporation. All rights to the project belong to the company.",
     demo: "https://www.apcreativecorp.com/",
-    overview: `       <p>AP Creative's official site designed to represent the brand and services across digital and events verticals.</p>       <p>Offers flexible CMS for updates and integrates lead generation features via forms.</p>
+    overview: `<p>AP Creative's official site designed to represent the brand and services across digital and events verticals.</p>
+    </br>
+    <p>Offers flexible CMS for updates and integrates lead generation features via forms.</p>
     `,
   },
   {
@@ -127,7 +170,9 @@ export const projects: Project[] = [
     disclaimer:
       "This website was solely developed during my employment at AP Creative Corporation. All rights to the project belong to the company.",
     demo: "https://events.apcreativecorp.com/",
-    overview: `       <p>This microsite highlights AP Creative's expertise in event management and execution.</p>       <p>It includes case studies, event media, and descriptive service breakdowns.</p>
+    overview: `<p>This microsite highlights AP Creative's expertise in event management and execution.</p>
+    </br>
+    <p>It includes case studies, event media, and descriptive service breakdowns.</p>
     `,
   },
   {
@@ -145,7 +190,9 @@ export const projects: Project[] = [
     disclaimer:
       "This website was solely developed during my employment at AP Creative Corporation. All rights to the project belong to the company.",
     demo: "https://marketing.apcreativecorp.com/",
-    overview: `       <p>This landing page promotes the digital marketing capabilities of AP Creative with a portfolio of past campaigns.</p>       <p>It allows dynamic updates and streamlined presentation of service offerings.</p>
+    overview: `<p>This landing page promotes the digital marketing capabilities of AP Creative with a portfolio of past campaigns.</p>
+    </br>
+    <p>It allows dynamic updates and streamlined presentation of service offerings.</p>
     `,
   },
   {
@@ -162,7 +209,9 @@ export const projects: Project[] = [
     ],
     repo: "https://github.com/DeihlReyes/filevert",
     demo: "https://filevert.vercel.app",
-    overview: `       <p>Filevert is a browser-based utility that lets users convert files quickly using FFMPEG on the backend.</p>       <p>Its minimalist interface makes the conversion process seamless and intuitive.</p>
+    overview: `<p>Filevert is a browser-based utility that lets users convert files quickly using FFMPEG on the backend.</p>       
+    </br>
+    <p>Its minimalist interface makes the conversion process seamless and intuitive.</p>
     `,
   },
   {
@@ -179,7 +228,9 @@ export const projects: Project[] = [
     ],
     repo: "https://github.com/DeihlReyes/next-quizwiz",
     demo: "https://quizwiz-vert.vercel.app/",
-    overview: `       <p>QuizWiz is an experimental education app that uses Google's Gemini AI to create adaptive quizzes.</p>       <p>It personalizes content based on topics selected by users and returns immediate learning feedback.</p>
+    overview: `<p>QuizWiz is an experimental education app that uses Google's Gemini AI to create adaptive quizzes.</p>       
+    </br>
+    <p>It personalizes content based on topics selected by users and returns immediate learning feedback.</p>
     `,
   },
   {
@@ -196,7 +247,9 @@ export const projects: Project[] = [
     ],
     repo: "https://github.com/DeihlReyes/gdsc-uecal-website",
     demo: "https://gdsc-uec.vercel.app/",
-    overview: `       <p>This platform was created to centralize information about GDSC UE Caloocan's initiatives and resources.</p>       <p>It features event archives, speaker profiles, and tech community updates built with Astro JS.</p>
+    overview: `<p>This platform was created to centralize information about GDSC UE Caloocan's initiatives and resources.</p>       
+    </br>
+    <p>It features event archives, speaker profiles, and tech community updates built with Astro JS.</p>
     `,
   },
 ];

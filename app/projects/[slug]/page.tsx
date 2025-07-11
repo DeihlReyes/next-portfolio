@@ -50,8 +50,8 @@ export default function ProjectPage({ params }: ProjectPageProps) {
       <div className="container">
         <div className="grid lg:grid-cols-2 gap-16 items-start py-20">
           {/* Project Image */}
-          <div className="space-y-8">
-            <div className="relative overflow-hidden rounded-2xl shadow-xl">
+          <div className="space-y-8 lg:top-28 lg:sticky">
+            <div className="overflow-hidden rounded-2xl shadow-xl relative">
               <Image
                 className="w-full object-cover"
                 src={project.image}
