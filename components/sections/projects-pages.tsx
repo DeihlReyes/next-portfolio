@@ -67,7 +67,7 @@ const ProjectsPage = () => {
             variants={itemVariants}
             className="flex justify-center pt-12"
           >
-            <Button asChild size="lg">
+            <Button asChild>
               <Link href="/projects">View All Projects</Link>
             </Button>
           </motion.div>
