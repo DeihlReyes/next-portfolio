@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, ExternalLink, Github } from "lucide-react";
+import { ArrowLeft, ExternalLink, Github, AlertTriangle } from "lucide-react";
 
 interface ProjectPageProps {
   params: {
@@ -133,6 +133,17 @@ export default function ProjectPage({ params }: ProjectPageProps) {
                 </h2>
                 <div className="space-y-4 text-body-small text-gray-600 leading-relaxed">
                   <div dangerouslySetInnerHTML={{ __html: project.overview }} />
+                </div>
+              </div>
+            )}
+
+            {/* Project Disclaimer */}
+            {project.disclaimer && (
+              <div className="space-y-4">
+                <div className="border-l-4 border-gray-300 pl-4">
+                  <p className="text-sm text-gray-600 italic">
+                    {project.disclaimer}
+                  </p>
                 </div>
               </div>
             )}

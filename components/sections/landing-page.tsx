@@ -57,31 +57,6 @@ const LandingPage = () => {
                 <Link href="/projects">View My Work</Link>
               </Button>
             </motion.div>
-            {/* Tech Stack
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.8 }}
-              className="pt-8"
-            >
-              <p className="text-caption text-gray-500 mb-4">
-                Technologies I work with:
-              </p>
-              <div className="flex flex-wrap gap-3">
-                {[
-                  "Next.js",
-                  "React",
-                  "TypeScript",
-                  "Node.js",
-                  "PostgreSQL",
-                  "Tailwind CSS",
-                ].map((tech, index) => (
-                  <Badge className="text-sm" key={tech}>
-                    {tech}
-                  </Badge>
-                ))}
-              </div>
-            </motion.div> */}
           </motion.div>
 
           {/* Image */}

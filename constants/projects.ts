@@ -17,6 +17,7 @@ interface Project {
   techStack: string[];
   features?: string[];
   overview?: string;
+  disclaimer?: string;
   repo?: string;
   demo?: string;
 }
@@ -51,6 +52,8 @@ export const projects: Project[] = [
       "Responsive and accessible UI",
       "Product highlights and promo banners",
     ],
+    disclaimer:
+      "This website was solely developed during my employment at AP Creative Corporation. All rights to the project belong to the company.",
     demo: "https://www.progroup.com.ph/",
     overview: `       <p>This website was developed to help Pro Group promote and sell its range of electric bikes and scooters online.</p>       <p>Users can browse models, read product specs, and complete purchases directly through Xendit-integrated checkout.</p>
     `,
@@ -85,6 +88,8 @@ export const projects: Project[] = [
       "Map-based property display",
       "Clean layout for easy browsing",
     ],
+    disclaimer:
+      "This website was solely developed during my employment at AP Creative Corporation. All rights to the project belong to the company.",
     demo: "https://www.ovrealtycorp.com/",
     overview: `       <p>This real estate platform showcases properties managed by OV Realty, complete with listings, photos, and inquiry forms.</p>       <p>Built to support easy client updates and lead capture through headless CMS features.</p>
     `,
@@ -101,6 +106,8 @@ export const projects: Project[] = [
       "Contact form integration",
       "Responsive layout across devices",
     ],
+    disclaimer:
+      "This website was solely developed during my employment at AP Creative Corporation. All rights to the project belong to the company.",
     demo: "https://www.apcreativecorp.com/",
     overview: `       <p>AP Creative's official site designed to represent the brand and services across digital and events verticals.</p>       <p>Offers flexible CMS for updates and integrates lead generation features via forms.</p>
     `,
@@ -117,6 +124,8 @@ export const projects: Project[] = [
       "CMS-based event management",
       "Optimized for performance and mobile",
     ],
+    disclaimer:
+      "This website was solely developed during my employment at AP Creative Corporation. All rights to the project belong to the company.",
     demo: "https://events.apcreativecorp.com/",
     overview: `       <p>This microsite highlights AP Creative's expertise in event management and execution.</p>       <p>It includes case studies, event media, and descriptive service breakdowns.</p>
     `,
@@ -133,6 +142,8 @@ export const projects: Project[] = [
       "Project highlight sections",
       "Fully responsive design",
     ],
+    disclaimer:
+      "This website was solely developed during my employment at AP Creative Corporation. All rights to the project belong to the company.",
     demo: "https://marketing.apcreativecorp.com/",
     overview: `       <p>This landing page promotes the digital marketing capabilities of AP Creative with a portfolio of past campaigns.</p>       <p>It allows dynamic updates and streamlined presentation of service offerings.</p>
     `,

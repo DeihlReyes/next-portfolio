@@ -1,7 +1,7 @@
 export const headerLinks = [
   {
     label: "Home",
-    route: "/#home",
+    route: "/",
   },
   {
     label: "Experience",
