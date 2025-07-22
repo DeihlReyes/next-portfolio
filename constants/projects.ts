@@ -45,26 +45,26 @@ export const projects: Project[] = [
     <p>This project was awarded 1st Runner Up at UE Caloocan's Engineering Research Colloquium.</p>
     `,
   },
-  {
-    title: "Pro Group E-bike and Scooter",
-    description:
-      "E-commerce website for Pro Group's electric bike and scooter brand. Built with CMS-managed content, product catalog, and integrated payment via Xendit for smooth online transactions.",
-    image: progroup,
-    techStack: ["Next JS", "TailwindCSS", "Wix Headless CMS", "Xendit"],
-    features: [
-      "Product catalog with CMS integration",
-      "Online checkout via Xendit",
-      "Responsive and accessible UI",
-      "Product highlights and promo banners",
-    ],
-    disclaimer:
-      "Developed this website as part of my role at AP Creative. All rights to content and branding belong to the client.",
-    demo: "https://www.progroup.com.ph/",
-    overview: `<p>This website was developed to help Pro Group promote and sell its range of electric bikes and scooters online.</p>
-    </br>
-    <p>Users can browse models, read product specs, and complete purchases directly through Xendit-integrated checkout.</p>
-    `,
-  },
+  // {
+  //   title: "Pro Group E-bike and Scooter",
+  //   description:
+  //     "E-commerce website for Pro Group's electric bike and scooter brand. Built with CMS-managed content, product catalog, and integrated payment via Xendit for smooth online transactions.",
+  //   image: progroup,
+  //   techStack: ["Next JS", "TailwindCSS", "Wix Headless CMS", "Xendit"],
+  //   features: [
+  //     "Product catalog with CMS integration",
+  //     "Online checkout via Xendit",
+  //     "Responsive and accessible UI",
+  //     "Product highlights and promo banners",
+  //   ],
+  //   disclaimer:
+  //     "Developed this website as part of my role at AP Creative. All rights to content and branding belong to the client.",
+  //   demo: "https://www.progroup.com.ph/",
+  //   overview: `<p>This website was developed to help Pro Group promote and sell its range of electric bikes and scooters online.</p>
+  //   </br>
+  //   <p>Users can browse models, read product specs, and complete purchases directly through Xendit-integrated checkout.</p>
+  //   `,
+  // },
   {
     title: "TaskQuill",
     description:
@@ -115,86 +115,86 @@ export const projects: Project[] = [
       <p>The app runs on a Raspberry Pi with a 7-inch touchscreen and combines MPU6050 motion data with OBD-II engine readings. It classifies riding patterns and triggers smart alerts for battery and coolant issues.</p>
     `,
   },
-  {
-    title: "OV Realty",
-    description:
-      "Real estate website built for OV Realty Corporation. Features modern design, dynamic property listings, and CMS-powered content management for marketing and updates.",
-    image: ovrealty,
-    techStack: ["Next JS", "TailwindCSS", "Wix Headless CMS"],
-    features: [
-      "Property listing and inquiry forms",
-      "CMS-driven content updates",
-      "Map-based property display",
-      "Clean layout for easy browsing",
-    ],
-    disclaimer:
-      "Developed this website as part of my role at AP Creative. All rights to content and branding belong to the client.",
-    demo: "https://www.ovrealtycorp.com/",
-    overview: `<p>This real estate platform showcases properties managed by OV Realty, complete with listings, photos, and inquiry forms.</p>
-    </br>
-    <p>Built to support easy client updates and lead capture through headless CMS features.</p>
-    `,
-  },
-  {
-    title: "AP Creative Main",
-    description:
-      "Corporate website for AP Creative, serving as the central hub for the company's profile, service overview, and contact inquiries. Built for clarity, responsiveness, and content flexibility through a headless CMS.",
-    image: apcreative,
-    techStack: ["Next JS", "TailwindCSS", "Wix Headless CMS"],
-    features: [
-      "Company profile and service overview",
-      "CMS-managed content updates",
-      "Contact form integration",
-      "Responsive layout across devices",
-    ],
-    disclaimer:
-      "Developed this website as part of my role at AP Creative. All rights to content and branding belong to the client.",
-    demo: "https://www.apcreativecorp.com/",
-    overview: `<p>AP Creative's official site designed to represent the brand and services across digital and events verticals.</p>
-    </br>
-    <p>Offers flexible CMS for updates and integrates lead generation features via forms.</p>
-    `,
-  },
-  {
-    title: "AP Creative Events",
-    description:
-      "Portfolio-style site dedicated to the agency's events and exhibitions team. Highlights event coverage, services, and past projects in a bold yet minimalist layout.",
-    image: apcreativeevents,
-    techStack: ["Next JS", "TailwindCSS", "Wix Headless CMS"],
-    features: [
-      "Visual showcase of event projects",
-      "Service and capability presentation",
-      "CMS-based event management",
-      "Optimized for performance and mobile",
-    ],
-    disclaimer:
-      "Developed this website as part of my role at AP Creative. All rights to content and branding belong to the client.",
-    demo: "https://events.apcreativecorp.com/",
-    overview: `<p>This microsite highlights AP Creative's expertise in event management and execution.</p>
-    </br>
-    <p>It includes case studies, event media, and descriptive service breakdowns.</p>
-    `,
-  },
-  {
-    title: "AP Creative Marketing",
-    description:
-      "Landing page for the marketing arm of AP Creative. Focused on showcasing digital services, brand work, and client strategies with seamless CMS integration for dynamic updates.",
-    image: apcreativemarketing,
-    techStack: ["Next JS", "TailwindCSS", "Wix Headless CMS"],
-    features: [
-      "Showcase of marketing campaigns",
-      "CMS-powered content management",
-      "Project highlight sections",
-      "Fully responsive design",
-    ],
-    disclaimer:
-      "Developed this website as part of my role at AP Creative. All rights to content and branding belong to the client.",
-    demo: "https://marketing.apcreativecorp.com/",
-    overview: `<p>This landing page promotes the digital marketing capabilities of AP Creative with a portfolio of past campaigns.</p>
-    </br>
-    <p>It allows dynamic updates and streamlined presentation of service offerings.</p>
-    `,
-  },
+  // {
+  //   title: "OV Realty",
+  //   description:
+  //     "Real estate website built for OV Realty Corporation. Features modern design, dynamic property listings, and CMS-powered content management for marketing and updates.",
+  //   image: ovrealty,
+  //   techStack: ["Next JS", "TailwindCSS", "Wix Headless CMS"],
+  //   features: [
+  //     "Property listing and inquiry forms",
+  //     "CMS-driven content updates",
+  //     "Map-based property display",
+  //     "Clean layout for easy browsing",
+  //   ],
+  //   disclaimer:
+  //     "Developed this website as part of my role at AP Creative. All rights to content and branding belong to the client.",
+  //   demo: "https://www.ovrealtycorp.com/",
+  //   overview: `<p>This real estate platform showcases properties managed by OV Realty, complete with listings, photos, and inquiry forms.</p>
+  //   </br>
+  //   <p>Built to support easy client updates and lead capture through headless CMS features.</p>
+  //   `,
+  // },
+  // {
+  //   title: "AP Creative Main",
+  //   description:
+  //     "Corporate website for AP Creative, serving as the central hub for the company's profile, service overview, and contact inquiries. Built for clarity, responsiveness, and content flexibility through a headless CMS.",
+  //   image: apcreative,
+  //   techStack: ["Next JS", "TailwindCSS", "Wix Headless CMS"],
+  //   features: [
+  //     "Company profile and service overview",
+  //     "CMS-managed content updates",
+  //     "Contact form integration",
+  //     "Responsive layout across devices",
+  //   ],
+  //   disclaimer:
+  //     "Developed this website as part of my role at AP Creative. All rights to content and branding belong to the client.",
+  //   demo: "https://www.apcreativecorp.com/",
+  //   overview: `<p>AP Creative's official site designed to represent the brand and services across digital and events verticals.</p>
+  //   </br>
+  //   <p>Offers flexible CMS for updates and integrates lead generation features via forms.</p>
+  //   `,
+  // },
+  // {
+  //   title: "AP Creative Events",
+  //   description:
+  //     "Portfolio-style site dedicated to the agency's events and exhibitions team. Highlights event coverage, services, and past projects in a bold yet minimalist layout.",
+  //   image: apcreativeevents,
+  //   techStack: ["Next JS", "TailwindCSS", "Wix Headless CMS"],
+  //   features: [
+  //     "Visual showcase of event projects",
+  //     "Service and capability presentation",
+  //     "CMS-based event management",
+  //     "Optimized for performance and mobile",
+  //   ],
+  //   disclaimer:
+  //     "Developed this website as part of my role at AP Creative. All rights to content and branding belong to the client.",
+  //   demo: "https://events.apcreativecorp.com/",
+  //   overview: `<p>This microsite highlights AP Creative's expertise in event management and execution.</p>
+  //   </br>
+  //   <p>It includes case studies, event media, and descriptive service breakdowns.</p>
+  //   `,
+  // },
+  // {
+  //   title: "AP Creative Marketing",
+  //   description:
+  //     "Landing page for the marketing arm of AP Creative. Focused on showcasing digital services, brand work, and client strategies with seamless CMS integration for dynamic updates.",
+  //   image: apcreativemarketing,
+  //   techStack: ["Next JS", "TailwindCSS", "Wix Headless CMS"],
+  //   features: [
+  //     "Showcase of marketing campaigns",
+  //     "CMS-powered content management",
+  //     "Project highlight sections",
+  //     "Fully responsive design",
+  //   ],
+  //   disclaimer:
+  //     "Developed this website as part of my role at AP Creative. All rights to content and branding belong to the client.",
+  //   demo: "https://marketing.apcreativecorp.com/",
+  //   overview: `<p>This landing page promotes the digital marketing capabilities of AP Creative with a portfolio of past campaigns.</p>
+  //   </br>
+  //   <p>It allows dynamic updates and streamlined presentation of service offerings.</p>
+  //   `,
+  // },
   {
     title: "Filevert",
     description:
