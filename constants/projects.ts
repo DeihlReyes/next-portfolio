@@ -58,7 +58,7 @@ export const projects: Project[] = [
       "Product highlights and promo banners",
     ],
     disclaimer:
-      "This website was solely developed during my employment at AP Creative Corporation. All rights to the project belong to the company.",
+      "Developed this website as part of my role at AP Creative. All rights to content and branding belong to the client.",
     demo: "https://www.progroup.com.ph/",
     overview: `<p>This website was developed to help Pro Group promote and sell its range of electric bikes and scooters online.</p>
     </br>
@@ -128,7 +128,7 @@ export const projects: Project[] = [
       "Clean layout for easy browsing",
     ],
     disclaimer:
-      "This website was solely developed during my employment at AP Creative Corporation. All rights to the project belong to the company.",
+      "Developed this website as part of my role at AP Creative. All rights to content and branding belong to the client.",
     demo: "https://www.ovrealtycorp.com/",
     overview: `<p>This real estate platform showcases properties managed by OV Realty, complete with listings, photos, and inquiry forms.</p>
     </br>
@@ -148,7 +148,7 @@ export const projects: Project[] = [
       "Responsive layout across devices",
     ],
     disclaimer:
-      "This website was solely developed during my employment at AP Creative Corporation. All rights to the project belong to the company.",
+      "Developed this website as part of my role at AP Creative. All rights to content and branding belong to the client.",
     demo: "https://www.apcreativecorp.com/",
     overview: `<p>AP Creative's official site designed to represent the brand and services across digital and events verticals.</p>
     </br>
@@ -168,7 +168,7 @@ export const projects: Project[] = [
       "Optimized for performance and mobile",
     ],
     disclaimer:
-      "This website was solely developed during my employment at AP Creative Corporation. All rights to the project belong to the company.",
+      "Developed this website as part of my role at AP Creative. All rights to content and branding belong to the client.",
     demo: "https://events.apcreativecorp.com/",
     overview: `<p>This microsite highlights AP Creative's expertise in event management and execution.</p>
     </br>
@@ -188,7 +188,7 @@ export const projects: Project[] = [
       "Fully responsive design",
     ],
     disclaimer:
-      "This website was solely developed during my employment at AP Creative Corporation. All rights to the project belong to the company.",
+      "Developed this website as part of my role at AP Creative. All rights to content and branding belong to the client.",
     demo: "https://marketing.apcreativecorp.com/",
     overview: `<p>This landing page promotes the digital marketing capabilities of AP Creative with a portfolio of past campaigns.</p>
     </br>
