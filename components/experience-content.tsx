@@ -150,7 +150,7 @@ export default function ExperienceContent() {
                       {/* Technologies */}
                       <div className="flex flex-wrap gap-2 mb-6">
                         {exp.technologies.map((tech, techIndex) => (
-                          <Badge key={techIndex} className="text-xs md:text-sm">
+                          <Badge key={techIndex} className="text-xs">
                             {tech}
                           </Badge>
                         ))}
