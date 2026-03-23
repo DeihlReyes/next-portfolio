@@ -11,7 +11,8 @@
       "WebFetch(domain:www.reactbits.dev)",
       "WebFetch(domain:github.com)",
       "WebFetch(domain:raw.githubusercontent.com)",
-      "WebFetch(domain:ai.google.dev)"
+      "WebFetch(domain:ai.google.dev)",
+      "Bash(curl:*)"
     ]
   }
 }

@@ -1,13 +1,13 @@
 "use client";
 
 import { motion } from "motion/react";
-import { experiences } from "@/constants/data/experience";
+import type { SanityExperience } from "@/sanity/lib/types";
 import DecryptedText from "@/components/bits/DecryptedText";
 import BlurText from "@/components/bits/BlurText";
 
 const ease = [0.16, 1, 0.3, 1] as [number, number, number, number];
 
-export default function ExperienceContent() {
+export default function ExperienceContent({ experiences }: { experiences: SanityExperience[] }) {
   return (
     <div
       className="py-24 md:py-32"

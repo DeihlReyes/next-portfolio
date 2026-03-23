@@ -4,13 +4,13 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
-import { projects, type Project } from "@/constants/data/projects";
+import type { SanityProject } from "@/sanity/lib/types";
 import { ArrowUpRight, Github } from "lucide-react";
 import SpotlightCard from "@/components/bits/SpotlightCard";
 import DecryptedText from "@/components/bits/DecryptedText";
 import BlurText from "@/components/bits/BlurText";
 
-type Category = Project["category"] | "all";
+type Category = SanityProject["category"] | "all";
 
 const cats: { label: string; value: Category }[] = [
   { label: "All", value: "all" },
@@ -22,7 +22,7 @@ const cats: { label: string; value: Category }[] = [
 
 const ease = [0.16, 1, 0.3, 1] as [number, number, number, number];
 
-export default function ProjectsContent() {
+export default function ProjectsContent({ projects }: { projects: SanityProject[] }) {
   const [active, setActive] = useState<Category>("all");
   const filtered =
     active === "all" ? projects : projects.filter((p) => p.category === active);

@@ -6,6 +6,7 @@ export const headerLinks = [
   { label: "Home", route: "/" },
   { label: "Experience", route: "/experience" },
   { label: "Projects", route: "/projects" },
+  { label: "Blog", route: "/blog" },
 ];
 
 export const portfolioDetails = `

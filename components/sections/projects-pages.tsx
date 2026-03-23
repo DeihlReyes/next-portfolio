@@ -3,7 +3,7 @@
 import { motion } from "motion/react";
 import Link from "next/link";
 import Image from "next/image";
-import { projects } from "@/constants/data/projects";
+import type { SanityProject } from "@/sanity/lib/types";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import DecryptedText from "@/components/bits/DecryptedText";
 import BlurText from "@/components/bits/BlurText";
@@ -20,11 +20,10 @@ const rv = {
   }),
 };
 
-const displayed = projects.filter((p) => p.featured).slice(0, 3).concat(
-  projects.filter((p) => !p.featured).slice(0, 3)
-);
-
-export default function ProjectsPage() {
+export default function ProjectsPage({ projects }: { projects: SanityProject[] }) {
+  const displayed = projects.filter((p) => p.featured).slice(0, 3).concat(
+    projects.filter((p) => !p.featured).slice(0, 3)
+  );
   return (
     <section id="projects">
       <div className="section-container section-padding space-y-14">
@@ -80,7 +79,7 @@ export default function ProjectsPage() {
 
         {/* Uniform grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {displayed.map((p, i) => (
+          {displayed.map((p: SanityProject, i: number) => (
             <motion.div
               key={p.slug}
               custom={0.05 + i * 0.06}

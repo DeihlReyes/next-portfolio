@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import ProjectsContent from "@/components/projects-content";
+import { getProjects } from "@/sanity/lib/queries";
 
 export const metadata: Metadata = {
   title: "Projects",
@@ -8,13 +9,14 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://www.deihlreyes.me/projects" },
 };
 
-export default function ProjectsPage() {
+export default async function ProjectsPage() {
+  const projects = await getProjects();
   return (
     <div
       className="py-24 md:py-32"
       style={{ background: "var(--bg)", minHeight: "100vh" }}
     >
-      <ProjectsContent />
+      <ProjectsContent projects={projects} />
     </div>
   );
 }

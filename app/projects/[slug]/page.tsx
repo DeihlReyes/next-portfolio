@@ -1,21 +1,22 @@
 import { notFound } from "next/navigation";
-import { projects } from "@/constants/data/projects";
 import Image from "next/image";
 import Link from "next/link";
 import { AlertTriangle, ArrowLeft, ExternalLink, Github } from "lucide-react";
 import type { Metadata } from "next";
+import { getProjectBySlug, getProjectSlugs } from "@/sanity/lib/queries";
 
 interface Props {
   params: Promise<{ slug: string }>;
 }
 
 export async function generateStaticParams() {
-  return projects.map((p) => ({ slug: p.slug }));
+  const slugs = await getProjectSlugs();
+  return slugs.map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const project = projects.find((p) => p.slug === slug);
+  const project = await getProjectBySlug(slug);
   if (!project) return {};
   return {
     title: project.title,
@@ -34,7 +35,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ProjectPage({ params }: Props) {
   const { slug } = await params;
-  const project = projects.find((p) => p.slug === slug);
+  const project = await getProjectBySlug(slug);
   if (!project) notFound();
 
   const schema = {
@@ -54,10 +55,7 @@ export default async function ProjectPage({ params }: Props) {
   return (
     <div
       className="py-24 md:py-32"
-      style={{
-        background: "var(--bg)",
-        minHeight: "100vh",
-      }}
+      style={{ background: "var(--bg)", minHeight: "100vh" }}
     >
       <script
         type="application/ld+json"
@@ -80,27 +78,28 @@ export default async function ProjectPage({ params }: Props) {
         </Link>
 
         {/* Hero image */}
-        <div
-          className="relative w-full overflow-hidden rounded-2xl aspect-video"
-          style={{ border: "1px solid var(--border)" }}
-        >
-          <Image
-            src={project.imagePath}
-            alt={project.imageAlt}
-            fill
-            className="object-cover"
-            quality={90}
-            priority
-          />
-          {/* Gradient overlay at bottom */}
+        {project.imagePath && (
           <div
-            className="absolute inset-0"
-            style={{
-              background:
-                "linear-gradient(to top, rgba(10,10,10,0.7) 0%, transparent 50%)",
-            }}
-          />
-        </div>
+            className="relative w-full overflow-hidden rounded-2xl aspect-video"
+            style={{ border: "1px solid var(--border)" }}
+          >
+            <Image
+              src={project.imagePath}
+              alt={project.imageAlt}
+              fill
+              className="object-cover"
+              quality={90}
+              priority
+            />
+            <div
+              className="absolute inset-0"
+              style={{
+                background:
+                  "linear-gradient(to top, rgba(10,10,10,0.7) 0%, transparent 50%)",
+              }}
+            />
+          </div>
+        )}
 
         {/* Title block */}
         <div className="space-y-4 max-w-3xl">
@@ -145,7 +144,6 @@ export default async function ProjectPage({ params }: Props) {
             {project.description}
           </p>
 
-          {/* Actions */}
           <div className="flex gap-3 flex-wrap pt-1">
             {project.demo && (
               <a
@@ -176,18 +174,15 @@ export default async function ProjectPage({ params }: Props) {
           </div>
         </div>
 
-        {/* Divider */}
         <div
           className="h-px"
           style={{
-            background:
-              "linear-gradient(90deg, var(--accent-border), transparent)",
+            background: "linear-gradient(90deg, var(--accent-border), transparent)",
           }}
         />
 
         {/* Details grid */}
         <div className="grid lg:grid-cols-3 gap-12 items-start">
-          {/* Tech stack — sidebar */}
           <div className="space-y-4 lg:sticky lg:top-28">
             <p className="text-label" style={{ color: "var(--text-tertiary)" }}>
               Technologies
@@ -201,15 +196,10 @@ export default async function ProjectPage({ params }: Props) {
             </div>
           </div>
 
-          {/* Main content */}
           <div className="lg:col-span-2 space-y-10">
-            {/* Overview */}
-            {project.longDescription.length > 0 && (
+            {project.longDescription?.length > 0 && (
               <section className="space-y-4">
-                <p
-                  className="text-label"
-                  style={{ color: "var(--text-tertiary)" }}
-                >
+                <p className="text-label" style={{ color: "var(--text-tertiary)" }}>
                   Overview
                 </p>
                 <div className="space-y-3">
@@ -226,13 +216,9 @@ export default async function ProjectPage({ params }: Props) {
               </section>
             )}
 
-            {/* Features */}
             {project.features && project.features.length > 0 && (
               <section className="space-y-4">
-                <p
-                  className="text-label"
-                  style={{ color: "var(--text-tertiary)" }}
-                >
+                <p className="text-label" style={{ color: "var(--text-tertiary)" }}>
                   Key Features
                 </p>
                 <ul className="space-y-3">
@@ -253,7 +239,6 @@ export default async function ProjectPage({ params }: Props) {
               </section>
             )}
 
-            {/* Disclaimer */}
             {project.disclaimer && (
               <div
                 className="flex items-start gap-3 p-4 rounded-xl text-sm"
