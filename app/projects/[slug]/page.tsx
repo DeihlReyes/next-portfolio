@@ -1,150 +1,270 @@
 import { notFound } from "next/navigation";
-import { projects } from "@/constants/projects";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
+import { projects } from "@/constants/data/projects";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, ExternalLink, Github, AlertTriangle } from "lucide-react";
+import { AlertTriangle, ArrowLeft, ExternalLink, Github } from "lucide-react";
+import type { Metadata } from "next";
 
-interface ProjectPageProps {
-  params: {
-    slug: string;
+interface Props {
+  params: Promise<{ slug: string }>;
+}
+
+export async function generateStaticParams() {
+  return projects.map((p) => ({ slug: p.slug }));
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+  const project = projects.find((p) => p.slug === slug);
+  if (!project) return {};
+  return {
+    title: project.title,
+    description: project.description,
+    alternates: {
+      canonical: `https://www.deihlreyes.me/projects/${project.slug}`,
+    },
+    openGraph: {
+      title: project.title,
+      description: project.description,
+      url: `https://www.deihlreyes.me/projects/${project.slug}`,
+      images: [{ url: project.imagePath, alt: project.imageAlt }],
+    },
   };
 }
 
-export default function ProjectPage({ params }: ProjectPageProps) {
-  // Find the project based on the slug
-  const project = projects.find(
-    (p) => p.title.toLowerCase().replace(/\s+/g, "-") === params.slug
-  );
+export default async function ProjectPage({ params }: Props) {
+  const { slug } = await params;
+  const project = projects.find((p) => p.slug === slug);
+  if (!project) notFound();
 
-  if (!project) {
-    notFound();
-  }
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: project.title,
+    description: project.description,
+    author: {
+      "@type": "Person",
+      name: "Deihl Reyes",
+      url: "https://www.deihlreyes.me",
+    },
+    ...(project.demo && { url: project.demo }),
+    applicationCategory: "WebApplication",
+  };
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Header */}
-      <div className="bg-gray-50 border-b py-12">
-        <div className="container py-8">
-          <Link
-            href="/#projects"
-            className="inline-flex items-center gap-2 text-sm text-gray-600 hover:text-gray-900 transition-colors mb-6"
-          >
-            <ArrowLeft size={20} />
-            Back to Projects
-          </Link>
+    <div
+      className="py-24 md:py-32"
+      style={{
+        background: "var(--bg)",
+        minHeight: "100vh",
+      }}
+    >
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
 
-          <div className="max-w-4xl">
-            <h1 className="text-section-title text-gray-900 mb-6">
-              {project.title}
-            </h1>
-            <p className="text-body text-gray-600 leading-relaxed max-w-3xl">
-              {project.description}
-            </p>
+      <div className="section-container space-y-12">
+        {/* Back */}
+        <Link
+          href="/projects"
+          className="inline-flex items-center gap-2 text-sm transition-colors group"
+          style={{ color: "var(--text-tertiary)" }}
+        >
+          <ArrowLeft
+            size={15}
+            className="group-hover:-translate-x-0.5 transition-transform"
+            style={{ color: "var(--accent)" }}
+          />
+          All Projects
+        </Link>
+
+        {/* Hero image */}
+        <div
+          className="relative w-full overflow-hidden rounded-2xl aspect-video"
+          style={{ border: "1px solid var(--border)" }}
+        >
+          <Image
+            src={project.imagePath}
+            alt={project.imageAlt}
+            fill
+            className="object-cover"
+            quality={90}
+            priority
+          />
+          {/* Gradient overlay at bottom */}
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(to top, rgba(10,10,10,0.7) 0%, transparent 50%)",
+            }}
+          />
+        </div>
+
+        {/* Title block */}
+        <div className="space-y-4 max-w-3xl">
+          <div className="flex flex-wrap items-center gap-2">
+            <span
+              className="px-2.5 py-1 rounded-full text-xs font-semibold font-mono capitalize"
+              style={{
+                background: "var(--accent-dim)",
+                color: "var(--accent)",
+                border: "1px solid var(--accent-border)",
+              }}
+            >
+              {project.category.replace("-", " ")}
+            </span>
+            <span
+              className="text-xs font-mono"
+              style={{ color: "var(--text-tertiary)" }}
+            >
+              {project.year}
+            </span>
+            {project.featured && (
+              <span
+                className="px-2.5 py-1 rounded-full text-xs font-semibold"
+                style={{ background: "var(--accent)", color: "#fff" }}
+              >
+                Featured
+              </span>
+            )}
+          </div>
+
+          <h1
+            className="text-display font-display"
+            style={{ color: "var(--text-primary)" }}
+          >
+            {project.title}
+          </h1>
+
+          <p
+            className="text-base leading-relaxed"
+            style={{ color: "var(--text-secondary)" }}
+          >
+            {project.description}
+          </p>
+
+          {/* Actions */}
+          <div className="flex gap-3 flex-wrap pt-1">
+            {project.demo && (
+              <a
+                href={project.demo}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold transition-all duration-200"
+                style={{ background: "var(--accent)", color: "#fff" }}
+              >
+                <ExternalLink size={14} /> Live Demo
+              </a>
+            )}
+            {project.repo && (
+              <a
+                href={project.repo}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-medium transition-all duration-200"
+                style={{
+                  background: "var(--bg-elevated)",
+                  color: "var(--text-secondary)",
+                  border: "1px solid var(--border)",
+                }}
+              >
+                <Github size={14} /> Source Code
+              </a>
+            )}
           </div>
         </div>
-      </div>
 
-      {/* Project Content */}
-      <div className="container">
-        <div className="grid lg:grid-cols-2 gap-16 items-start py-20">
-          {/* Project Image */}
-          <div className="space-y-8 lg:top-28 lg:sticky">
-            <div className="overflow-hidden rounded-2xl shadow-xl relative">
-              <Image
-                className="w-full object-cover"
-                src={project.image}
-                alt={`${project.title} screenshot`}
-                quality={90}
-              />
-            </div>
+        {/* Divider */}
+        <div
+          className="h-px"
+          style={{
+            background:
+              "linear-gradient(90deg, var(--accent-border), transparent)",
+          }}
+        />
 
-            {/* Action Buttons */}
-            <div className="flex gap-4">
-              {project.demo && (
-                <Link
-                  href={project.demo}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Button className="flex items-center gap-2 group">
-                    <span>View Live</span>
-                    <ExternalLink
-                      size={16}
-                      className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
-                    />
-                  </Button>
-                </Link>
-              )}
-              {project.repo && (
-                <Link
-                  href={project.repo}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Button variant="outline" className="flex items-center gap-2">
-                    <span>View Code</span>
-                    <Github size={16} />
-                  </Button>
-                </Link>
-              )}
+        {/* Details grid */}
+        <div className="grid lg:grid-cols-3 gap-12 items-start">
+          {/* Tech stack — sidebar */}
+          <div className="space-y-4 lg:sticky lg:top-28">
+            <p className="text-label" style={{ color: "var(--text-tertiary)" }}>
+              Technologies
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {project.techStack.map((t) => (
+                <span key={t} className="tech-badge">
+                  {t}
+                </span>
+              ))}
             </div>
           </div>
 
-          {/* Project Details */}
-          <div className="space-y-8">
-            {/* Tech Stack */}
-            <div className="space-y-4">
-              <h2 className="text-xl font-semibold text-gray-900">
-                Technologies Used
-              </h2>
-              <div className="flex flex-wrap gap-3">
-                {project.techStack.map((tech, index) => (
-                  <Badge key={index} className="text-xs">
-                    {tech}
-                  </Badge>
-                ))}
-              </div>
-            </div>
+          {/* Main content */}
+          <div className="lg:col-span-2 space-y-10">
+            {/* Overview */}
+            {project.longDescription.length > 0 && (
+              <section className="space-y-4">
+                <p
+                  className="text-label"
+                  style={{ color: "var(--text-tertiary)" }}
+                >
+                  Overview
+                </p>
+                <div className="space-y-3">
+                  {project.longDescription.map((para, i) => (
+                    <p
+                      key={i}
+                      className="text-sm leading-relaxed"
+                      style={{ color: "var(--text-secondary)" }}
+                    >
+                      {para}
+                    </p>
+                  ))}
+                </div>
+              </section>
+            )}
 
-            {/* Project Features */}
+            {/* Features */}
             {project.features && project.features.length > 0 && (
-              <div className="space-y-4">
-                <h2 className="text-xl font-semibold text-gray-900">
+              <section className="space-y-4">
+                <p
+                  className="text-label"
+                  style={{ color: "var(--text-tertiary)" }}
+                >
                   Key Features
-                </h2>
-                <ul className="space-y-3 text-body-small text-gray-600">
-                  {project.features.map((feature, index) => (
-                    <li key={index} className="flex items-start gap-3">
-                      <div className="w-2 h-2 bg-primary rounded-full mt-3 flex-shrink-0"></div>
-                      <span>{feature}</span>
+                </p>
+                <ul className="space-y-3">
+                  {project.features.map((f, i) => (
+                    <li
+                      key={i}
+                      className="flex items-start gap-3 text-sm leading-relaxed"
+                      style={{ color: "var(--text-secondary)" }}
+                    >
+                      <span
+                        className="w-1 h-1 rounded-full mt-2 flex-shrink-0"
+                        style={{ background: "var(--accent)" }}
+                      />
+                      {f}
                     </li>
                   ))}
                 </ul>
-              </div>
+              </section>
             )}
 
-            {/* Project Overview */}
-            {project.overview && (
-              <div className="space-y-4">
-                <h2 className="text-xl font-semibold text-gray-900">
-                  Project Overview
-                </h2>
-                <div className="space-y-4 text-body-small text-gray-600 leading-relaxed">
-                  <div dangerouslySetInnerHTML={{ __html: project.overview }} />
-                </div>
-              </div>
-            )}
-
-            {/* Project Disclaimer */}
+            {/* Disclaimer */}
             {project.disclaimer && (
-              <div className="space-y-4">
-                <div className="border-l-4 border-gray-300 pl-4">
-                  <p className="text-sm text-gray-600 italic">
-                    {project.disclaimer}
-                  </p>
-                </div>
+              <div
+                className="flex items-start gap-3 p-4 rounded-xl text-sm"
+                style={{
+                  background: "rgba(245,158,11,0.06)",
+                  border: "1px solid rgba(245,158,11,0.2)",
+                  color: "rgba(245,158,11,0.9)",
+                }}
+              >
+                <AlertTriangle size={15} className="flex-shrink-0 mt-0.5" />
+                <p className="leading-relaxed">{project.disclaimer}</p>
               </div>
             )}
           </div>

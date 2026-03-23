@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Syne } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import { Toaster } from "@/components/ui/toaster";
 import FloatingChatbot from "@/components/chatbot";
-import Head from "next/head";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -13,35 +12,66 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
+const syne = Syne({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-syne",
+  weight: ["400", "600", "700", "800"],
+});
+
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Deihl Reyes",
+  url: "https://www.deihlreyes.me/",
+  image: "https://www.deihlreyes.me/assets/deihl_logo.png",
+  sameAs: [
+    "https://www.linkedin.com/in/deihl-arron-reyes/",
+    "https://github.com/DeihlReyes",
+    "https://www.facebook.com/deihl.reyes08/",
+  ],
+  jobTitle: "Full Stack Developer",
+  worksFor: { "@type": "Organization", name: "AP Creative Corporation" },
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Quezon City",
+    addressCountry: "PH",
+  },
+};
+
 export const metadata: Metadata = {
-  title: "Deihl Reyes | Full Stack Developer",
+  metadataBase: new URL("https://www.deihlreyes.me"),
+  title: {
+    default: "Deihl Reyes | Full Stack Developer",
+    template: "%s | Deihl Reyes",
+  },
   description:
-    "Explore the portfolio of Deihl Reyes, a full stack developer based in the Philippines. Discover projects, skills, and contact information.",
+    "Portfolio of Deihl Reyes — full stack developer from the Philippines building scalable web applications with Next.js, PostgreSQL, and Tailwind CSS.",
   keywords: [
     "Deihl Reyes",
     "Full Stack Developer",
     "Portfolio",
-    "Web Development",
+    "Next.js",
     "Philippines",
   ],
-  authors: {
-    name: "Deihl Reyes",
-  },
+  authors: { name: "Deihl Reyes" },
+  creator: "Deihl Reyes",
+  alternates: { canonical: "https://www.deihlreyes.me" },
   openGraph: {
     type: "website",
     url: "https://www.deihlreyes.me",
     title: "Deihl Reyes | Full Stack Developer",
-    description:
-      "Discover the innovative web solutions crafted by Deihl Reyes, a passionate full stack developer from the Philippines.",
-    images: [
-      {
-        url: "/public/assets/deihl_logo.png",
-        width: 1200,
-        height: 630,
-        alt: "Deihl Reyes - Full Stack Developer Portfolio",
-      },
-    ],
+    description: "Full stack developer building scalable web applications.",
+    siteName: "Deihl Reyes Portfolio",
+    images: [{ url: "/assets/deihl_logo.png", width: 1200, height: 630 }],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Deihl Reyes | Full Stack Developer",
+    description: "Full stack developer from the Philippines.",
+    images: ["/assets/deihl_logo.png"],
+  },
+  robots: { index: true, follow: true },
 };
 
 export default function RootLayout({
@@ -50,40 +80,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html className="scroll-smooth" lang="en">
-      <Head>
-        <link rel="canonical" href="https://www.deihlreyes.me/" />
+    <html lang="en" className="scroll-smooth">
+      <head>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Person",
-              name: "Deihl Reyes",
-              url: "https://www.deihlreyes.me/",
-              image: "https://www.deihlreyes.me/assets/deihl_logo.png",
-              sameAs: [
-                "https://www.linkedin.com/in/deihl-arron-reyes/",
-                "https://github.com/DeihlReyes",
-                "https://www.facebook.com/deihl.reyes08/",
-              ],
-              jobTitle: "Full Stack Developer",
-              worksFor: {
-                "@type": "Organization",
-                name: "AP Creative Corporation",
-              },
-              address: {
-                "@type": "PostalAddress",
-                addressLocality: "Quezon City",
-                addressCountry: "PH",
-              },
-            }),
-          }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
         />
-      </Head>
-      <body className={`${inter.variable} scroll-smooth bg-white`}>
+      </head>
+      <body className={`${inter.variable} ${syne.variable}`}>
         <Navbar />
-        <main className="min-h-screen scroll-smooth">{children}</main>
+        <main>{children}</main>
         <FloatingChatbot />
         <Footer />
         <Toaster />

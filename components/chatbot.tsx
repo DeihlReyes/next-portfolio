@@ -1,10 +1,8 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { MessageCircle, X, Send, BotIcon } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { motion, AnimatePresence } from "motion/react";
+import { MessageCircle, X, Send, Sparkles, Loader2 } from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import ReactMarkdown from "react-markdown";
 import { markdownComponents } from "./markdown-components";
@@ -17,8 +15,10 @@ interface Message {
 const INITIAL_GREETING: Message = {
   role: "assistant",
   content:
-    "Hello! I'm Deihl's portfolio assistant. Need details on his skills, projects, or experience? Feel free to ask, and I'll help you explore his work as a Full Stack Developer!",
+    "Hi! I'm Deihl's AI assistant. Ask me anything about his skills, projects, or experience.",
 };
+
+const ease = [0.16, 1, 0.3, 1];
 
 export default function FloatingChatbot() {
   const [isOpen, setIsOpen] = useState(false);
@@ -30,20 +30,13 @@ export default function FloatingChatbot() {
 
   useEffect(() => {
     const savedMessages = localStorage.getItem("chatMessages");
-    const savedHasOpenedBefore = localStorage.getItem("hasOpenedBefore");
-
-    if (savedMessages) {
-      setMessages(JSON.parse(savedMessages));
-    }
-    if (savedHasOpenedBefore) {
-      setHasOpenedBefore(JSON.parse(savedHasOpenedBefore));
-    }
+    const savedHasOpened = localStorage.getItem("hasOpenedBefore");
+    if (savedMessages) setMessages(JSON.parse(savedMessages));
+    if (savedHasOpened) setHasOpenedBefore(JSON.parse(savedHasOpened));
   }, []);
 
   useEffect(() => {
-    if (messagesEndRef.current) {
-      messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
-    }
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
   useEffect(() => {
@@ -51,7 +44,7 @@ export default function FloatingChatbot() {
     localStorage.setItem("hasOpenedBefore", JSON.stringify(hasOpenedBefore));
   }, [messages, hasOpenedBefore]);
 
-  const handleOpenChat = () => {
+  const handleOpen = () => {
     setIsOpen(true);
     if (!hasOpenedBefore) {
       setMessages([INITIAL_GREETING]);
@@ -59,41 +52,33 @@ export default function FloatingChatbot() {
     }
   };
 
-  const handleSendMessage = async () => {
-    if (input.trim() === "") return;
-
-    const userMessage: Message = { role: "user", content: input };
-    setMessages((prev) => [...prev, userMessage]);
+  const handleSend = async () => {
+    if (!input.trim()) return;
+    const userMsg: Message = { role: "user", content: input };
+    setMessages((prev) => [...prev, userMsg]);
     setInput("");
     setIsLoading(true);
 
     try {
-      const response = await fetch("/api/chat", {
+      const res = await fetch("/api/chat", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: input }),
       });
-
-      if (!response.ok) {
-        throw new Error("Failed to get response");
-      }
-
-      const data = await response.json();
-      const assistantMessage: Message = {
-        role: "assistant",
-        content: data.response,
-      };
-      console.log(data.response);
-      setMessages((prev) => [...prev, assistantMessage]);
-    } catch (error) {
-      console.error("Error:", error);
-      const errorMessage: Message = {
-        role: "assistant",
-        content: "Sorry, I encountered an error. Please try again later.",
-      };
-      setMessages((prev) => [...prev, errorMessage]);
+      if (!res.ok) throw new Error();
+      const data = await res.json();
+      setMessages((prev) => [
+        ...prev,
+        { role: "assistant", content: data.response },
+      ]);
+    } catch {
+      setMessages((prev) => [
+        ...prev,
+        {
+          role: "assistant",
+          content: "Sorry, something went wrong. Please try again.",
+        },
+      ]);
     } finally {
       setIsLoading(false);
     }
@@ -101,89 +86,243 @@ export default function FloatingChatbot() {
 
   return (
     <>
-      <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        exit={{ opacity: 0, scale: 0.8 }}
-        className="fixed bottom-8 right-5 md:right-8 z-50"
-      >
-        <Button
-          onClick={isOpen ? () => setIsOpen(false) : handleOpenChat}
-          className="rounded-full w-14 h-14 bg-primary hover:bg-primary/70 text-[#FFF9F9] shadow-lg"
-        >
-          {isOpen ? <X size={24} /> : <MessageCircle size={24} />}
-        </Button>
-      </motion.div>
-
+      {/* Chat panel */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 20 }}
-            className="fixed bottom-24 right-5 md:right-8 w-[22rem] md:w-[27rem] h-[32rem] bg-white rounded-lg shadow-2xl overflow-hidden z-40"
+            initial={{ opacity: 0, y: 16, scale: 0.97 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 16, scale: 0.97 }}
+            transition={{ duration: 0.25 }}
+            className="fixed bottom-24 right-5 md:right-8 w-[22rem] md:w-[26rem] z-40 flex flex-col overflow-hidden"
+            style={{
+              height: "30rem",
+              background: "rgba(10,10,20,0.95)",
+              border: "1px solid rgba(59,130,246,0.2)",
+              borderRadius: "1.25rem",
+              backdropFilter: "blur(20px)",
+              boxShadow:
+                "0 24px 64px -12px rgba(0,0,0,0.6), 0 0 0 1px rgba(59,130,246,0.1)",
+            }}
           >
-            <div className="flex flex-col h-full">
-              <div className="bg-primary text-white p-4 flex justify-between items-center">
-                <h3 className="text-lg flex items-center">
-                  <BotIcon size={40} className="mr-2" />
-                  Ask my bot!
-                </h3>
-              </div>
-              <ScrollArea className="flex-grow p-4 bg-muted w-full">
-                {messages.map((message, index) => (
-                  <div
-                    key={index}
-                    className={`mb-4 ${
-                      message.role === "user" ? "text-right" : "text-left"
-                    }`}
+            {/* Header */}
+            <div
+              className="flex items-center justify-between px-5 py-4 flex-shrink-0"
+              style={{ borderBottom: "1px solid rgba(255,255,255,0.06)" }}
+            >
+              <div className="flex items-center gap-2.5">
+                <div
+                  className="w-8 h-8 rounded-lg flex items-center justify-center"
+                  style={{
+                    background: "var(--accent-dim)",
+                    border: "1px solid var(--accent-border)",
+                  }}
+                >
+                  <Sparkles size={14} style={{ color: "var(--accent)" }} />
+                </div>
+                <div>
+                  <p
+                    className="text-sm font-semibold"
+                    style={{ color: "var(--text-primary)" }}
                   >
-                    <span
-                      className={`inline-block p-3 text-xs rounded-lg shadow-sm max-w-sm md:max-w-xl ${
-                        message.role === "user" ? "bg-primary/20" : "bg-white"
-                      }`}
+                    Portfolio Assistant
+                  </p>
+                  <p
+                    className="text-sm"
+                    style={{ color: "var(--text-tertiary)" }}
+                  >
+                    Ask me anything
+                  </p>
+                </div>
+              </div>
+              <button
+                onClick={() => setIsOpen(false)}
+                className="p-1.5 rounded-lg transition-colors"
+                style={{ color: "var(--text-tertiary)" }}
+                onMouseEnter={(e) =>
+                  ((e.currentTarget as HTMLButtonElement).style.color =
+                    "var(--text-primary)")
+                }
+                onMouseLeave={(e) =>
+                  ((e.currentTarget as HTMLButtonElement).style.color =
+                    "var(--text-tertiary)")
+                }
+              >
+                <X size={16} />
+              </button>
+            </div>
+
+            {/* Messages */}
+            <ScrollArea className="flex-1 px-4 py-3">
+              <div className="space-y-3">
+                {messages.map((msg, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.25 }}
+                    className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
+                  >
+                    <div
+                      className="max-w-[85%] px-3.5 py-2.5 rounded-2xl"
+                      style={
+                        msg.role === "user"
+                          ? {
+                              background: "var(--accent)",
+                              color: "#fff",
+                              borderBottomRightRadius: "4px",
+                            }
+                          : {
+                              background: "rgba(255,255,255,0.06)",
+                              border: "1px solid rgba(255,255,255,0.08)",
+                              color: "var(--text-secondary)",
+                              borderBottomLeftRadius: "4px",
+                            }
+                      }
                     >
-                      <ReactMarkdown
-                        className="tracking-wide"
-                        components={markdownComponents as any}
-                      >
-                        {message.content}
-                      </ReactMarkdown>
-                    </span>
-                  </div>
+                      {msg.role === "user" ? (
+                        <p className="text-sm leading-relaxed">{msg.content}</p>
+                      ) : (
+                        <ReactMarkdown
+                          className="tracking-wide"
+                          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                          components={markdownComponents as any}
+                        >
+                          {msg.content}
+                        </ReactMarkdown>
+                      )}
+                    </div>
+                  </motion.div>
                 ))}
+
                 {isLoading && (
-                  <div className="text-center text-caption mt-5 text-gray-500 animate-pulse">
-                    Thinking...
+                  <div className="flex justify-start">
+                    <div
+                      className="px-3.5 py-2.5 rounded-2xl rounded-bl-sm flex items-center gap-2"
+                      style={{
+                        background: "rgba(255,255,255,0.06)",
+                        border: "1px solid rgba(255,255,255,0.08)",
+                      }}
+                    >
+                      <Loader2
+                        size={12}
+                        className="animate-spin"
+                        style={{ color: "var(--accent)" }}
+                      />
+                      <span
+                        className="text-sm"
+                        style={{ color: "var(--text-tertiary)" }}
+                      >
+                        Thinking...
+                      </span>
+                    </div>
                   </div>
                 )}
                 <div ref={messagesEndRef} />
-              </ScrollArea>
-              <div className="p-4 bg-white border-t">
-                <form
-                  onSubmit={(e) => {
-                    e.preventDefault();
-                    handleSendMessage();
-                  }}
-                  className="flex items-center"
-                >
-                  <Input
-                    type="text"
-                    placeholder="Type your message..."
-                    value={input}
-                    onChange={(e) => setInput(e.target.value)}
-                    className="flex-grow mr-2"
-                    disabled={isLoading}
-                  />
-                  <Button type="submit" disabled={isLoading}>
-                    <Send size={18} />
-                  </Button>
-                </form>
               </div>
+            </ScrollArea>
+
+            {/* Input */}
+            <div
+              className="px-4 py-3 flex-shrink-0"
+              style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}
+            >
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  handleSend();
+                }}
+                className="flex items-center gap-2"
+              >
+                <input
+                  type="text"
+                  placeholder="Ask something..."
+                  value={input}
+                  onChange={(e) => setInput(e.target.value)}
+                  disabled={isLoading}
+                  className="flex-1 text-sm px-3.5 py-2.5 rounded-xl outline-none transition-all duration-200 disabled:opacity-50"
+                  style={{
+                    background: "rgba(255,255,255,0.05)",
+                    border: "1px solid rgba(255,255,255,0.08)",
+                    color: "var(--text-primary)",
+                  }}
+                  onFocus={(e) =>
+                    (e.currentTarget.style.borderColor = "rgba(59,130,246,0.4)")
+                  }
+                  onBlur={(e) =>
+                    (e.currentTarget.style.borderColor =
+                      "rgba(255,255,255,0.08)")
+                  }
+                />
+                <button
+                  type="submit"
+                  disabled={isLoading || !input.trim()}
+                  className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 transition-all duration-200 disabled:opacity-40"
+                  style={{ background: "var(--accent)", color: "#fff" }}
+                  onMouseEnter={(e) => {
+                    if (!isLoading && input.trim())
+                      (e.currentTarget as HTMLButtonElement).style.background =
+                        "#2563eb";
+                  }}
+                  onMouseLeave={(e) =>
+                    ((e.currentTarget as HTMLButtonElement).style.background =
+                      "var(--accent)")
+                  }
+                >
+                  <Send size={14} />
+                </button>
+              </form>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* FAB */}
+      <motion.button
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ delay: 1, duration: 0.4 }}
+        whileHover={{ scale: 1.08 }}
+        whileTap={{ scale: 0.95 }}
+        onClick={isOpen ? () => setIsOpen(false) : handleOpen}
+        className="fixed bottom-8 right-5 md:right-8 z-50 w-13 h-13 rounded-2xl flex items-center justify-center transition-all duration-200"
+        style={{
+          width: "3.25rem",
+          height: "3.25rem",
+          background: isOpen ? "var(--bg-elevated)" : "var(--accent)",
+          border: isOpen
+            ? "1px solid var(--border)"
+            : "1px solid rgba(59,130,246,0.4)",
+          color: "#fff",
+          boxShadow: isOpen
+            ? "0 4px 16px rgba(0,0,0,0.3)"
+            : "0 4px 24px rgba(59,130,246,0.4)",
+        }}
+      >
+        <AnimatePresence mode="wait">
+          {isOpen ? (
+            <motion.span
+              key="close"
+              initial={{ opacity: 0, rotate: -90 }}
+              animate={{ opacity: 1, rotate: 0 }}
+              exit={{ opacity: 0, rotate: 90 }}
+              transition={{ duration: 0.15 }}
+            >
+              <X size={18} />
+            </motion.span>
+          ) : (
+            <motion.span
+              key="open"
+              initial={{ opacity: 0, rotate: 90 }}
+              animate={{ opacity: 1, rotate: 0 }}
+              exit={{ opacity: 0, rotate: -90 }}
+              transition={{ duration: 0.15 }}
+            >
+              <MessageCircle size={18} />
+            </motion.span>
+          )}
+        </AnimatePresence>
+      </motion.button>
     </>
   );
 }

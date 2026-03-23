@@ -1,165 +1,291 @@
 "use client";
 
-import Link from "next/link";
+import { motion } from "motion/react";
 import Image from "next/image";
-import { motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
-import facebook from "@/assets/logos/facebook.svg";
-import linkedin from "@/assets/logos/linkedin.svg";
-import github from "@/assets/logos/GitHub.svg";
-import about1 from "@/assets/about1.png";
-import about2 from "@/assets/about2.png";
+import Link from "next/link";
+import { Github, Linkedin, Facebook } from "lucide-react";
+import DecryptedText from "@/components/bits/DecryptedText";
+import BlurText from "@/components/bits/BlurText";
 
-const AboutPage = () => {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
+const ease = [0.16, 1, 0.3, 1] as [number, number, number, number];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
-  };
+const skills = [
+  "Next.js",
+  "React",
+  "TypeScript",
+  "Node.js",
+  "PostgreSQL",
+  "Prisma",
+  "Tailwind CSS",
+  "Python",
+  "Flutter",
+  "Firebase",
+  "Vercel",
+  "Git",
+];
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-      },
-    },
-  };
+const rv = {
+  hidden: { opacity: 0, y: 20 },
+  visible: (d = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, delay: d, ease },
+  }),
+};
 
+export default function AboutPage() {
   return (
-    <section id="about" className="section-padding bg-white">
-      <div className="container">
-        <motion.div
-          ref={ref}
-          initial="hidden"
-          animate={inView ? "visible" : "hidden"}
-          variants={containerVariants}
-          className="grid lg:grid-cols-2 gap-20 items-center"
-        >
-          {/* Content */}
-          <motion.div variants={itemVariants} className="space-y-8">
-            <div className="space-y-6">
-              <p className="text-label text-gray-500">About Me</p>
-              <h2 className="text-section-title text-gray-900">
-                Creating meaningful digital experiences
-              </h2>
-            </div>
-
-            <div className="space-y-6 text-gray-600 leading-relaxed text-body-small">
-              <p>
-                I’m Deihl Arron Reyes, a full stack web developer based in the
-                Philippines. I specialize in building clean and scalable web
-                applications using tools like Next.js, PostgreSQL, Prisma, and
-                Tailwind CSS. My work spans internal systems, client websites,
-                and e-commerce platforms, where I handle everything from
-                frontend design to backend development and deployment.
-              </p>
-              <p>
-                I enjoy solving real problems through thoughtful and
-                maintainable code. Whether working independently or within a
-                team, I focus on creating solutions that are efficient,
-                user-friendly, and aligned with business goals.
-              </p>
-            </div>
-
-            {/* Social Links */}
+    <section
+      id="about"
+      style={{ background: "var(--bg)", borderTop: "1px solid var(--border)" }}
+    >
+      <div className="section-container section-padding">
+        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+          {/* Left: content */}
+          <div className="space-y-10">
+            {/* Section label */}
             <motion.div
-              variants={itemVariants}
-              className="flex items-center space-x-4 pt-4"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-80px" }}
+              variants={rv}
             >
-              <p className="text-caption text-gray-500 font-medium">
-                Connect with me:
+              <p className="text-label mb-3" style={{ color: "var(--accent)" }}>
+                <DecryptedText
+                  text="About Me"
+                  animateOn="view"
+                  sequential
+                  speed={40}
+                  className="text-label"
+                  encryptedClassName="text-label opacity-30"
+                />
               </p>
-              <div className="flex space-x-3">
-                <Link
-                  className="p-3 rounded-full bg-primary hover:bg-primary/60 transition-colors"
-                  href="https://www.linkedin.com/in/deihl-arron-reyes/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="LinkedIn"
-                >
-                  <Image className="w-5 h-5" src={linkedin} alt="LinkedIn" />
-                </Link>
-                <Link
-                  className="p-3 rounded-full bg-primary hover:bg-primary/60 transition-colors"
-                  href="https://github.com/DeihlReyes"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="GitHub"
-                >
-                  <Image className="w-5 h-5" src={github} alt="GitHub" />
-                </Link>
-                <Link
-                  className="p-3 rounded-full bg-primary hover:bg-primary/60 transition-colors"
-                  href="https://www.facebook.com/deihl.reyes08/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Facebook"
-                >
-                  <Image className="w-5 h-5" src={facebook} alt="Facebook" />
-                </Link>
+              <BlurText
+                text="A bit about me"
+                as="h2"
+                className="text-display font-display"
+                animateBy="words"
+                delay={80}
+                direction="top"
+                stepDuration={0.35}
+              />
+              <p
+                className="mt-3 text-sm"
+                style={{ color: "var(--text-secondary)" }}
+              >
+                I write code, solve problems, and occasionally drink too much
+                coffee.
+              </p>
+            </motion.div>
+
+            <motion.div
+              custom={0.08}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-80px" }}
+              variants={rv}
+              className="space-y-4 text-base leading-relaxed"
+              style={{ color: "var(--text-secondary)" }}
+            >
+              <p>
+                I&apos;m Deihl Arron Reyes, a full stack web developer based in
+                Quezon City, Philippines. I specialize in building clean,
+                scalable web applications using Next.js, PostgreSQL, Prisma, and
+                Tailwind CSS.
+              </p>
+              <p>
+                My work spans internal systems, client websites, and e-commerce
+                platforms — handling everything from UI design to backend
+                development and deployment. I care about writing code
+                that&apos;s maintainable, fast, and actually useful.
+              </p>
+            </motion.div>
+
+            {/* Skills */}
+            <motion.div
+              custom={0.14}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-80px" }}
+              variants={rv}
+              className="space-y-4"
+            >
+              <p
+                className="text-label"
+                style={{ color: "var(--text-tertiary)" }}
+              >
+                Tech stack
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {skills.map((s, i) => (
+                  <motion.span
+                    key={s}
+                    initial={{ opacity: 0, scale: 0.85, y: 8 }}
+                    whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{
+                      delay: 0.15 + i * 0.045,
+                      duration: 0.35,
+                      ease,
+                    }}
+                    className="tech-badge cursor-default"
+                  >
+                    {s}
+                  </motion.span>
+                ))}
               </div>
             </motion.div>
-          </motion.div>
 
-          {/* Images */}
+            {/* Social */}
+            <motion.div
+              custom={0.2}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-80px" }}
+              variants={rv}
+              className="flex items-center gap-3 pt-2"
+            >
+              <span
+                className="text-label"
+                style={{ color: "var(--text-tertiary)" }}
+              >
+                Connect
+              </span>
+              <div className="flex gap-2">
+                {[
+                  {
+                    href: "https://www.linkedin.com/in/deihl-arron-reyes/",
+                    Icon: Linkedin,
+                    label: "LinkedIn",
+                  },
+                  {
+                    href: "https://github.com/DeihlReyes",
+                    Icon: Github,
+                    label: "GitHub",
+                  },
+                  {
+                    href: "https://www.facebook.com/deihl.reyes08/",
+                    Icon: Facebook,
+                    label: "Facebook",
+                  },
+                ].map(({ href, Icon, label }) => (
+                  <Link
+                    key={label}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={label}
+                    className="p-2 rounded-lg transition-all duration-200"
+                    style={{
+                      border: "1px solid var(--border)",
+                      color: "var(--text-tertiary)",
+                    }}
+                    onMouseEnter={(e) => {
+                      const el = e.currentTarget as HTMLAnchorElement;
+                      el.style.borderColor = "var(--accent-border)";
+                      el.style.color = "var(--accent)";
+                      el.style.background = "var(--accent-dim)";
+                    }}
+                    onMouseLeave={(e) => {
+                      const el = e.currentTarget as HTMLAnchorElement;
+                      el.style.borderColor = "var(--border)";
+                      el.style.color = "var(--text-tertiary)";
+                      el.style.background = "transparent";
+                    }}
+                  >
+                    <Icon size={15} />
+                  </Link>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Right: images */}
           <motion.div
-            variants={itemVariants}
-            className="relative flex justify-center lg:justify-end"
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.7, ease }}
+            className="relative h-[500px] hidden lg:block"
           >
-            <div className="relative w-full max-w-[500px] h-[400px] sm:h-[500px] lg:h-[600px]">
-              {/* Main Image - Bottom Layer */}
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-                transition={{ duration: 0.8, ease: "easeOut" }}
-                className="absolute bottom-0 left-0 w-56 h-64 sm:w-64 sm:h-72 lg:w-80 lg:h-96"
-              >
-                <div className="relative w-full h-full">
-                  <Image
-                    quality={90}
-                    className="w-full h-full object-cover rounded-2xl shadow-xl"
-                    src={about2}
-                    alt="Deihl Reyes - Developer"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-2xl"></div>
-                </div>
-              </motion.div>
-
-              {/* Overlapping Image - Top Layer */}
-              <motion.div
-                initial={{ opacity: 0, y: -30 }}
-                animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: -30 }}
-                transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-                className="absolute top-0 right-0 w-56 h-64 sm:w-64 sm:h-72 lg:w-80 lg:h-96"
-              >
-                <div className="relative w-full h-full">
-                  <Image
-                    quality={90}
-                    className="w-full h-full object-cover rounded-2xl shadow-xl"
-                    src={about1}
-                    alt="Deihl Reyes - Working"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-2xl"></div>
-                </div>
-              </motion.div>
+            {/* Image 1 — top right */}
+            <div
+              className="absolute top-0 right-0 w-64 h-80 rounded-2xl overflow-hidden group"
+              style={{ border: "1px solid var(--border)" }}
+            >
+              <Image
+                src="/assets/about1.png"
+                alt="Deihl working"
+                fill
+                className="object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+                quality={90}
+              />
+              <div
+                className="absolute inset-0"
+                style={{
+                  background:
+                    "linear-gradient(to top, rgba(10,10,10,0.6), transparent 60%)",
+                }}
+              />
             </div>
+
+            {/* Image 2 — bottom left */}
+            <div
+              className="absolute bottom-0 left-0 w-56 h-72 rounded-2xl overflow-hidden group"
+              style={{ border: "1px solid var(--border)" }}
+            >
+              <Image
+                src="/assets/about2.png"
+                alt="Deihl developer"
+                fill
+                className="object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+                quality={90}
+              />
+              <div
+                className="absolute inset-0"
+                style={{
+                  background:
+                    "linear-gradient(to top, rgba(10,10,10,0.6), transparent 60%)",
+                }}
+              />
+            </div>
+
+            {/* Experience badge */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.85 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3, duration: 0.5, ease }}
+              className="absolute top-1/2 left-1/3 -translate-x-1/2 -translate-y-1/2 px-5 py-4 rounded-xl text-center z-10"
+              style={{
+                background: "rgba(10,10,20,0.9)",
+                border: "1px solid rgba(59,130,246,0.3)",
+                backdropFilter: "blur(12px)",
+                boxShadow: "0 0 32px rgba(59,130,246,0.15)",
+              }}
+            >
+              <p
+                className="text-2xl font-bold font-display"
+                style={{ color: "var(--text-primary)" }}
+              >
+                1yr+
+              </p>
+              <p
+                className="text-xs mt-0.5"
+                style={{ color: "var(--text-secondary)" }}
+              >
+                work experience
+              </p>
+            </motion.div>
+
+            {/* Accent glow */}
+            <div
+              className="absolute bottom-12 right-16 w-32 h-32 rounded-full blur-3xl pointer-events-none"
+              style={{ background: "rgba(59,130,246,0.12)" }}
+            />
           </motion.div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
-};
-
-export default AboutPage;
+}

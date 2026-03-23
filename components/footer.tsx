@@ -1,144 +1,188 @@
-import React from "react";
-import logo from "@/assets/logo.png";
-import Image from "next/image";
-import facebook from "@/assets/logos/facebook.svg";
-import linkedin from "@/assets/logos/linkedin.svg";
-import github from "@/assets/logos/GitHub.svg";
+"use client";
+
 import Link from "next/link";
+import { Github, Linkedin, Facebook, Mail } from "lucide-react";
+import { motion } from "motion/react";
+import DecryptedText from "@/components/bits/DecryptedText";
+import { headerLinks } from "@/constants";
+import Image from "next/image";
+import logo from "@/assets/logo-portfolio.png";
+
+const socials = [
+  { href: "https://github.com/DeihlReyes", icon: Github, label: "GitHub" },
+  {
+    href: "https://www.linkedin.com/in/deihl-arron-reyes/",
+    icon: Linkedin,
+    label: "LinkedIn",
+  },
+  {
+    href: "https://www.facebook.com/deihl.reyes08/",
+    icon: Facebook,
+    label: "Facebook",
+  },
+  { href: "mailto:reyes.deihlarron@gmail.com", icon: Mail, label: "Email" },
+];
 
 const Footer = () => {
   return (
-    <footer className="bg-white border-t border-gray-200 py-16">
-      <div className="container">
-        {/* Main Footer Content */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 items-start">
-          {/* Brand Section */}
-          <div className="md:col-span-2 space-y-6">
-            <Link href="/" className="flex items-center space-x-3">
-              <Image
-                className="h-8 w-auto"
-                src={logo}
-                alt="Deihl Reyes Logo"
-                width={32}
-                height={32}
-              />
-              <span className="text-xl font-semibold text-gray-900">
+    <footer
+      style={{ background: "var(--bg)", borderTop: "1px solid var(--border)" }}
+    >
+      <div className="section-container py-12 md:py-16">
+        <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_auto] gap-12 md:gap-16">
+          {/* Brand column */}
+          <div className="space-y-5 max-w-xs">
+            <Link href="/" className="flex items-center gap-2.5 group w-fit">
+              <motion.span
+                whileHover={{ scale: 1.08 }}
+                transition={{ duration: 0.15 }}
+                className="w-8 h-8 rounded-lg flex items-center justify-center text-xs font-bold"
+                style={{
+                  background: "var(--accent)",
+                  color: "#fff",
+                  fontFamily: "var(--font-syne)",
+                }}
+              >
+                <Image src={logo} alt="Logo" width={20} height={20} />
+              </motion.span>
+              <span
+                className="text-sm font-semibold tracking-tight"
+                style={{
+                  color: "var(--text-primary)",
+                  fontFamily: "var(--font-syne)",
+                }}
+              >
                 Deihl Reyes
               </span>
             </Link>
-            <p className="text-body-small text-gray-600 leading-relaxed max-w-md">
-              Full Stack Developer passionate about creating meaningful digital
-              experiences and building innovative web applications.
+            <p
+              className="text-xs leading-relaxed"
+              style={{ color: "var(--text-tertiary)" }}
+            >
+              Full stack developer building scalable web applications with a
+              focus on clean UI and solid engineering.
             </p>
-
-            {/* Social Links */}
-            <div className="flex space-x-4">
-              <Link
-                className="p-3 rounded-full bg-primary hover:bg-primary/60 transition-colors"
-                href="https://www.linkedin.com/in/deihl-arron-reyes/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="LinkedIn"
-              >
-                <Image className="w-5 h-5" src={linkedin} alt="LinkedIn" />
-              </Link>
-              <Link
-                className="p-3 rounded-full bg-primary hover:bg-primary/60 transition-colors"
-                href="https://github.com/DeihlReyes"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="GitHub"
-              >
-                <Image className="w-5 h-5" src={github} alt="GitHub" />
-              </Link>
-              <Link
-                className="p-3 rounded-full bg-primary hover:bg-primary/60 transition-colors"
-                href="https://www.facebook.com/deihl.reyes08/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Facebook"
-              >
-                <Image className="w-5 h-5" src={facebook} alt="Facebook" />
-              </Link>
+            <div className="flex items-center gap-1">
+              {socials.map(({ href, icon: Icon, label }) => (
+                <Link
+                  key={label}
+                  href={href}
+                  target={href.startsWith("http") ? "_blank" : undefined}
+                  rel={
+                    href.startsWith("http") ? "noopener noreferrer" : undefined
+                  }
+                  aria-label={label}
+                  className="p-2 rounded-lg transition-all duration-200"
+                  style={{ color: "var(--text-tertiary)" }}
+                  onMouseEnter={(e) => {
+                    (e.currentTarget as HTMLAnchorElement).style.color =
+                      "var(--accent)";
+                    (e.currentTarget as HTMLAnchorElement).style.background =
+                      "var(--accent-dim)";
+                  }}
+                  onMouseLeave={(e) => {
+                    (e.currentTarget as HTMLAnchorElement).style.color =
+                      "var(--text-tertiary)";
+                    (e.currentTarget as HTMLAnchorElement).style.background =
+                      "transparent";
+                  }}
+                >
+                  <Icon size={15} />
+                </Link>
+              ))}
             </div>
           </div>
 
-          {/* Quick Links */}
-          <div className="space-y-6">
-            <h3 className="text-xl font-semibold text-gray-900">Quick Links</h3>
-            <ul className="space-y-4">
-              <li>
+          {/* Navigation column */}
+          <div className="space-y-4">
+            <p
+              className="text-xs font-semibold uppercase tracking-widest"
+              style={{ color: "var(--text-tertiary)" }}
+            >
+              Navigation
+            </p>
+            <nav className="flex flex-col gap-2">
+              {headerLinks.map((link) => (
                 <Link
-                  href="#about"
-                  className="text-body-small text-gray-600 hover:text-gray-900 transition-colors"
+                  key={link.route}
+                  href={link.route}
+                  className="text-sm transition-colors duration-200 w-fit"
+                  style={{ color: "var(--text-secondary)" }}
+                  onMouseEnter={(e) =>
+                    ((e.currentTarget as HTMLAnchorElement).style.color =
+                      "var(--text-primary)")
+                  }
+                  onMouseLeave={(e) =>
+                    ((e.currentTarget as HTMLAnchorElement).style.color =
+                      "var(--text-secondary)")
+                  }
                 >
-                  About
+                  {link.label}
                 </Link>
-              </li>
-              <li>
-                <Link
-                  href="#experience"
-                  className="text-body-small text-gray-600 hover:text-gray-900 transition-colors"
-                >
-                  Experience
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#projects"
-                  className="text-body-small text-gray-600 hover:text-gray-900 transition-colors"
-                >
-                  Projects
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/contact"
-                  className="text-body-small text-gray-600 hover:text-gray-900 transition-colors"
-                >
-                  Contact
-                </Link>
-              </li>
-            </ul>
+              ))}
+            </nav>
           </div>
 
-          {/* Contact Info */}
-          <div className="space-y-6">
-            <h3 className="text-xl font-semibold text-gray-900">
-              Get in Touch
-            </h3>
-            <div className="space-y-4">
-              <div>
-                <p className="text-caption text-gray-500 font-medium">Email</p>
-                <p className="text-body-small text-gray-600">
-                  reyes.deihlarron@gmail.com
-                </p>
-              </div>
-              <div>
-                <p className="text-caption text-gray-500 font-medium">Phone</p>
-                <p className="text-body-small text-gray-600">
-                  +63 917 115 8829
-                </p>
-              </div>
-              <div>
-                <p className="text-caption text-gray-500 font-medium">
-                  Location
-                </p>
-                <p className="text-body-small text-gray-600">
-                  Quezon City, Philippines
-                </p>
-              </div>
+          {/* Contact column */}
+          <div className="space-y-4">
+            <p
+              className="text-xs font-semibold uppercase tracking-widest"
+              style={{ color: "var(--text-tertiary)" }}
+            >
+              Contact
+            </p>
+            <div className="flex flex-col gap-2">
+              <a
+                href="mailto:reyes.deihlarron@gmail.com"
+                className="text-sm transition-colors duration-200 w-fit"
+                style={{ color: "var(--text-secondary)" }}
+                onMouseEnter={(e) =>
+                  ((e.currentTarget as HTMLAnchorElement).style.color =
+                    "var(--accent)")
+                }
+                onMouseLeave={(e) =>
+                  ((e.currentTarget as HTMLAnchorElement).style.color =
+                    "var(--text-secondary)")
+                }
+              >
+                reyes.deihlarron@gmail.com
+              </a>
+              <p className="text-sm" style={{ color: "var(--text-tertiary)" }}>
+                Quezon City, Philippines
+              </p>
+              <Link
+                href="/contact"
+                className="mt-2 inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-semibold transition-all duration-200 w-fit"
+                style={{
+                  background: "var(--accent-dim)",
+                  color: "var(--accent)",
+                  border: "1px solid var(--accent-border)",
+                }}
+                onMouseEnter={(e) => {
+                  (e.currentTarget as HTMLAnchorElement).style.background =
+                    "rgba(59,130,246,0.18)";
+                }}
+                onMouseLeave={(e) => {
+                  (e.currentTarget as HTMLAnchorElement).style.background =
+                    "var(--accent-dim)";
+                }}
+              >
+                Get in touch
+              </Link>
             </div>
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="border-t border-gray-200 mt-12 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p className="text-caption text-gray-500">
-            © 2024 Deihl Reyes. All rights reserved.
+        {/* Bottom bar */}
+        <div
+          className="mt-12 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 mb-10 sm:mb-0"
+          style={{ borderTop: "1px solid var(--border)" }}
+        >
+          <p className="text-xs" style={{ color: "var(--text-tertiary)" }}>
+            © 2025 Deihl Reyes. All rights reserved.
           </p>
-          <p className="text-caption text-gray-500">
-            Built with Next.js and Tailwind CSS
+          <p className="text-xs" style={{ color: "var(--text-tertiary)" }}>
+            Built with Next.js & Tailwind CSS
           </p>
         </div>
       </div>

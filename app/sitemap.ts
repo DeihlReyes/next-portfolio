@@ -1,50 +1,41 @@
 import { MetadataRoute } from "next";
-import { getPosts } from "@/lib/posts";
-import { projects } from "@/constants/projects";
+import { projects } from "@/constants/data/projects";
 
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = "https://deihlreyes.me";
+const baseUrl = "https://www.deihlreyes.me";
 
-  // const posts = await getPosts();
-
-  // const blogEntries = posts.map((post) => ({
-  //   url: `${baseUrl}/blog/${post.slug}`,
-  //   lastModified: new Date(post.date),
-  // }));
-
+export default function sitemap(): MetadataRoute.Sitemap {
   const projectEntries = projects.map((project) => ({
-    url: `${baseUrl}/projects/${project.title
-      .toLowerCase()
-      .replace(/\s+/g, "-")}`,
+    url: `${baseUrl}/projects/${project.slug}`,
     lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
   }));
 
   return [
     {
-      url: `${baseUrl}`,
+      url: baseUrl,
       lastModified: new Date(),
-    },
-    {
-      url: `${baseUrl}/about`,
-      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 1.0,
     },
     {
       url: `${baseUrl}/experience`,
       lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.8,
     },
     {
       url: `${baseUrl}/projects`,
       lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.9,
     },
     {
       url: `${baseUrl}/contact`,
       lastModified: new Date(),
+      changeFrequency: "yearly",
+      priority: 0.6,
     },
-    {
-      url: `${baseUrl}/blog`,
-      lastModified: new Date(),
-    },
-    // ...blogEntries,
     ...projectEntries,
   ];
 }

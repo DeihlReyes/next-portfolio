@@ -1,16 +1,11 @@
+// Re-exports for backward compatibility (chatbot uses portfolioDetails)
+export { projects } from "./data/projects";
+export { experiences } from "./data/experience";
+
 export const headerLinks = [
-  {
-    label: "Home",
-    route: "/",
-  },
-  {
-    label: "Experience",
-    route: "/experience",
-  },
-  {
-    label: "Projects",
-    route: "/projects",
-  },
+  { label: "Home", route: "/" },
+  { label: "Experience", route: "/experience" },
+  { label: "Projects", route: "/projects" },
 ];
 
 export const portfolioDetails = `

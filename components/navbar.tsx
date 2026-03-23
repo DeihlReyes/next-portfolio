@@ -1,44 +1,159 @@
-import Image from "next/image";
-import { Button } from "./ui/button";
-import logo from "@/assets/logo.png";
-import MobileNav from "./mobile-nav";
-import NavItems from "./nav-items";
+"use client";
+
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
+import { headerLinks } from "@/constants";
+import MobileNav from "./mobile-nav";
+import { motion } from "motion/react";
+import Image from "next/image";
+import logo from "@/assets/logo-portfolio.png";
 
 const Navbar = () => {
+  const [scrolled, setScrolled] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const pathname = usePathname();
+
+  useEffect(() => {
+    const fn = () => {
+      setScrolled(window.scrollY > 16);
+      const total =
+        document.documentElement.scrollHeight -
+        document.documentElement.clientHeight;
+      setScrollProgress(total > 0 ? (window.scrollY / total) * 100 : 0);
+    };
+    window.addEventListener("scroll", fn, { passive: true });
+    return () => window.removeEventListener("scroll", fn);
+  }, []);
+
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60">
-      <nav className="container flex h-16 sm:h-20 items-center justify-between">
-        <Link className="flex items-center space-x-3" href="/">
-          <Image
-            className="h-6 sm:h-8 w-auto"
-            src={logo}
-            alt="Deihl Reyes Logo"
-            width={32}
-            height={32}
-          />
-          <span className="hidden sm:block text-lg sm:text-xl font-bold text-gray-900">
+    <header
+      className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+      style={{
+        background: scrolled ? "rgba(2,8,23,0.9)" : "transparent",
+        borderBottom: scrolled
+          ? "1px solid rgba(255,255,255,0.06)"
+          : "1px solid transparent",
+        backdropFilter: scrolled ? "blur(16px)" : "none",
+        WebkitBackdropFilter: scrolled ? "blur(16px)" : "none",
+      }}
+    >
+      {/* Scroll progress */}
+      <div
+        className="absolute bottom-0 left-0 h-[1px] transition-all duration-100"
+        style={{
+          width: `${scrollProgress}%`,
+          background: "linear-gradient(90deg, var(--accent), #0ea5e9)",
+          opacity: scrollProgress > 1 ? 1 : 0,
+        }}
+      />
+
+      <nav className="section-container flex h-16 items-center justify-between">
+        {/* Logo */}
+        <Link href="/" className="flex items-center gap-2.5 group">
+          <motion.span
+            whileHover={{ scale: 1.08 }}
+            transition={{ duration: 0.15 }}
+            className="w-8 h-8 rounded-lg flex items-center justify-center text-xs font-bold"
+            style={{
+              background: "var(--accent)",
+              color: "#fff",
+              fontFamily: "var(--font-syne)",
+            }}
+          >
+            <Image src={logo} alt="Logo" width={20} height={20} />
+          </motion.span>
+          <span
+            className="text-sm font-semibold tracking-tight hidden sm:block"
+            style={{
+              color: "var(--text-primary)",
+              fontFamily: "var(--font-syne)",
+            }}
+          >
             Deihl Reyes
           </span>
         </Link>
 
-        {/* Desktop Navigation */}
-        <div className="hidden lg:flex items-center space-x-8">
-          <ul className="flex items-center space-x-8">
-            <NavItems />
-          </ul>
-          <Link href="/contact">
-            <Button className="rounded-full">Get in touch</Button>
+        {/* Desktop nav — pill container */}
+        <ul
+          className="hidden lg:flex items-center gap-1 px-2 py-1.5 rounded-xl"
+          style={{
+            background: scrolled ? "rgba(255,255,255,0.04)" : "transparent",
+            border: scrolled
+              ? "1px solid rgba(255,255,255,0.07)"
+              : "1px solid transparent",
+            transition: "all 0.3s ease",
+          }}
+        >
+          {headerLinks.map((link) => {
+            const isActive = pathname === link.route;
+            return (
+              <li key={link.route} className="relative">
+                <Link
+                  href={link.route}
+                  className="relative px-4 py-1.5 rounded-lg text-sm font-medium transition-colors duration-200 block"
+                  style={{
+                    color: isActive
+                      ? "var(--text-primary)"
+                      : "var(--text-secondary)",
+                  }}
+                  onMouseEnter={(e) => {
+                    if (!isActive)
+                      (e.currentTarget as HTMLAnchorElement).style.color =
+                        "var(--text-primary)";
+                  }}
+                  onMouseLeave={(e) => {
+                    if (!isActive)
+                      (e.currentTarget as HTMLAnchorElement).style.color =
+                        "var(--text-secondary)";
+                  }}
+                >
+                  {isActive && (
+                    <motion.span
+                      layoutId="nav-pill"
+                      className="absolute inset-0 rounded-lg"
+                      style={{
+                        background: "rgba(59,130,246,0.1)",
+                        border: "1px solid rgba(59,130,246,0.2)",
+                      }}
+                      transition={{
+                        type: "spring",
+                        bounce: 0.2,
+                        duration: 0.4,
+                      }}
+                    />
+                  )}
+                  <span className="relative z-10">{link.label}</span>
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+
+        {/* CTA */}
+        <div className="hidden lg:block">
+          <Link
+            href="/contact"
+            className="px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200"
+            style={{
+              border: "1px solid var(--accent-border)",
+              color: "var(--accent)",
+              background: "var(--accent-dim)",
+            }}
+            onMouseEnter={(e) => {
+              (e.currentTarget as HTMLAnchorElement).style.background =
+                "rgba(59,130,246,0.18)";
+            }}
+            onMouseLeave={(e) => {
+              (e.currentTarget as HTMLAnchorElement).style.background =
+                "var(--accent-dim)";
+            }}
+          >
+            Get in touch
           </Link>
         </div>
 
-        {/* Mobile Navigation */}
-        <div className="flex lg:hidden items-center space-x-4">
-          <Link href="/contact">
-            <Button size="sm">Get in touch</Button>
-          </Link>
-          <MobileNav />
-        </div>
+        <MobileNav />
       </nav>
     </header>
   );

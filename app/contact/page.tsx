@@ -1,62 +1,25 @@
-import { Metadata } from "next";
-import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
+import type { Metadata } from "next";
 import ContactForm from "@/components/contact-form";
 
 export const metadata: Metadata = {
-  title: "Contact - Deihl Reyes | Full Stack Developer",
+  title: "Contact",
   description:
-    "Get in touch with Deihl Reyes for your next web development project. Contact me for collaborations, inquiries, or just to say hello.",
-  keywords: [
-    "contact",
-    "web developer",
-    "full stack developer",
-    "hire developer",
-    "Philippines",
-  ],
-  openGraph: {
-    title: "Contact - Deihl Reyes | Full Stack Developer",
-    description:
-      "Get in touch with Deihl Reyes for your next web development project. Contact me for collaborations, inquiries, or just to say hello.",
-    url: "https://deihlreyes.me/contact",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Contact - Deihl Reyes | Full Stack Developer",
-    description:
-      "Get in touch with Deihl Reyes for your next web development project.",
-  },
+    "Get in touch with Deihl Reyes — available for freelance projects and opportunities.",
+  alternates: { canonical: "https://www.deihlreyes.me/contact" },
 };
 
 export default function ContactPage() {
   return (
-    <div className="min-h-screen bg-white">
-      {/* Header */}
-      <div className="bg-gray-50 border-b py-8 sm:py-12">
-        <div className="container py-6 sm:py-8">
-          <Link
-            href="/"
-            className="inline-flex items-center gap-2 text-sm text-gray-600 hover:text-gray-900 transition-colors mb-6"
-          >
-            <ArrowLeft size={20} />
-            Back to Home
-          </Link>
-
-          <div className="max-w-4xl">
-            <h1 className="text-section-title text-gray-900 mb-6">
-              Get In Touch
-            </h1>
-            <p className="text-body text-gray-600 leading-relaxed max-w-3xl">
-              Ready to start your next project? I&apos;d love to hear about your
-              ideas and help bring them to life.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      {/* Contact Content */}
-      <div className="container">
+    <div className="py-24 md:py-32">
+      {/* Subtle radial glow at top */}
+      <div
+        className="absolute top-0 left-0 right-0 h-[40rem] pointer-events-none -z-0"
+        style={{
+          background:
+            "radial-gradient(ellipse 70% 40% at 50% -5%, rgba(59,130,246,0.1), transparent)",
+        }}
+      />
+      <div className="section-container relative z-10">
         <ContactForm />
       </div>
     </div>
