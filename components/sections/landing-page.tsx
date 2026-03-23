@@ -107,10 +107,12 @@ const LandingPage = () => {
             className="text-base leading-relaxed max-w-xl"
             style={{ color: "var(--text-secondary)" }}
           >
-            A full stack developer based in the Philippines, specializing in{" "}
+            A full stack developer based in the Philippines with 1.5+ years of
+            professional experience, specializing in{" "}
             <span style={{ color: "var(--text-primary)" }}>Next.js</span> and
-            scalable web applications. I build internal systems, client
-            platforms, and everything in between — from UI to deployment.
+            enterprise web applications. I architect internal systems, ship
+            client platforms, and own the full stack — from UI design to
+            production deployment.
           </motion.p>
 
           {/* CTAs */}

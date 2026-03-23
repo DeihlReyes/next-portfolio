@@ -73,8 +73,8 @@ export default function AboutPage() {
                 className="mt-3 text-sm"
                 style={{ color: "var(--text-secondary)" }}
               >
-                I write code, solve problems, and occasionally drink too much
-                coffee.
+                I build enterprise systems, ship real products, and occasionally
+                drink too much coffee.
               </p>
             </motion.div>
 
@@ -89,15 +89,17 @@ export default function AboutPage() {
             >
               <p>
                 I&apos;m Deihl Arron Reyes, a full stack web developer based in
-                Quezon City, Philippines. I specialize in building clean,
-                scalable web applications using Next.js, PostgreSQL, Prisma, and
-                Tailwind CSS.
+                Quezon City, Philippines. With 1.5+ years of professional
+                experience, I&apos;ve architected enterprise-grade systems, led
+                junior developers, and shipped production software used by 150+
+                users across multiple organizations.
               </p>
               <p>
-                My work spans internal systems, client websites, and e-commerce
-                platforms — handling everything from UI design to backend
-                development and deployment. I care about writing code
-                that&apos;s maintainable, fast, and actually useful.
+                My work spans HRIS platforms, e-commerce sites, and client web
+                applications — handling everything from system architecture and
+                backend development to UI design and deployment. I care about
+                code that&apos;s fast, maintainable, and actually solves real
+                problems.
               </p>
             </motion.div>
 
@@ -268,7 +270,7 @@ export default function AboutPage() {
                 className="text-2xl font-bold font-display"
                 style={{ color: "var(--text-primary)" }}
               >
-                1yr+
+                1.5yr+
               </p>
               <p
                 className="text-xs mt-0.5"

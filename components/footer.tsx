@@ -59,8 +59,9 @@ const Footer = () => {
               className="text-xs leading-relaxed"
               style={{ color: "var(--text-tertiary)" }}
             >
-              Full stack developer building scalable web applications with a
-              focus on clean UI and solid engineering.
+              Full stack developer building enterprise-grade web applications
+              with a focus on measurable impact, clean UI, and solid
+              engineering.
             </p>
             <div className="flex items-center gap-1">
               {socials.map(({ href, icon: Icon, label }) => (
@@ -179,7 +180,7 @@ const Footer = () => {
           style={{ borderTop: "1px solid var(--border)" }}
         >
           <p className="text-xs" style={{ color: "var(--text-tertiary)" }}>
-            © 2025 Deihl Reyes. All rights reserved.
+            © 2026 Deihl Reyes. All rights reserved.
           </p>
           <p className="text-xs" style={{ color: "var(--text-tertiary)" }}>
             Built with Next.js & Tailwind CSS

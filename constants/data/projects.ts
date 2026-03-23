@@ -20,11 +20,11 @@ export const projects: Project[] = [
     slug: "satiscript",
     title: "Satiscript",
     description:
-      "AI-powered call center tool generating tailored agent scripts to boost customer satisfaction. Awarded 1st Runner Up in our Engineering Research Colloquium.",
+      "AI-powered desktop application for real-time emotion detection and dynamic script generation in customer service scenarios. Fine-tuned BERT model achieving 89% accuracy across 7 emotion categories. Awarded 1st Runner-Up, Best Research Paper at UE Caloocan 2024.",
     longDescription: [
-      "Satiscript is a smart AI-powered tool designed for call centers to improve agent communication through dynamic scripting.",
-      "It features real-time dashboards, performance tracking, and insights tailored to customer satisfaction goals.",
-      "This project was awarded 1st Runner Up at UE Caloocan's Engineering Research Colloquium.",
+      "Satiscript is an AI-powered tool designed for call centers to improve agent communication through real-time emotion detection and dynamic script generation.",
+      "Fine-tuned a BERT model achieving 89% accuracy in sentiment classification across 7 emotion categories, with live call transcription and a Next.js analytics dashboard surfacing actionable customer satisfaction insights.",
+      "Integrated OpenAI API for dynamic script generation based on detected conversation sentiment. Awarded 1st Runner-Up, Best Research Paper at the UE Caloocan Engineering Research Colloquium 2024.",
     ],
     imagePath: "/assets/projects/satiscript_img2.png",
     imageAlt: "Satiscript AI call center dashboard",

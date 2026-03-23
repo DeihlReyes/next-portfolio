@@ -2,10 +2,19 @@
 
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { MessageCircle, X, Send, Sparkles, Loader2 } from "lucide-react";
+import {
+  MessageCircle,
+  X,
+  Send,
+  Sparkles,
+  Loader2,
+  Trash2,
+  ArrowRight,
+} from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import ReactMarkdown from "react-markdown";
 import { markdownComponents } from "./markdown-components";
+import Link from "next/link";
 
 interface Message {
   role: "user" | "assistant";
@@ -15,10 +24,31 @@ interface Message {
 const INITIAL_GREETING: Message = {
   role: "assistant",
   content:
-    "Hi! I'm Deihl's AI assistant. Ask me anything about his skills, projects, or experience.",
+    "Hi! I'm Deihl's AI assistant. Ask me anything about his skills, projects, or experience — or if you're looking to hire, I can help with that too.",
 };
 
+const SUGGESTED_PROMPTS = [
+  "What's your tech stack?",
+  "Tell me about your HRIS project",
+  "Are you available for hire?",
+  "What's your most impressive achievement?",
+];
+
 const ease = [0.16, 1, 0.3, 1];
+
+function isHiringResponse(content: string) {
+  const keywords = [
+    "available",
+    "hire",
+    "freelance",
+    "full-time",
+    "open to",
+    "contact",
+    "reach out",
+    "opportunity",
+  ];
+  return keywords.some((kw) => content.toLowerCase().includes(kw));
+}
 
 export default function FloatingChatbot() {
   const [isOpen, setIsOpen] = useState(false);
@@ -27,6 +57,7 @@ export default function FloatingChatbot() {
   const [isLoading, setIsLoading] = useState(false);
   const [hasOpenedBefore, setHasOpenedBefore] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     const savedMessages = localStorage.getItem("chatMessages");
@@ -44,6 +75,12 @@ export default function FloatingChatbot() {
     localStorage.setItem("hasOpenedBefore", JSON.stringify(hasOpenedBefore));
   }, [messages, hasOpenedBefore]);
 
+  useEffect(() => {
+    if (isOpen) {
+      setTimeout(() => inputRef.current?.focus(), 300);
+    }
+  }, [isOpen]);
+
   const handleOpen = () => {
     setIsOpen(true);
     if (!hasOpenedBefore) {
@@ -52,10 +89,18 @@ export default function FloatingChatbot() {
     }
   };
 
-  const handleSend = async () => {
-    if (!input.trim()) return;
-    const userMsg: Message = { role: "user", content: input };
-    setMessages((prev) => [...prev, userMsg]);
+  const handleClear = () => {
+    setMessages([INITIAL_GREETING]);
+    localStorage.removeItem("chatMessages");
+  };
+
+  const handleSend = async (text?: string) => {
+    const content = (text ?? input).trim();
+    if (!content) return;
+
+    const userMsg: Message = { role: "user", content };
+    const nextMessages = [...messages, userMsg];
+    setMessages(nextMessages);
     setInput("");
     setIsLoading(true);
 
@@ -63,10 +108,21 @@ export default function FloatingChatbot() {
       const res = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: input }),
+        body: JSON.stringify({ messages: nextMessages }),
       });
-      if (!res.ok) throw new Error();
+
       const data = await res.json();
+
+      if (res.status === 429) {
+        const msg = data.isDaily
+          ? "I've hit the daily API limit. I'll be back online after midnight (Pacific Time). In the meantime, feel free to reach out directly at **reyes.deihlarron@gmail.com**."
+          : `I'm being rate limited. Please try again in **${data.retryAfter}s**.`;
+        setMessages((prev) => [...prev, { role: "assistant", content: msg }]);
+        return;
+      }
+
+      if (!res.ok) throw new Error();
+
       setMessages((prev) => [
         ...prev,
         { role: "assistant", content: data.response },
@@ -84,6 +140,8 @@ export default function FloatingChatbot() {
     }
   };
 
+  const showSuggestions = messages.length <= 1 && !isLoading;
+
   return (
     <>
       {/* Chat panel */}
@@ -96,8 +154,9 @@ export default function FloatingChatbot() {
             transition={{ duration: 0.25 }}
             className="fixed bottom-24 right-5 md:right-8 w-[22rem] md:w-[26rem] z-40 flex flex-col overflow-hidden"
             style={{
-              height: "30rem",
-              background: "rgba(10,10,20,0.95)",
+              height: showSuggestions ? "auto" : "32rem",
+              maxHeight: "calc(100dvh - 7rem)",
+              background: "rgba(10,10,20,0.96)",
               border: "1px solid rgba(59,130,246,0.2)",
               borderRadius: "1.25rem",
               backdropFilter: "blur(20px)",
@@ -128,72 +187,131 @@ export default function FloatingChatbot() {
                     Portfolio Assistant
                   </p>
                   <p
-                    className="text-sm"
+                    className="text-xs"
                     style={{ color: "var(--text-tertiary)" }}
                   >
-                    Ask me anything
+                    Powered by Gemini
                   </p>
                 </div>
               </div>
-              <button
-                onClick={() => setIsOpen(false)}
-                className="p-1.5 rounded-lg transition-colors"
-                style={{ color: "var(--text-tertiary)" }}
-                onMouseEnter={(e) =>
-                  ((e.currentTarget as HTMLButtonElement).style.color =
-                    "var(--text-primary)")
-                }
-                onMouseLeave={(e) =>
-                  ((e.currentTarget as HTMLButtonElement).style.color =
-                    "var(--text-tertiary)")
-                }
-              >
-                <X size={16} />
-              </button>
+              <div className="flex items-center gap-1">
+                {messages.length > 1 && (
+                  <button
+                    onClick={handleClear}
+                    title="Clear conversation"
+                    className="p-1.5 rounded-lg transition-colors"
+                    style={{ color: "var(--text-tertiary)" }}
+                    onMouseEnter={(e) =>
+                      ((e.currentTarget as HTMLButtonElement).style.color =
+                        "#f87171")
+                    }
+                    onMouseLeave={(e) =>
+                      ((e.currentTarget as HTMLButtonElement).style.color =
+                        "var(--text-tertiary)")
+                    }
+                  >
+                    <Trash2 size={14} />
+                  </button>
+                )}
+                <button
+                  onClick={() => setIsOpen(false)}
+                  className="p-1.5 rounded-lg transition-colors"
+                  style={{ color: "var(--text-tertiary)" }}
+                  onMouseEnter={(e) =>
+                    ((e.currentTarget as HTMLButtonElement).style.color =
+                      "var(--text-primary)")
+                  }
+                  onMouseLeave={(e) =>
+                    ((e.currentTarget as HTMLButtonElement).style.color =
+                      "var(--text-tertiary)")
+                  }
+                >
+                  <X size={16} />
+                </button>
+              </div>
             </div>
 
             {/* Messages */}
             <ScrollArea className="flex-1 px-4 py-3">
               <div className="space-y-3">
-                {messages.map((msg, i) => (
-                  <motion.div
-                    key={i}
-                    initial={{ opacity: 0, y: 8 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.25 }}
-                    className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
-                  >
-                    <div
-                      className="max-w-[85%] px-3.5 py-2.5 rounded-2xl"
-                      style={
-                        msg.role === "user"
-                          ? {
-                              background: "var(--accent)",
-                              color: "#fff",
-                              borderBottomRightRadius: "4px",
-                            }
-                          : {
-                              background: "rgba(255,255,255,0.06)",
-                              border: "1px solid rgba(255,255,255,0.08)",
-                              color: "var(--text-secondary)",
-                              borderBottomLeftRadius: "4px",
-                            }
-                      }
+                {messages.map((msg, i) => {
+                  const showCTA =
+                    msg.role === "assistant" && isHiringResponse(msg.content);
+                  return (
+                    <motion.div
+                      key={i}
+                      initial={{ opacity: 0, y: 8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.25 }}
+                      className={`flex flex-col ${msg.role === "user" ? "items-end" : "items-start"} gap-2`}
                     >
-                      {msg.role === "user" ? (
-                        <p className="text-sm leading-relaxed">{msg.content}</p>
-                      ) : (
-                        <ReactMarkdown
-                          className="tracking-wide"
-                          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                          components={markdownComponents as any}
+                      <div
+                        className="max-w-[85%] px-3.5 py-2.5 rounded-2xl"
+                        style={
+                          msg.role === "user"
+                            ? {
+                                background: "var(--accent)",
+                                color: "#fff",
+                                borderBottomRightRadius: "4px",
+                              }
+                            : {
+                                background: "rgba(255,255,255,0.06)",
+                                border: "1px solid rgba(255,255,255,0.08)",
+                                color: "var(--text-secondary)",
+                                borderBottomLeftRadius: "4px",
+                              }
+                        }
+                      >
+                        {msg.role === "user" ? (
+                          <p className="text-sm leading-relaxed">
+                            {msg.content}
+                          </p>
+                        ) : (
+                          <ReactMarkdown
+                            className="tracking-wide"
+                            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                            components={markdownComponents as any}
+                          >
+                            {msg.content}
+                          </ReactMarkdown>
+                        )}
+                      </div>
+
+                      {/* Inline CTA for hiring responses */}
+                      {showCTA && (
+                        <motion.div
+                          initial={{ opacity: 0, y: 6 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: 0.2, duration: 0.3 }}
                         >
-                          {msg.content}
-                        </ReactMarkdown>
+                          <Link
+                            href="/contact"
+                            onClick={() => setIsOpen(false)}
+                            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all duration-200"
+                            style={{
+                              background: "var(--accent-dim)",
+                              border: "1px solid var(--accent-border)",
+                              color: "var(--accent)",
+                            }}
+                            onMouseEnter={(e) => {
+                              (
+                                e.currentTarget as HTMLAnchorElement
+                              ).style.background = "rgba(59,130,246,0.18)";
+                            }}
+                            onMouseLeave={(e) => {
+                              (
+                                e.currentTarget as HTMLAnchorElement
+                              ).style.background = "var(--accent-dim)";
+                            }}
+                          >
+                            Get in Touch
+                            <ArrowRight size={11} />
+                          </Link>
+                        </motion.div>
                       )}
-                    </div>
-                  </motion.div>
-                ))}
+                    </motion.div>
+                  );
+                })}
 
                 {isLoading && (
                   <div className="flex justify-start">
@@ -210,7 +328,7 @@ export default function FloatingChatbot() {
                         style={{ color: "var(--accent)" }}
                       />
                       <span
-                        className="text-sm"
+                        className="text-xs"
                         style={{ color: "var(--text-tertiary)" }}
                       >
                         Thinking...
@@ -221,6 +339,46 @@ export default function FloatingChatbot() {
                 <div ref={messagesEndRef} />
               </div>
             </ScrollArea>
+
+            {/* Suggested prompts — shown when chat is fresh */}
+            <AnimatePresence>
+              {showSuggestions && (
+                <motion.div
+                  initial={{ opacity: 0, y: 6 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 6 }}
+                  transition={{ duration: 0.2 }}
+                  className="px-4 pb-2 flex flex-wrap gap-1.5"
+                >
+                  {SUGGESTED_PROMPTS.map((prompt) => (
+                    <button
+                      key={prompt}
+                      onClick={() => handleSend(prompt)}
+                      className="text-xs px-3 py-1.5 rounded-full transition-all duration-200"
+                      style={{
+                        background: "rgba(59,130,246,0.08)",
+                        border: "1px solid rgba(59,130,246,0.2)",
+                        color: "#93c5fd",
+                      }}
+                      onMouseEnter={(e) => {
+                        (e.currentTarget as HTMLButtonElement).style.background =
+                          "rgba(59,130,246,0.15)";
+                        (e.currentTarget as HTMLButtonElement).style.borderColor =
+                          "rgba(59,130,246,0.4)";
+                      }}
+                      onMouseLeave={(e) => {
+                        (e.currentTarget as HTMLButtonElement).style.background =
+                          "rgba(59,130,246,0.08)";
+                        (e.currentTarget as HTMLButtonElement).style.borderColor =
+                          "rgba(59,130,246,0.2)";
+                      }}
+                    >
+                      {prompt}
+                    </button>
+                  ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
 
             {/* Input */}
             <div
@@ -235,6 +393,7 @@ export default function FloatingChatbot() {
                 className="flex items-center gap-2"
               >
                 <input
+                  ref={inputRef}
                   type="text"
                   placeholder="Ask something..."
                   value={input}
@@ -247,7 +406,8 @@ export default function FloatingChatbot() {
                     color: "var(--text-primary)",
                   }}
                   onFocus={(e) =>
-                    (e.currentTarget.style.borderColor = "rgba(59,130,246,0.4)")
+                    (e.currentTarget.style.borderColor =
+                      "rgba(59,130,246,0.4)")
                   }
                   onBlur={(e) =>
                     (e.currentTarget.style.borderColor =
@@ -285,7 +445,7 @@ export default function FloatingChatbot() {
         whileHover={{ scale: 1.08 }}
         whileTap={{ scale: 0.95 }}
         onClick={isOpen ? () => setIsOpen(false) : handleOpen}
-        className="fixed bottom-8 right-5 md:right-8 z-50 w-13 h-13 rounded-2xl flex items-center justify-center transition-all duration-200"
+        className="fixed bottom-8 right-5 md:right-8 z-50 rounded-2xl flex items-center justify-center transition-all duration-200"
         style={{
           width: "3.25rem",
           height: "3.25rem",
