@@ -9,6 +9,8 @@ import { ArrowUpRight, Github } from "lucide-react";
 import SpotlightCard from "@/components/bits/SpotlightCard";
 import DecryptedText from "@/components/bits/DecryptedText";
 import BlurText from "@/components/bits/BlurText";
+import { Badge } from "./ui/badge";
+import { formatCasingString } from "@/lib/utils";
 
 type Category = SanityProject["category"] | "all";
 
@@ -22,7 +24,11 @@ const cats: { label: string; value: Category }[] = [
 
 const ease = [0.16, 1, 0.3, 1] as [number, number, number, number];
 
-export default function ProjectsContent({ projects }: { projects: SanityProject[] }) {
+export default function ProjectsContent({
+  projects,
+}: {
+  projects: SanityProject[];
+}) {
   const [active, setActive] = useState<Category>("all");
   const filtered =
     active === "all" ? projects : projects.filter((p) => p.category === active);
@@ -125,25 +131,9 @@ export default function ProjectsContent({ projects }: { projects: SanityProject[
                       }}
                     />
                     <div className="absolute top-3 left-3 flex gap-1.5">
-                      {p.featured && (
-                        <span
-                          className="px-2 py-0.5 rounded-full text-xs font-semibold"
-                          style={{ background: "var(--accent)", color: "#fff" }}
-                        >
-                          Featured
-                        </span>
-                      )}
-                      <span
-                        className="px-2 py-0.5 rounded-full text-xs font-medium capitalize"
-                        style={{
-                          background: "rgba(0,0,0,0.5)",
-                          color: "var(--text-secondary)",
-                          border: "1px solid var(--border)",
-                          backdropFilter: "blur(6px)",
-                        }}
-                      >
-                        {p.category.replace("-", " ")}
-                      </span>
+                      <Badge variant={"secondary"} className="text-xs">
+                        {formatCasingString(p.category)}
+                      </Badge>
                     </div>
                   </div>
 
@@ -197,10 +187,14 @@ export default function ProjectsContent({ projects }: { projects: SanityProject[
                           className="inline-flex items-center gap-1 text-xs transition-colors"
                           style={{ color: "var(--text-tertiary)" }}
                           onMouseEnter={(e) =>
-                            ((e.currentTarget as HTMLAnchorElement).style.color = "var(--text-primary)")
+                            ((
+                              e.currentTarget as HTMLAnchorElement
+                            ).style.color = "var(--text-primary)")
                           }
                           onMouseLeave={(e) =>
-                            ((e.currentTarget as HTMLAnchorElement).style.color = "var(--text-tertiary)")
+                            ((
+                              e.currentTarget as HTMLAnchorElement
+                            ).style.color = "var(--text-tertiary)")
                           }
                         >
                           <Github size={12} /> {repo.label}
