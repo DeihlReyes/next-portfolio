@@ -27,7 +27,7 @@ const personSchema = {
   url: "https://www.deihlreyes.me/",
   image: "https://www.deihlreyes.me/assets/deihl_logo.png",
   sameAs: [
-    "https://www.linkedin.com/in/deihl-arron-reyes/",
+    "https://www.linkedin.com/in/deihlreyes/",
     "https://github.com/DeihlReyes",
     "https://www.facebook.com/deihl.reyes08/",
   ],
@@ -81,7 +81,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="scroll-smooth" data-theme="dark" suppressHydrationWarning>
+    <html
+      lang="en"
+      className="scroll-smooth"
+      data-theme="dark"
+      suppressHydrationWarning
+    >
       <head>
         {/* Prevent flash of wrong theme */}
         <script
