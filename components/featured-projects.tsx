@@ -19,7 +19,7 @@ interface Project {
   image: StaticImageData;
   techStack: string[];
   demo?: string;
-  repo?: string;
+  repos?: { label: string; url: string }[];
 }
 
 interface ProjectItemProps {

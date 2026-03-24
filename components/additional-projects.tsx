@@ -20,7 +20,7 @@ interface Project {
   description: string;
   techStack: string[];
   demo?: string;
-  repo?: string;
+  repos?: { label: string; url: string }[];
 }
 
 const ProjectCard = ({
