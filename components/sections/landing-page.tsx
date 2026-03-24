@@ -186,7 +186,7 @@ const LandingPage = () => {
                   label: "GitHub",
                 },
                 {
-                  href: "https://www.linkedin.com/in/deihl-arron-reyes/",
+                  href: "https://www.linkedin.com/in/deihlreyes/",
                   Icon: Linkedin,
                   label: "LinkedIn",
                 },

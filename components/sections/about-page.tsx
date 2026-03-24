@@ -156,7 +156,7 @@ export default function AboutPage() {
               <div className="flex gap-2">
                 {[
                   {
-                    href: "https://www.linkedin.com/in/deihl-arron-reyes/",
+                    href: "https://www.linkedin.com/in/deihlreyes/",
                     Icon: Linkedin,
                     label: "LinkedIn",
                   },

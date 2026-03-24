@@ -100,7 +100,7 @@ const contactLinks = [
     icon: Linkedin,
     label: "LinkedIn",
     value: "linkedin.com/in/deihl-arron-reyes",
-    href: "https://www.linkedin.com/in/deihl-arron-reyes/",
+    href: "https://www.linkedin.com/in/deihlreyes/",
   },
   {
     icon: MapPin,
@@ -309,10 +309,16 @@ export default function ContactForm() {
           >
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse flex-shrink-0" />
             <div>
-              <p className="text-sm font-medium" style={{ color: "var(--available-text)" }}>
+              <p
+                className="text-sm font-medium"
+                style={{ color: "var(--available-text)" }}
+              >
                 Available for work
               </p>
-              <p className="text-xs" style={{ color: "var(--available-text-sub)" }}>
+              <p
+                className="text-xs"
+                style={{ color: "var(--available-text-sub)" }}
+              >
                 Open to freelance &amp; full-time roles
               </p>
             </div>

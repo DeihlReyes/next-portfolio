@@ -11,7 +11,7 @@ import logo from "@/assets/logo-portfolio.png";
 const socials = [
   { href: "https://github.com/DeihlReyes", icon: Github, label: "GitHub" },
   {
-    href: "https://www.linkedin.com/in/deihl-arron-reyes/",
+    href: "https://www.linkedin.com/in/deihlreyes/",
     icon: Linkedin,
     label: "LinkedIn",
   },
