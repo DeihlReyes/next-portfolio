@@ -156,18 +156,18 @@ export default function FloatingChatbot() {
             style={{
               height: showSuggestions ? "auto" : "32rem",
               maxHeight: "calc(100dvh - 7rem)",
-              background: "rgba(10,10,20,0.96)",
-              border: "1px solid rgba(59,130,246,0.2)",
+              background: "var(--bg-card)",
+              border: "1px solid var(--accent-border)",
               borderRadius: "1.25rem",
               backdropFilter: "blur(20px)",
               boxShadow:
-                "0 24px 64px -12px rgba(0,0,0,0.6), 0 0 0 1px rgba(59,130,246,0.1)",
+                "0 24px 64px -12px rgba(0,0,0,0.3), 0 0 0 1px var(--accent-border)",
             }}
           >
             {/* Header */}
             <div
               className="flex items-center justify-between px-5 py-4 flex-shrink-0"
-              style={{ borderBottom: "1px solid rgba(255,255,255,0.06)" }}
+              style={{ borderBottom: "1px solid var(--border)" }}
             >
               <div className="flex items-center gap-2.5">
                 <div
@@ -255,8 +255,8 @@ export default function FloatingChatbot() {
                                 borderBottomRightRadius: "4px",
                               }
                             : {
-                                background: "rgba(255,255,255,0.06)",
-                                border: "1px solid rgba(255,255,255,0.08)",
+                                background: "var(--bg-elevated)",
+                                border: "1px solid var(--border)",
                                 color: "var(--text-secondary)",
                                 borderBottomLeftRadius: "4px",
                               }
@@ -318,8 +318,8 @@ export default function FloatingChatbot() {
                     <div
                       className="px-3.5 py-2.5 rounded-2xl rounded-bl-sm flex items-center gap-2"
                       style={{
-                        background: "rgba(255,255,255,0.06)",
-                        border: "1px solid rgba(255,255,255,0.08)",
+                        background: "var(--bg-elevated)",
+                        border: "1px solid var(--border)",
                       }}
                     >
                       <Loader2
@@ -356,21 +356,21 @@ export default function FloatingChatbot() {
                       onClick={() => handleSend(prompt)}
                       className="text-xs px-3 py-1.5 rounded-full transition-all duration-200"
                       style={{
-                        background: "rgba(59,130,246,0.08)",
-                        border: "1px solid rgba(59,130,246,0.2)",
-                        color: "#93c5fd",
+                        background: "var(--accent-dim)",
+                        border: "1px solid var(--accent-border)",
+                        color: "var(--accent)",
                       }}
                       onMouseEnter={(e) => {
                         (e.currentTarget as HTMLButtonElement).style.background =
-                          "rgba(59,130,246,0.15)";
+                          "var(--accent-border)";
                         (e.currentTarget as HTMLButtonElement).style.borderColor =
-                          "rgba(59,130,246,0.4)";
+                          "var(--accent)";
                       }}
                       onMouseLeave={(e) => {
                         (e.currentTarget as HTMLButtonElement).style.background =
-                          "rgba(59,130,246,0.08)";
+                          "var(--accent-dim)";
                         (e.currentTarget as HTMLButtonElement).style.borderColor =
-                          "rgba(59,130,246,0.2)";
+                          "var(--accent-border)";
                       }}
                     >
                       {prompt}
@@ -383,7 +383,7 @@ export default function FloatingChatbot() {
             {/* Input */}
             <div
               className="px-4 py-3 flex-shrink-0"
-              style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}
+              style={{ borderTop: "1px solid var(--border)" }}
             >
               <form
                 onSubmit={(e) => {
@@ -401,8 +401,8 @@ export default function FloatingChatbot() {
                   disabled={isLoading}
                   className="flex-1 text-sm px-3.5 py-2.5 rounded-xl outline-none transition-all duration-200 disabled:opacity-50"
                   style={{
-                    background: "rgba(255,255,255,0.05)",
-                    border: "1px solid rgba(255,255,255,0.08)",
+                    background: "var(--bg-elevated)",
+                    border: "1px solid var(--border)",
                     color: "var(--text-primary)",
                   }}
                   onFocus={(e) =>
@@ -411,7 +411,7 @@ export default function FloatingChatbot() {
                   }
                   onBlur={(e) =>
                     (e.currentTarget.style.borderColor =
-                      "rgba(255,255,255,0.08)")
+                      "var(--border)")
                   }
                 />
                 <button
@@ -453,7 +453,7 @@ export default function FloatingChatbot() {
           border: isOpen
             ? "1px solid var(--border)"
             : "1px solid rgba(59,130,246,0.4)",
-          color: "#fff",
+          color: isOpen ? "var(--text-primary)" : "#fff",
           boxShadow: isOpen
             ? "0 4px 16px rgba(0,0,0,0.3)"
             : "0 4px 24px rgba(59,130,246,0.4)",

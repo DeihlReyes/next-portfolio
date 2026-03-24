@@ -14,6 +14,7 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
   const pathname = usePathname();
+  const isHero = pathname === "/" && !scrolled;
 
   useEffect(() => {
     const fn = () => {
@@ -67,7 +68,7 @@ const Navbar = () => {
           <span
             className="text-sm font-semibold tracking-tight hidden sm:block"
             style={{
-              color: "var(--text-primary)",
+              color: isHero ? "#fff" : "var(--text-primary)",
               fontFamily: "var(--font-syne)",
             }}
           >
@@ -95,18 +96,18 @@ const Navbar = () => {
                   className="relative px-4 py-1.5 rounded-lg text-sm font-medium transition-colors duration-200 block"
                   style={{
                     color: isActive
-                      ? "var(--text-primary)"
-                      : "var(--text-secondary)",
+                      ? isHero ? "#fff" : "var(--text-primary)"
+                      : isHero ? "rgba(255,255,255,0.65)" : "var(--text-secondary)",
                   }}
                   onMouseEnter={(e) => {
                     if (!isActive)
                       (e.currentTarget as HTMLAnchorElement).style.color =
-                        "var(--text-primary)";
+                        isHero ? "#fff" : "var(--text-primary)";
                   }}
                   onMouseLeave={(e) => {
                     if (!isActive)
                       (e.currentTarget as HTMLAnchorElement).style.color =
-                        "var(--text-secondary)";
+                        isHero ? "rgba(255,255,255,0.65)" : "var(--text-secondary)";
                   }}
                 >
                   {isActive && (

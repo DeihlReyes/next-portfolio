@@ -14,16 +14,18 @@ export default function ThemeToggle() {
       className="relative w-8 h-8 rounded-lg flex items-center justify-center transition-colors duration-200"
       style={{
         color: "var(--text-secondary)",
-        background: "var(--bg-elevated)",
-        border: "1px solid var(--border)",
+        background: "transparent",
+        border: "1px solid transparent",
       }}
       onMouseEnter={(e) => {
         (e.currentTarget as HTMLButtonElement).style.color = "var(--text-primary)";
-        (e.currentTarget as HTMLButtonElement).style.borderColor = "var(--border-hover)";
+        (e.currentTarget as HTMLButtonElement).style.background = "var(--bg-elevated)";
+        (e.currentTarget as HTMLButtonElement).style.borderColor = "var(--border)";
       }}
       onMouseLeave={(e) => {
         (e.currentTarget as HTMLButtonElement).style.color = "var(--text-secondary)";
-        (e.currentTarget as HTMLButtonElement).style.borderColor = "var(--border)";
+        (e.currentTarget as HTMLButtonElement).style.background = "transparent";
+        (e.currentTarget as HTMLButtonElement).style.borderColor = "transparent";
       }}
     >
       <AnimatePresence mode="wait" initial={false}>
