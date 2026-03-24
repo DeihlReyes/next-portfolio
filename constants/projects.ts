@@ -19,7 +19,7 @@ interface Project {
   features?: string[];
   overview?: string;
   disclaimer?: string;
-  repo?: string;
+  repos?: { label: string; url: string }[];
   demo?: string;
 }
 
@@ -36,7 +36,7 @@ export const projects: Project[] = [
       "Live transcription during active calls",
       "Dashboard for data analysis and visualization",
     ],
-    repo: "https://github.com/DeihlReyes/satiscript",
+    repos: [{ label: "Source Code", url: "https://github.com/DeihlReyes/satiscript" }],
     demo: "https://satiscript.vercel.app",
     overview: `<p>Satiscript is a smart AI-powered tool designed for call centers to improve agent communication through dynamic scripting.</p>
     </br>
@@ -78,7 +78,7 @@ export const projects: Project[] = [
       "Real-time collaboration",
       "Progress tracking and analytics",
     ],
-    repo: "https://github.com/DeihlReyes/TaskQuill",
+    repos: [{ label: "Source Code", url: "https://github.com/DeihlReyes/TaskQuill" }],
     demo: "https://taskquill.vercel.app",
     overview: `<p>TaskQuill is a productivity-focused application for individuals and teams looking to manage work efficiently.</p>
     </br>
@@ -106,7 +106,7 @@ export const projects: Project[] = [
       "Dashboard with behavior trends",
       "Touchscreen-optimized UI",
     ],
-    repo: "https://github.com/DeihlReyes/Vehicle-Monitoring", // update if available
+    repos: [{ label: "Source Code", url: "https://github.com/DeihlReyes/Vehicle-Monitoring" }],
     overview: `
       <p>This personal project monitors motorcycle diagnostics and riding behavior using real-time sensor data and machine learning.</p>
       </br>
@@ -207,7 +207,7 @@ export const projects: Project[] = [
       "Real-time conversion feedback",
       "Simple and responsive interface",
     ],
-    repo: "https://github.com/DeihlReyes/filevert",
+    repos: [{ label: "Source Code", url: "https://github.com/DeihlReyes/filevert" }],
     demo: "https://filevert.vercel.app",
     overview: `<p>Filevert is a browser-based utility that lets users convert files quickly using FFMPEG on the backend.</p>       
     </br>
@@ -226,7 +226,7 @@ export const projects: Project[] = [
       "Dynamic scoring and feedback",
       "Responsive and user-friendly interface",
     ],
-    repo: "https://github.com/DeihlReyes/next-quizwiz",
+    repos: [{ label: "Source Code", url: "https://github.com/DeihlReyes/next-quizwiz" }],
     demo: "https://quizwiz-vert.vercel.app/",
     overview: `<p>QuizWiz is an experimental education app that uses Google's Gemini AI to create adaptive quizzes.</p>       
     </br>
@@ -245,7 +245,7 @@ export const projects: Project[] = [
       "Community and membership sections",
       "Clean and accessible layout",
     ],
-    repo: "https://github.com/DeihlReyes/gdsc-uecal-website",
+    repos: [{ label: "Source Code", url: "https://github.com/DeihlReyes/gdsc-uecal-website" }],
     demo: "https://gdsc-uec.vercel.app/",
     overview: `<p>This platform was created to centralize information about GDSC UE Caloocan's initiatives and resources.</p>       
     </br>

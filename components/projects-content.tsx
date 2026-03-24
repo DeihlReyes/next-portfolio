@@ -180,7 +180,7 @@ export default function ProjectsContent({ projects }: { projects: SanityProject[
                     </div>
 
                     {/* Actions */}
-                    <div className="flex items-center gap-4 pt-1">
+                    <div className="flex items-center gap-4 pt-1 flex-wrap">
                       <Link
                         href={`/projects/${p.slug}`}
                         className="inline-flex items-center gap-1 text-xs font-medium transition-colors"
@@ -188,27 +188,24 @@ export default function ProjectsContent({ projects }: { projects: SanityProject[
                       >
                         Details <ArrowUpRight size={12} />
                       </Link>
-                      {p.repo && (
+                      {p.repos?.map((repo) => (
                         <Link
-                          href={p.repo}
+                          key={repo.url}
+                          href={repo.url}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="inline-flex items-center gap-1 text-xs transition-colors"
                           style={{ color: "var(--text-tertiary)" }}
                           onMouseEnter={(e) =>
-                            ((
-                              e.currentTarget as HTMLAnchorElement
-                            ).style.color = "var(--text-primary)")
+                            ((e.currentTarget as HTMLAnchorElement).style.color = "var(--text-primary)")
                           }
                           onMouseLeave={(e) =>
-                            ((
-                              e.currentTarget as HTMLAnchorElement
-                            ).style.color = "var(--text-tertiary)")
+                            ((e.currentTarget as HTMLAnchorElement).style.color = "var(--text-tertiary)")
                           }
                         >
-                          <Github size={12} /> Code
+                          <Github size={12} /> {repo.label}
                         </Link>
-                      )}
+                      ))}
                       {p.demo && (
                         <Link
                           href={p.demo}

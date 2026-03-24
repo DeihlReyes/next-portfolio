@@ -5,10 +5,10 @@ import { ExternalLink, Github } from "lucide-react";
 
 interface ProjectActionsProps {
   demo?: string;
-  repo?: string;
+  repos?: { label: string; url: string }[];
 }
 
-export default function ProjectActions({ demo, repo }: ProjectActionsProps) {
+export default function ProjectActions({ demo, repos }: ProjectActionsProps) {
   return (
     <div className="flex gap-3 flex-wrap">
       {demo && (
@@ -24,9 +24,10 @@ export default function ProjectActions({ demo, repo }: ProjectActionsProps) {
           <ExternalLink size={14} /> Live Demo
         </Link>
       )}
-      {repo && (
+      {repos?.map((repo) => (
         <Link
-          href={repo}
+          key={repo.url}
+          href={repo.url}
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-200"
@@ -42,9 +43,9 @@ export default function ProjectActions({ demo, repo }: ProjectActionsProps) {
             el.style.color = "var(--text-secondary)";
           }}
         >
-          <Github size={14} /> Source Code
+          <Github size={14} /> {repo.label}
         </Link>
-      )}
+      ))}
     </div>
   );
 }

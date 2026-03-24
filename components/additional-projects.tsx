@@ -81,11 +81,11 @@ const ProjectCard = ({
               </Button>
             </Link>
           )}
-          {project.repo && (
-            <Link className="w-full" href={project.repo} target="_blank">
-              <Button className="w-full">Repo</Button>
+          {project.repos?.map((repo) => (
+            <Link key={repo.url} className="w-full" href={repo.url} target="_blank">
+              <Button className="w-full">{repo.label}</Button>
             </Link>
-          )}
+          ))}
         </CardFooter>
       </Card>
     </motion.div>

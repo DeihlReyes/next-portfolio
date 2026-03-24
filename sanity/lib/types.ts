@@ -8,6 +8,7 @@ export interface SanityExperience {
   description: string;
   bullets: string[];
   technologies: string[];
+  logoUrl?: string;
 }
 
 export interface SanityProject {
@@ -22,7 +23,7 @@ export interface SanityProject {
   category: "fullstack" | "ai" | "mobile" | "open-source" | "client-work";
   features?: string[];
   disclaimer?: string;
-  repo?: string;
+  repos?: { label: string; url: string }[];
   demo?: string;
   year: number;
   featured: boolean;

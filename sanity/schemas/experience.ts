@@ -30,6 +30,13 @@ export const experience = defineType({
       description: "Lower numbers appear first (0 = most recent)",
     }),
     defineField({
+      name: "logo",
+      title: "Company Logo",
+      type: "image",
+      options: { hotspot: true },
+      description: "Optional company logo shown next to the role on the experience page.",
+    }),
+    defineField({
       name: "description",
       title: "Summary",
       type: "text",
@@ -57,6 +64,6 @@ export const experience = defineType({
     },
   ],
   preview: {
-    select: { title: "role", subtitle: "company" },
+    select: { title: "role", subtitle: "company", media: "logo" },
   },
 });

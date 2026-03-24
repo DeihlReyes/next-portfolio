@@ -166,9 +166,10 @@ const ProjectItem: FC<ProjectItemProps> = ({ project, index }) => {
                 </Button>
               </Link>
             )}
-            {project.repo && (
+            {project.repos?.map((repo) => (
               <Link
-                href={project.repo}
+                key={repo.url}
+                href={repo.url}
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -176,14 +177,14 @@ const ProjectItem: FC<ProjectItemProps> = ({ project, index }) => {
                   className="flex items-center gap-2 group"
                   variant="outline"
                 >
-                  <span>View Code</span>
+                  <span>{repo.label}</span>
                   <Github
                     className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
                     size={16}
                   />
                 </Button>
               </Link>
-            )}
+            ))}
           </motion.div>
         </motion.div>
       </div>

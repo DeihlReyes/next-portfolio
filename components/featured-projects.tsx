@@ -174,18 +174,19 @@ const ProjectItem: FC<ProjectItemProps> = ({ project, index }) => {
                 </Button>
               </Link>
             )}
-            {project.repo && (
+            {project.repos?.map((repo) => (
               <Link
-                href={project.repo}
+                key={repo.url}
+                href={repo.url}
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <Button className="flex items-center gap-2" variant="outline">
-                  <span>View Code</span>
+                  <span>{repo.label}</span>
                   <Github size={16} />
                 </Button>
               </Link>
-            )}
+            ))}
           </motion.div>
         </motion.div>
       </div>

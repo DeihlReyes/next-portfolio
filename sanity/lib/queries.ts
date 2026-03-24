@@ -11,7 +11,7 @@ const projectsQuery = groq`
     description, longDescription,
     imagePath, image, imageAlt,
     techStack, category, features,
-    disclaimer, repo, demo, year, featured
+    disclaimer, repos[]{label, url}, demo, year, featured
   }
 `;
 
@@ -21,7 +21,7 @@ const projectBySlugQuery = groq`
     description, longDescription,
     imagePath, image, imageAlt,
     techStack, category, features,
-    disclaimer, repo, demo, year, featured
+    disclaimer, repos[]{label, url}, demo, year, featured
   }
 `;
 
@@ -29,7 +29,7 @@ const projectSlugsQuery = groq`*[_type == "project"]{ "slug": slug.current }`;
 
 const experiencesQuery = groq`
   *[_type == "experience"] | order(order asc) {
-    _id, role, company, date, description, bullets, technologies
+    _id, role, company, date, description, bullets, technologies, logo
   }
 `;
 
@@ -95,7 +95,12 @@ export async function getExperiences(): Promise<SanityExperience[]> {
     const { experiences } = await import("@/constants/data/experience");
     return experiences.map((e, i) => ({ ...e, _id: String(i) }));
   }
-  return client.fetch(experiencesQuery, {}, OPT);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const raw: any[] = await client.fetch(experiencesQuery, {}, OPT);
+  return raw.map((e) => ({
+    ...e,
+    logoUrl: e.logo ? urlFor(e.logo).height(128).auto("format").url() : undefined,
+  }));
 }
 
 export async function getPosts(): Promise<SanityPost[]> {

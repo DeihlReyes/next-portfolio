@@ -16,7 +16,7 @@ interface Project {
   techStack: string[];
   features?: string[];
   demo?: string;
-  repo?: string;
+  repos?: { label: string; url: string }[];
 }
 
 interface ProjectCardProps {
@@ -78,17 +78,19 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
                   <ExternalLink size={16} className="text-gray-700" />
                 </a>
               )}
-              {project.repo && (
+              {project.repos?.map((repo) => (
                 <a
-                  href={project.repo}
+                  key={repo.url}
+                  href={repo.url}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-2 bg-white/90 backdrop-blur-sm rounded-full hover:bg-white transition-colors"
                   onClick={(e) => e.stopPropagation()}
+                  title={repo.label}
                 >
                   <Github size={16} className="text-gray-700" />
                 </a>
-              )}
+              ))}
             </div>
           </div>
 

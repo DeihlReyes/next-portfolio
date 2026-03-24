@@ -156,9 +156,10 @@ export default async function ProjectPage({ params }: Props) {
                 <ExternalLink size={14} /> Live Demo
               </a>
             )}
-            {project.repo && (
+            {project.repos?.map((repo) => (
               <a
-                href={project.repo}
+                key={repo.url}
+                href={repo.url}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-medium transition-all duration-200"
@@ -168,9 +169,9 @@ export default async function ProjectPage({ params }: Props) {
                   border: "1px solid var(--border)",
                 }}
               >
-                <Github size={14} /> Source Code
+                <Github size={14} /> {repo.label}
               </a>
-            )}
+            ))}
           </div>
         </div>
 
@@ -230,7 +231,7 @@ export default async function ProjectPage({ params }: Props) {
                     >
                       <span
                         className="w-1 h-1 rounded-full mt-2 flex-shrink-0"
-                        style={{ background: "var(--accent)" }}
+                        style={{ background: "var(--text-secondary)" }}
                       />
                       {f}
                     </li>

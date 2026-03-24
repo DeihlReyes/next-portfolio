@@ -86,9 +86,34 @@ export const project = defineType({
       description: "Shown as a warning note on the detail page",
     }),
     defineField({
-      name: "repo",
-      title: "Repository URL",
-      type: "url",
+      name: "repos",
+      title: "Repositories",
+      type: "array",
+      description:
+        'Add one or more repository links. Use labels like "Frontend", "Backend", or "Source Code" for non-monorepo projects.',
+      of: [
+        {
+          type: "object",
+          fields: [
+            defineField({
+              name: "label",
+              title: "Label",
+              type: "string",
+              description: 'e.g. "Source Code", "Frontend", "Backend"',
+              validation: (Rule) => Rule.required(),
+            }),
+            defineField({
+              name: "url",
+              title: "URL",
+              type: "url",
+              validation: (Rule) => Rule.required(),
+            }),
+          ],
+          preview: {
+            select: { title: "label", subtitle: "url" },
+          },
+        },
+      ],
     }),
     defineField({
       name: "demo",

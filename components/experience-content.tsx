@@ -1,13 +1,18 @@
 "use client";
 
 import { motion } from "motion/react";
+import Image from "next/image";
 import type { SanityExperience } from "@/sanity/lib/types";
 import DecryptedText from "@/components/bits/DecryptedText";
 import BlurText from "@/components/bits/BlurText";
 
 const ease = [0.16, 1, 0.3, 1] as [number, number, number, number];
 
-export default function ExperienceContent({ experiences }: { experiences: SanityExperience[] }) {
+export default function ExperienceContent({
+  experiences,
+}: {
+  experiences: SanityExperience[];
+}) {
   return (
     <div
       className="py-24 md:py-32"
@@ -63,24 +68,43 @@ export default function ExperienceContent({ experiences }: { experiences: Sanity
               >
                 {/* Top row: role + date */}
                 <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-4">
-                  <div>
-                    <div className="flex items-center gap-2 mb-1">
-                      {isCurrent && (
-                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse flex-shrink-0" />
-                      )}
-                      <h2
-                        className="text-xl font-bold font-display"
-                        style={{ color: "var(--text-primary)" }}
+                  <div className="flex flex-col items-start gap-4">
+                    {exp.logoUrl && (
+                      <div
+                        className="w-32 h-16"
+                        style={{
+                          border: "1px solid var(--border)",
+                          background: "var(--bg-elevated)",
+                        }}
                       >
-                        {exp.role}
-                      </h2>
+                        <Image
+                          src={exp.logoUrl}
+                          alt={`${exp.company} logo`}
+                          width={356}
+                          height={128}
+                          className="w-full h-full object-contain"
+                        />
+                      </div>
+                    )}
+                    <div>
+                      <div className="flex items-center gap-2 mb-1">
+                        {isCurrent && (
+                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse flex-shrink-0" />
+                        )}
+                        <h2
+                          className="text-xl font-bold font-display"
+                          style={{ color: "var(--text-primary)" }}
+                        >
+                          {exp.role}
+                        </h2>
+                      </div>
+                      <p
+                        className="text-sm font-semibold"
+                        style={{ color: "var(--accent)" }}
+                      >
+                        {exp.company}
+                      </p>
                     </div>
-                    <p
-                      className="text-sm font-semibold"
-                      style={{ color: "var(--accent)" }}
-                    >
-                      {exp.company}
-                    </p>
                   </div>
 
                   <span
@@ -125,7 +149,7 @@ export default function ExperienceContent({ experiences }: { experiences: Sanity
                     >
                       <span
                         className="w-1 h-1 rounded-full mt-2 flex-shrink-0"
-                        style={{ background: "var(--accent)" }}
+                        style={{ background: "var(--text-secondary)" }}
                       />
                       {b}
                     </motion.li>
