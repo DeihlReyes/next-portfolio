@@ -5,6 +5,7 @@ import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import { Toaster } from "@/components/ui/toaster";
 import FloatingChatbot from "@/components/chatbot";
+import { ThemeProvider } from "@/components/theme-provider";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -80,19 +81,27 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className="scroll-smooth" data-theme="dark" suppressHydrationWarning>
       <head>
+        {/* Prevent flash of wrong theme */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){var t=localStorage.getItem('theme');var s=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t||s||'dark');})();`,
+          }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
         />
       </head>
       <body className={`${inter.variable} ${syne.variable}`}>
-        <Navbar />
-        <main>{children}</main>
-        <FloatingChatbot />
-        <Footer />
-        <Toaster />
+        <ThemeProvider>
+          <Navbar />
+          <main>{children}</main>
+          <FloatingChatbot />
+          <Footer />
+          <Toaster />
+        </ThemeProvider>
       </body>
     </html>
   );

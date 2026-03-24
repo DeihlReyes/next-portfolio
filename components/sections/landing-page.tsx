@@ -54,9 +54,9 @@ const LandingPage = () => {
             <span
               className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-medium"
               style={{
-                border: "1px solid rgba(59,130,246,0.4)",
-                color: "#93c5fd",
-                background: "rgba(59,130,246,0.08)",
+                border: "1px solid var(--accent-border)",
+                color: "var(--accent)",
+                background: "var(--accent-dim)",
                 backdropFilter: "blur(8px)",
               }}
             >

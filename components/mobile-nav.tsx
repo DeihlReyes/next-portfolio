@@ -46,7 +46,7 @@ const MobileNav = () => {
                     className="flex items-center px-4 py-3 rounded-lg text-sm font-medium transition-colors"
                     style={{
                       color: pathname === link.route ? "var(--text-primary)" : "var(--text-secondary)",
-                      background: pathname === link.route ? "rgba(255,255,255,0.06)" : "transparent",
+                      background: pathname === link.route ? "var(--nav-active-bg)" : "transparent",
                     }}
                   >
                     {link.label}

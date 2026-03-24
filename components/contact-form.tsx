@@ -303,16 +303,16 @@ export default function ContactForm() {
           <div
             className="flex items-center gap-2.5 px-4 py-3 rounded-xl"
             style={{
-              background: "rgba(16,185,129,0.06)",
-              border: "1px solid rgba(16,185,129,0.2)",
+              background: "var(--available-bg)",
+              border: "1px solid var(--available-border)",
             }}
           >
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse flex-shrink-0" />
             <div>
-              <p className="text-sm font-medium" style={{ color: "#6ee7b7" }}>
+              <p className="text-sm font-medium" style={{ color: "var(--available-text)" }}>
                 Available for work
               </p>
-              <p className="text-xs" style={{ color: "rgba(110,231,183,0.6)" }}>
+              <p className="text-xs" style={{ color: "var(--available-text-sub)" }}>
                 Open to freelance &amp; full-time roles
               </p>
             </div>

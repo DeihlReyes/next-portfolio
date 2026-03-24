@@ -4,19 +4,28 @@
 
 /* ─── Design tokens ────────────────────────────────────── */
 :root {
-  --bg:           #0a0a0a;
-  --bg-elevated:  #111111;
-  --bg-card:      #141414;
-  --border:       rgba(255, 255, 255, 0.07);
-  --border-hover: rgba(255, 255, 255, 0.14);
-  --text-primary: #f0f0f0;
-  --text-secondary: #888888;
-  --text-tertiary: #444444;
-  --accent:       #3b82f6;
-  --accent-dim:   rgba(59, 130, 246, 0.10);
-  --accent-border:rgba(59, 130, 246, 0.35);
-  --accent-glow:  rgba(59, 130, 246, 0.20);
-  --radius:       0.75rem;
+  /* Dark theme (default) */
+  --bg:                 #0a0a0a;
+  --bg-elevated:        #111111;
+  --bg-card:            #141414;
+  --border:             rgba(255, 255, 255, 0.07);
+  --border-hover:       rgba(255, 255, 255, 0.14);
+  --text-primary:       #f0f0f0;
+  --text-secondary:     #888888;
+  --text-tertiary:      #444444;
+  --accent:             #3b82f6;
+  --accent-dim:         rgba(59, 130, 246, 0.10);
+  --accent-border:      rgba(59, 130, 246, 0.35);
+  --accent-glow:        rgba(59, 130, 246, 0.20);
+  --navbar-scrolled-bg: rgba(10, 10, 10, 0.88);
+  --navbar-border:      rgba(255, 255, 255, 0.06);
+  --nav-active-bg:      rgba(255, 255, 255, 0.06);
+  --dot-color:          rgba(255, 255, 255, 0.06);
+  --available-bg:       rgba(16, 185, 129, 0.06);
+  --available-border:   rgba(16, 185, 129, 0.20);
+  --available-text:     #6ee7b7;
+  --available-text-sub: rgba(110, 231, 183, 0.6);
+  --radius:             0.75rem;
 
   /* shadcn overrides */
   --background: 0 0% 4%;
@@ -31,13 +40,58 @@
   --secondary-foreground: 0 0% 94%;
   --muted: 0 0% 10%;
   --muted-foreground: 0 0% 53%;
-  --accent: 0 0% 10%;
-  --accent-foreground: 0 0% 94%;
+  --shadcn-accent: 0 0% 10%;
+  --shadcn-accent-foreground: 0 0% 94%;
   --destructive: 0 84% 60%;
   --destructive-foreground: 0 0% 98%;
-  --border: 0 0% 14%;
+  --border-shadcn: 0 0% 14%;
   --input: 0 0% 14%;
   --ring: 217 91% 60%;
+}
+
+/* ─── Light theme ───────────────────────────────────────── */
+[data-theme="light"] {
+  --bg:                 #fafafa;
+  --bg-elevated:        #f0f0f0;
+  --bg-card:            #ffffff;
+  --border:             rgba(0, 0, 0, 0.08);
+  --border-hover:       rgba(0, 0, 0, 0.16);
+  --text-primary:       #0a0a0a;
+  --text-secondary:     #6b6b6b;
+  --text-tertiary:      #a3a3a3;
+  --accent:             #2563eb;
+  --accent-dim:         rgba(37, 99, 235, 0.08);
+  --accent-border:      rgba(37, 99, 235, 0.28);
+  --accent-glow:        rgba(37, 99, 235, 0.12);
+  --navbar-scrolled-bg: rgba(250, 250, 250, 0.88);
+  --navbar-border:      rgba(0, 0, 0, 0.07);
+  --nav-active-bg:      rgba(0, 0, 0, 0.05);
+  --dot-color:          rgba(0, 0, 0, 0.06);
+  --available-bg:       rgba(5, 150, 105, 0.07);
+  --available-border:   rgba(5, 150, 105, 0.25);
+  --available-text:     #065f46;
+  --available-text-sub: rgba(6, 95, 70, 0.65);
+
+  /* shadcn overrides */
+  --background: 0 0% 98%;
+  --foreground: 240 10% 4%;
+  --card: 0 0% 100%;
+  --card-foreground: 240 10% 4%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 240 10% 4%;
+  --primary: 240 10% 4%;
+  --primary-foreground: 0 0% 98%;
+  --secondary: 240 5% 94%;
+  --secondary-foreground: 240 6% 10%;
+  --muted: 240 5% 94%;
+  --muted-foreground: 240 4% 46%;
+  --shadcn-accent: 240 5% 94%;
+  --shadcn-accent-foreground: 240 6% 10%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 98%;
+  --border-shadcn: 240 6% 90%;
+  --input: 240 6% 90%;
+  --ring: 221 83% 53%;
 }
 
 /* ─── Reset / base ──────────────────────────────────────── */
@@ -151,7 +205,7 @@ h1, h2, h3, h4 {
 }
 
 .dot-grid {
-  background-image: radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px);
+  background-image: radial-gradient(circle, var(--dot-color) 1px, transparent 1px);
   background-size: 28px 28px;
 }
 

@@ -260,10 +260,10 @@ export default function AboutPage() {
               transition={{ delay: 0.3, duration: 0.5, ease }}
               className="absolute top-1/2 left-1/3 -translate-x-1/2 -translate-y-1/2 px-5 py-4 rounded-xl text-center z-10"
               style={{
-                background: "rgba(10,10,20,0.9)",
-                border: "1px solid rgba(59,130,246,0.3)",
+                background: "var(--bg-card)",
+                border: "1px solid var(--accent-border)",
                 backdropFilter: "blur(12px)",
-                boxShadow: "0 0 32px rgba(59,130,246,0.15)",
+                boxShadow: "0 0 32px var(--accent-glow)",
               }}
             >
               <p

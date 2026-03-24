@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { headerLinks } from "@/constants";
 import MobileNav from "./mobile-nav";
+import ThemeToggle from "./theme-toggle";
 import { motion } from "motion/react";
 import Image from "next/image";
 import logo from "@/assets/logo-portfolio.png";
@@ -30,9 +31,9 @@ const Navbar = () => {
     <header
       className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
       style={{
-        background: scrolled ? "rgba(2,8,23,0.9)" : "transparent",
+        background: scrolled ? "var(--navbar-scrolled-bg)" : "transparent",
         borderBottom: scrolled
-          ? "1px solid rgba(255,255,255,0.06)"
+          ? "1px solid var(--navbar-border)"
           : "1px solid transparent",
         backdropFilter: scrolled ? "blur(16px)" : "none",
         WebkitBackdropFilter: scrolled ? "blur(16px)" : "none",
@@ -78,9 +79,9 @@ const Navbar = () => {
         <ul
           className="hidden lg:flex items-center gap-1 px-2 py-1.5 rounded-xl"
           style={{
-            background: scrolled ? "rgba(255,255,255,0.04)" : "transparent",
+            background: scrolled ? "var(--nav-active-bg)" : "transparent",
             border: scrolled
-              ? "1px solid rgba(255,255,255,0.07)"
+              ? "1px solid var(--navbar-border)"
               : "1px solid transparent",
             transition: "all 0.3s ease",
           }}
@@ -130,8 +131,9 @@ const Navbar = () => {
           })}
         </ul>
 
-        {/* CTA */}
-        <div className="hidden lg:block">
+        {/* CTA + theme toggle */}
+        <div className="hidden lg:flex items-center gap-2">
+          <ThemeToggle />
           <Link
             href="/contact"
             className="px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200"
@@ -142,7 +144,7 @@ const Navbar = () => {
             }}
             onMouseEnter={(e) => {
               (e.currentTarget as HTMLAnchorElement).style.background =
-                "rgba(59,130,246,0.18)";
+                "var(--accent-border)";
             }}
             onMouseLeave={(e) => {
               (e.currentTarget as HTMLAnchorElement).style.background =
@@ -153,7 +155,10 @@ const Navbar = () => {
           </Link>
         </div>
 
-        <MobileNav />
+        <div className="lg:hidden flex items-center gap-2">
+          <ThemeToggle />
+          <MobileNav />
+        </div>
       </nav>
     </header>
   );
