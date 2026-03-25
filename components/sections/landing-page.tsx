@@ -22,11 +22,11 @@ const LandingPage = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
       {/* Aurora background */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 max-h-[50vh]">
         <Aurora
           colorStops={["#0ea5e9", "#3b82f6", "#1d4ed8"]}
-          blend={0.4}
-          amplitude={1.0}
+          blend={0.5}
+          amplitude={0.7}
           speed={0.8}
         />
       </div>
