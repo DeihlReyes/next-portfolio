@@ -98,6 +98,7 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
         />
+        <meta name="google-site-verification" content="04Fm77QcGkAizmuWNUaSPeNax8-wPcNRLcxTytVaDjQ" />
       </head>
       <body className={`${inter.variable} ${syne.variable}`}>
         <ThemeProvider>
