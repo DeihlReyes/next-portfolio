@@ -35,7 +35,7 @@ export async function POST(req: Request) {
     const recentMessages = messages.slice(-6);
 
     const completion = await groq.chat.completions.create({
-      model: "llama-3.1-8b-instant",
+      model: "openai/gpt-oss-120b",
       messages: [
         { role: "system", content: SYSTEM_PROMPT },
         ...recentMessages.map((m) => ({
